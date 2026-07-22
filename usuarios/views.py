@@ -1,3 +1,40 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect, render
 
-# Create your views here.
+
+def login_view(request):
+
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        usuario = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if usuario is not None:
+
+            login(
+                request,
+                usuario
+            )
+
+            return redirect('/')
+
+        error = 'Usuario o contraseña incorrectos.'
+
+        return render(
+            request,
+            'usuarios/login.html',
+            {
+                'error': error
+            }
+        )
+
+    return render(
+        request,
+        'usuarios/login.html'
+    )

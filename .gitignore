@@ -1,0 +1,64 @@
+# Write the .gitignore file directly
+gitignore_content = """# ==========================================
+# Environments & Virtual Environments
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Byte-compiled / Python cache files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
+# Django & Local Database files
+# ==========================================
+*.sqlite3
+*.sqlite3-journal
+db.sqlite3
+db.sqlite3-shm
+db.sqlite3-wal
+
+# Static & Media temporary files
+/staticfiles/
+/media/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# Temporary & Lock files (MS Office, System)
+# ==========================================
+~$*
+~WRL*.tmp
+*.tmp
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# IDEs & Code Editors
+# ==========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ==========================================
+# Project Reports / Generated Scripts (Optional)
+# ==========================================
+informe_proyecto.md
+estructura_proyecto.txt
+"""
+
+with open(".gitignore", "w", encoding="utf-8") as f:
+    f.write(gitignore_content)
+
+print("File .gitignore successfully created.")

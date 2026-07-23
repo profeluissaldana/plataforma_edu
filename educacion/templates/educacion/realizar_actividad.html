@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ actividad.titulo }} - Plataforma Educativa
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mb-5">
+    <div class="col-12 col-lg-8">
+
+        <!-- Botón Volver -->
+        <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-outline-secondary btn-sm mb-3">
+            <i class="bi bi-arrow-left me-1"></i> Volver a la asignatura
+        </a>
+
+        <!-- CASO 1: YA FUE ENVIADO -> Muestra únicamente la Nota y % -->
+        {% if ya_enviado %}
+            <div class="card border-0 shadow-sm text-center p-4 my-3">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <i class="bi bi-check-circle-fill text-success display-1"></i>
+                    </div>
+                    <h2 class="fw-bold text-dark mb-2">¡Cuestionario Entregado!</h2>
+                    <p class="text-muted mb-4">Has completado la actividad <strong>{{ actividad.titulo }}</strong>.</p>
+
+                    <div class="row justify-content-center g-3 my-2">
+                        <div class="col-6 col-sm-4">
+                            <div class="p-3 bg-light rounded border">
+                                <span class="d-block text-muted small fw-bold text-uppercase">Puntaje</span>
+                                <span class="fs-2 fw-bold text-primary">{{ puntaje_obtenido }} / {{ puntaje_total }}</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="p-3 bg-light rounded border">
+                                <span class="d-block text-muted small fw-bold text-uppercase">Efectividad</span>
+                                <span class="fs-2 fw-bold {% if porcentaje >= 60 %}text-success{% else %}text-danger{% endif %}">
+                                    {{ porcentaje }}%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-primary px-4 fw-semibold">
+                            Volver al Espacio Educativo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        <!-- CASO 2: REQUIERE CLAVE DE ACCESO (Candado) -->
+        {% elif requiere_clave %}
+            <div class="card border-0 shadow-sm p-4 my-3 text-center">
+                <div class="card-body col-md-8 mx-auto">
+                    <div class="mb-3">
+                        <i class="bi bi-shield-lock-fill text-warning display-1"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark mb-2">{{ actividad.titulo }}</h3>
+                    <p class="text-muted mb-4">Esta evaluación está protegida. Solicita la clave de acceso al docente para comenzar.</p>
+
+                    <form method="post" class="text-start">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="clave_acceso" class="form-label fw-bold">Clave de Acceso</label>
+                            <input 
+                                type="password" 
+                                name="clave_acceso" 
+                                id="clave_acceso" 
+                                class="form-control form-control-lg text-center font-monospace" 
+                                placeholder="Escribe la clave aquí..." 
+                                required 
+                                autofocus
+                            >
+                        </div>
+                        <button type="submit" name="btn_validar_clave" value="1" class="btn btn-primary w-100 btn-lg fw-bold shadow-sm">
+                            <i class="bi bi-unlock-fill me-1"></i> Iniciar Cuestionario
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        <!-- CASO 3: FORMULARIO DE PREGUNTAS (Acceso concedido) -->
+        {% else %}
+            <!-- Encabezado de la Actividad -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="badge bg-primary">{{ actividad.get_tipo_display }}</span>
+                        {% if actividad.fecha_limite %}
+                        <small class="text-danger font-monospace">
+                            <i class="bi bi-clock me-1"></i> Límite: {{ actividad.fecha_limite|date:"d/m/Y H:i" }}
+                        </small>
+                        {% endif %}
+                    </div>
+                    <h2 class="h3 fw-bold text-dark mb-2">{{ actividad.titulo }}</h2>
+                    {% if actividad.descripcion %}
+                    <p class="text-muted mb-0">{{ actividad.descripcion }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Cuestionario -->
+            <form method="post">
+                {% csrf_token %}
+
+                {% for pregunta in actividad.preguntas.all %}
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-secondary mb-0">Pregunta {{ pregunta.orden }}</h5>
+                            <span class="badge bg-light text-dark border">{{ pregunta.puntaje }} pto(s)</span>
+                        </div>
+
+                        <p class="fs-6 fw-semibold mb-3">{{ pregunta.texto }}</p>
+
+                        {% if pregunta.tipo == 'OPCION_MULTIPLE' or pregunta.tipo == 'VERDADERO_FALSO' %}
+                            <div class="d-flex flex-column gap-2">
+                                {% for opcion in pregunta.opciones.all %}
+                                <div class="form-check p-3 border rounded bg-light">
+                                    <input 
+                                        class="form-check-input ms-1 me-2" 
+                                        type="radio" 
+                                        name="pregunta_{{ pregunta.id }}" 
+                                        id="opcion_{{ opcion.id }}" 
+                                        value="{{ opcion.id }}"
+                                        required
+                                    >
+                                    <label class="form-check-label w-100 cursor-pointer" for="opcion_{{ opcion.id }}">
+                                        {{ opcion.texto }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% elif pregunta.tipo == 'RESPUESTA_CORTA' %}
+                            <input 
+                                type="text" 
+                                name="pregunta_{{ pregunta.id }}" 
+                                class="form-control form-control-lg" 
+                                placeholder="Escribe tu respuesta..."
+                                required
+                            >
+                        {% elif pregunta.tipo == 'RESPUESTA_LARGA' %}
+                            <textarea 
+                                name="pregunta_{{ pregunta.id }}" 
+                                class="form-control" 
+                                rows="4" 
+                                placeholder="Desarrolla tu respuesta..."
+                                required
+                            ></textarea>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <div class="alert alert-info shadow-sm">
+                    Esta actividad aún no posee preguntas cargadas.
+                </div>
+                {% endfor %}
+
+                {% if actividad.preguntas.all %}
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-light border px-4">
+                        Cancelar
+                    </a>
+                    <button type="submit" name="btn_enviar_respuestas" value="1" class="btn btn-primary px-4 fw-bold shadow-sm">
+                        <i class="bi bi-send-fill me-1"></i> Enviar Cuestionario
+                    </button>
+                </div>
+                {% endif %}
+            </form>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

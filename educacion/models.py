@@ -144,8 +144,10 @@ class Contenido(models.Model):
 class Actividad(models.Model):
 
     TIPO_ACTIVIDAD = [
+        ('TEORIA', 'Lectura / Video'),
+        ('PRACTICA', 'Práctica de Programación (Subida de Archivo)'),
+        ('CUESTIONARIO', 'Cuestionario / Multiple Choice'),
         ('EJERCICIO', 'Ejercicio'),
-        ('CUESTIONARIO', 'Cuestionario'),
         ('ENTREGA', 'Entrega'),
     ]
 
@@ -175,6 +177,13 @@ class Actividad(models.Model):
     fecha_limite = models.DateTimeField(
         null=True,
         blank=True
+    )
+
+    clave_acceso = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        help_text="Clave requerida para que el alumno pueda iniciar el cuestionario en clase."
     )
 
     activo = models.BooleanField(
@@ -300,3 +309,133 @@ class Inscripcion(models.Model):
             f'{self.usuario} - '
             f'{self.espacio_educativo}'
         )
+
+
+class EntregaActividad(models.Model):
+
+    ESTADO_ENTREGA = [
+        ('EN_PROCESO', 'En proceso'),
+        ('ENVIADO', 'Enviado'),
+        ('CALIFICADO', 'Calificado'),
+    ]
+
+    actividad = models.ForeignKey(
+        Actividad,
+        on_delete=models.CASCADE,
+        related_name='entregas'
+    )
+
+    estudiante = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='entregas_actividades'
+    )
+
+    fecha_envio = models.DateTimeField(
+        auto_now=True
+    )
+
+    estado = models.CharField(
+        max_length=20,
+        choices=ESTADO_ENTREGA,
+        default='EN_PROCESO'
+    )
+
+    archivo_adjunto = models.FileField(
+        upload_to='entregas_alumnos/',
+        blank=True,
+        null=True,
+        help_text="Archivo de código o práctico entregado por el estudiante."
+    )
+
+    comentario_estudiante = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    puntaje_obtenido = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+
+    calificacion = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = 'Entrega de actividad'
+        verbose_name_plural = 'Entregas de actividades'
+        unique_together = ('actividad', 'estudiante')
+
+    def __str__(self):
+        return f'{self.estudiante} - {self.actividad}'
+
+
+class RespuestaUsuario(models.Model):
+
+    entrega = models.ForeignKey(
+        EntregaActividad,
+        on_delete=models.CASCADE,
+        related_name='respuestas'
+    )
+
+    pregunta = models.ForeignKey(
+        Pregunta,
+        on_delete=models.CASCADE,
+        related_name='respuestas_usuarios'
+    )
+
+    opcion_seleccionada = models.ForeignKey(
+        Opcion,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='seleccionada_en'
+    )
+
+    texto_respuesta = models.TextField(
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = 'Respuesta de usuario'
+        verbose_name_plural = 'Respuestas de usuarios'
+
+    def __str__(self):
+        return f'{self.entrega} - Pregunta: {self.pregunta.orden}'
+
+
+class ProgresoTeoria(models.Model):
+
+    estudiante = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='progresos_teoria'
+    )
+
+    actividad = models.ForeignKey(
+        Actividad,
+        on_delete=models.CASCADE,
+        related_name='progresos_teoria'
+    )
+
+    completado = models.BooleanField(
+        default=False
+    )
+
+    fecha_completado = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    class Meta:
+        verbose_name = 'Progreso de teoría'
+        verbose_name_plural = 'Progresos de teorías'
+        unique_together = ('estudiante', 'actividad')
+
+    def __str__(self):
+        return f'{self.estudiante} - {self.actividad.titulo} (Completado: {self.completado})'

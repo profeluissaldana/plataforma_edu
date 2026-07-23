@@ -1,166 +1,114 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block title %}
-Iniciar sesión
+Iniciar Sesión - Plataforma Educativa
 {% endblock %}
 
 {% block extra_css %}
-
-<link
-    rel="stylesheet"
-    href="{% static 'css/login.css' %}"
->
-
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
 {% block content %}
-
 <div class="container">
-
-    <div class="row justify-content-center align-items-center vh-100">
-
+    <!-- Centrado vertical y horizontal responsivo -->
+    <div class="row justify-content-center align-items-center min-vh-100 py-4">
+        
+        <!-- Adaptación fluida según pantalla: 11 cols en móvil, 4 cols en pantallas grandes -->
         <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4">
+            
+            <div class="card login-card shadow-lg border-0">
+                <div class="card-body p-4 p-sm-5">
 
-            <div class="card login-card">
-
-                <div class="card-body p-5">
-
+                    <!-- Logo e Identidad -->
                     <div class="logo mb-4">
-
                         <i class="bi bi-mortarboard-fill"></i>
-
                     </div>
 
-                    <h2 class="text-center mb-1">
-
+                    <h2 class="text-center fw-bold mb-1 fs-3">
                         Plataforma Educativa
-
                     </h2>
-
-                    <p class="text-center text-muted mb-4">
-
+                    <p class="text-center text-muted mb-4 small">
                         Inicie sesión para continuar
-
                     </p>
 
+                    <!-- Mensaje de error -->
                     {% if error %}
-
-                    <div class="alert alert-danger">
-
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-
-                        {{ error }}
-
+                    <div class="alert alert-danger d-flex align-items-center gap-2 small" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
+                        <div>{{ error }}</div>
                     </div>
-
                     {% endif %}
 
-                    <form method="post">
-
+                    <!-- Formulario de Autenticación Django -->
+                    <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-
+                            <label for="id_username" class="form-label fw-semibold">
                                 Usuario
-
                             </label>
-
                             <input
                                 type="text"
                                 name="username"
+                                id="id_username"
                                 class="form-control form-control-lg"
+                                autocomplete="username"
                                 required
                                 autofocus
                             >
-
                         </div>
 
                         <div class="mb-4">
-
-                            <label class="form-label">
-
+                            <label for="password" class="form-label fw-semibold">
                                 Contraseña
-
                             </label>
-
                             <div class="input-group">
-
                                 <input
                                     type="password"
                                     name="password"
                                     id="password"
                                     class="form-control form-control-lg"
+                                    autocomplete="current-password"
                                     required
                                 >
-
-                                <span
-                                    class="input-group-text password-toggle"
+                                <button
+                                    type="button"
+                                    class="input-group-text password-toggle bg-white"
                                     onclick="mostrarPassword()"
+                                    aria-label="Mostrar u ocultar contraseña"
                                 >
-
-                                    <i
-                                        id="iconoPassword"
-                                        class="bi bi-eye"
-                                    ></i>
-
-                                </span>
-
+                                    <i id="iconoPassword" class="bi bi-eye"></i>
+                                </button>
                             </div>
-
                         </div>
 
-                        <button
-                            class="btn btn-primary btn-lg w-100"
-                            type="submit"
-                        >
-
-                            <i class="bi bi-box-arrow-in-right"></i>
-
-                            Ingresar
-
+                        <button class="btn btn-primary btn-lg w-100 fw-bold shadow-sm" type="submit">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
                         </button>
-
                     </form>
 
                 </div>
-
             </div>
 
         </div>
-
     </div>
-
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
-
 <script>
+function mostrarPassword() {
+    const passwordInput = document.getElementById("password");
+    const icono = document.getElementById("iconoPassword");
 
-function mostrarPassword(){
-
-    const password=document.getElementById("password");
-    const icono=document.getElementById("iconoPassword");
-
-    if(password.type==="password"){
-
-        password.type="text";
-        icono.className="bi bi-eye-slash";
-
-    }else{
-
-        password.type="password";
-        icono.className="bi bi-eye";
-
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icono.className = "bi bi-eye-slash";
+    } else {
+        passwordInput.type = "password";
+        icono.className = "bi bi-eye";
     }
-
 }
-
 </script>
-
 {% endblock %}

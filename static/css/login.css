@@ -1,0 +1,35 @@
+body{
+    background: linear-gradient(135deg,#0d6efd,#0b3d91);
+    min-height:100vh;
+}
+
+.login-card{
+    border:none;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#0d6efd;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:42px;
+    margin:auto;
+}
+
+.password-toggle{
+    cursor:pointer;
+}
+
+@media (max-width:768px){
+
+    .login-card{
+        margin:20px;
+    }
+
+}

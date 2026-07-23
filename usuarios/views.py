@@ -1,5 +1,7 @@
-from django.contrib.auth import authenticate, login
+from django.conf import settings
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
+
 
 
 def login_view(request):
@@ -22,7 +24,7 @@ def login_view(request):
                 usuario
             )
 
-            return redirect('/')
+            return redirect(settings.LOGIN_REDIRECT_URL)
 
         error = 'Usuario o contraseña incorrectos.'
 
@@ -38,3 +40,7 @@ def login_view(request):
         request,
         'usuarios/login.html'
     )
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

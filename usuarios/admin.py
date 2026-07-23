@@ -7,20 +7,27 @@ from .models import Usuario
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
 
-    fieldsets = UserAdmin.fieldsets + (
+    fieldsets = (
+        *UserAdmin.fieldsets,
         (
             'Información institucional',
             {
-                'fields': ('dni',),
+                'fields': (
+                    'dni',
+                ),
             },
         ),
     )
 
-    add_fieldsets = UserAdmin.add_fieldsets + (
+
+    add_fieldsets = (
+        *UserAdmin.add_fieldsets,
         (
             'Información institucional',
             {
-                'fields': ('dni',),
+                'fields': (
+                    'dni',
+                ),
             },
         ),
     )

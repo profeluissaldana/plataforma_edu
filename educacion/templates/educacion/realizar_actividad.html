@@ -9,9 +9,15 @@
     <div class="col-12 col-lg-8">
 
         <!-- Botón Volver -->
-        <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-outline-secondary btn-sm mb-3">
-            <i class="bi bi-arrow-left me-1"></i> Volver a la asignatura
-        </a>
+        {% if actividad.leccion.modulo.espacio_educativo %}
+            <a href="{% url 'educacion:detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-outline-secondary btn-sm mb-3">
+                <i class="bi bi-arrow-left me-1"></i> Volver a la asignatura
+            </a>
+        {% else %}
+            <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-secondary btn-sm mb-3">
+                <i class="bi bi-arrow-left me-1"></i> Volver al inicio
+            </a>
+        {% endif %}
 
         <!-- CASO 1: YA FUE ENVIADO -> Muestra únicamente la Nota y % -->
         {% if ya_enviado %}
@@ -41,9 +47,15 @@
                     </div>
 
                     <div class="mt-4">
-                        <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-primary px-4 fw-semibold">
-                            Volver al Espacio Educativo
-                        </a>
+                        {% if actividad.leccion.modulo.espacio_educativo %}
+                            <a href="{% url 'educacion:detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-primary px-4 fw-semibold">
+                                Volver al Espacio Educativo
+                            </a>
+                        {% else %}
+                            <a href="{% url 'educacion:inicio' %}" class="btn btn-primary px-4 fw-semibold">
+                                Volver al Inicio
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -158,9 +170,15 @@
 
                 {% if actividad.preguntas.all %}
                 <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a href="{% url 'detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-light border px-4">
-                        Cancelar
-                    </a>
+                    {% if actividad.leccion.modulo.espacio_educativo %}
+                        <a href="{% url 'educacion:detalle_espacio' actividad.leccion.modulo.espacio_educativo.id %}" class="btn btn-light border px-4">
+                            Cancelar
+                        </a>
+                    {% else %}
+                        <a href="{% url 'educacion:inicio' %}" class="btn btn-light border px-4">
+                            Cancelar
+                        </a>
+                    {% endif %}
                     <button type="submit" name="btn_enviar_respuestas" value="1" class="btn btn-primary px-4 fw-bold shadow-sm">
                         <i class="bi bi-send-fill me-1"></i> Enviar Cuestionario
                     </button>

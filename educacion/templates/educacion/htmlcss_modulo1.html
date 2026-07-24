@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Módulo 1: Introducción y Estructura HTML5{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+    <!-- Header del Módulo -->
+    <div class="card shadow-sm border-0 mb-4 bg-primary text-white">
+        <div class="card-body p-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-light text-primary mb-2">Módulo 1 de HTML & CSS</span>
+                    <h1 class="h2 mb-1 fw-bold">🌐 Fundamentos y Estructura Básica de HTML</h1>
+                    <p class="text-white-50 mb-0">Aprende la definición, elementos clave y la estructura mínima de un documento web.</p>
+                </div>
+                <div>
+                    <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-arrow-left me-1"></i> Volver a Cursos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación interna y Contenido -->
+    <div class="row g-4">
+        
+        <!-- Barra Lateral / Indice del Módulo -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 sticky-top" style="top: 80px; z-index: 10;">
+                <div class="card-header bg-white fw-bold py-3">
+                    <i class="bi bi-list-nested me-2 text-primary"></i>Índice del Módulo
+                </div>
+                <div class="list-group list-group-flush" id="modulo-nav">
+                    <a href="#que-es-html" class="list-group-item list-group-item-action active">
+                        1. ¿Qué es HTML?
+                    </a>
+                    <a href="#estructura-basica" class="list-group-item list-group-item-action">
+                        2. Estructura Básica de un Documento
+                    </a>
+                    <a href="#etiqueta-head" class="list-group-item list-group-item-action">
+                        3. La Etiqueta &lt;head&gt; y Metadatos
+                    </a>
+                    <a href="#etiquetas-texto" class="list-group-item list-group-item-action">
+                        4. Etiquetas de Texto Fundamentales
+                    </a>
+                    <a href="#evaluacion-modulo1" class="list-group-item list-group-item-action list-group-item-success fw-bold">
+                        <i class="bi bi-check-circle-fill me-1"></i> 5. Evaluación Múltiple Opción
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido Educativo -->
+        <div class="col-lg-8">
+
+            <!-- Mensajes Flash de Django -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Sección 1: Definición -->
+            <section id="que-es-html" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">1. ¿Qué es HTML?</h2>
+                    <p>
+                        <strong>HTML</strong> son las siglas de <strong>HyperText Markup Language</strong> (Lenguaje de Marcado de Hipertexto). Es el estándar encargado de estructurar y organizar el contenido de una página web.
+                    </p>
+                    
+                    <div class="alert alert-info border-0 shadow-sm my-3">
+                        <i class="bi bi-lightbulb-fill me-2"></i><strong>Nota importante:</strong> HTML <strong>NO es un lenguaje de programación</strong>. No maneja lógica condicional ni matemáticas; es un lenguaje de etiquetas de marcado.
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-2">Funciones principales de HTML:</h5>
+                    <ul class="list-group list-group-flush border-start border-3 border-primary ps-2 mb-3">
+                        <li class="list-group-item bg-transparent">Organiza el contenido de la web.</li>
+                        <li class="list-group-item bg-transparent">Define títulos, subtítulos y párrafos.</li>
+                        <li class="list-group-item bg-transparent">Permite insertar imágenes y multimedia.</li>
+                        <li class="list-group-item bg-transparent">Crea hipervínculos (enlaces) entre documentos.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Sección 2: Estructura Básica + Explicación Línea por Línea -->
+            <section id="estructura-basica" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">2. Estructura Básica de un Documento HTML</h2>
+                    <p>Todo sitio web moderno comienza con un código base imprescindible. A continuación se presenta el esqueleto estándar:</p>
+
+<pre class="bg-dark text-light p-3 rounded border overflow-auto"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi primera página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;¡Hola Mundo!&lt;/h1&gt;
+    &lt;p&gt;Esta es mi primera página web estructurada.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <h5 class="fw-bold mt-4 mb-3">Explicación paso a paso de cada línea:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Línea / Etiqueta</th>
+                                    <th>Explicación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                                    <td>Indica al navegador que el documento utiliza el estándar <strong>HTML5</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;html lang="es"&gt;</code></td>
+                                    <td>Etiqueta raíz que envuelve todo el sitio. El atributo <code>lang="es"</code> define el idioma principal en español.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;head&gt;</code></td>
+                                    <td>Contenedor de metadatos (configuraciones, scripts, títulos) que <strong>no se ven directamente en la página</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;body&gt;</code></td>
+                                    <td>Contiene todo el <strong>contenido visible</strong> del sitio web (textos, imágenes, enlaces, botones).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 3: La etiqueta <head> -->
+            <section id="etiqueta-head" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">3. La Etiqueta &lt;head&gt; y sus Metadatos</h2>
+                    <p>Las etiquetas dentro de <code>&lt;head&gt;</code> le otorgan instrucciones técnicas al navegador y a los motores de búsqueda:</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped border align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Etiqueta</th>
+                                    <th>Función Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>&lt;title&gt;</code></td>
+                                    <td>Establece el texto que aparece en la pestaña del navegador.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                                    <td>Asegura la codificación de caracteres especiales como eñes (ñ) y acentos (á, é, í, ó, ú).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;meta name="viewport" ...&gt;</code></td>
+                                    <td>Garantiza el correcto escalado del diseño en pantallas móviles (responsive design).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4: Etiquetas de Texto -->
+            <section id="etiquetas-texto" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">4. Etiquetas de Texto Fundamentales</h2>
+                    <div class="table-responsive mb-3">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Etiqueta</th>
+                                    <th>Uso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code></td>
+                                    <td>Títulos y subtítulos con jerarquía (donde <code>&lt;h1&gt;</code> es el de mayor relevancia).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;p&gt;</code></td>
+                                    <td>Define párrafos de texto.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;strong&gt;</code></td>
+                                    <td>Aplica importancia semántica y texto en <strong>negrita</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;em&gt;</code></td>
+                                    <td>Aplica énfasis y estilo de <em>cursiva</em>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 5: Evaluación Múltiple Opción -->
+            <section id="evaluacion-modulo1" class="card shadow-sm border-0 mb-4 border-start border-4 border-success">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-success fw-bold mb-3">
+                        <i class="bi bi-journal-check me-2"></i>5. Evaluación Múltiple Opción - Módulo 1
+                    </h2>
+                    <p class="text-muted">Responde las preguntas basadas en la lección y envía tus respuestas para validar tu comprensión.</p>
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+
+                        <!-- Pregunta 1 -->
+                        <div class="card mb-3 border-0 bg-light">
+                            <div class="card-body">
+                                <label class="form-label fw-bold">1. ¿Qué significan las siglas HTML?</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_a" value="a" required>
+                                    <label class="form-check-label" for="p1_a">HighText Machine Language</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_b" value="b">
+                                    <label class="form-check-label" for="p1_b">HyperText Markup Language</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_c" value="c">
+                                    <label class="form-check-label" for="p1_c">HyperTool Multi Language</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="card mb-3 border-0 bg-light">
+                            <div class="card-body">
+                                <label class="form-label fw-bold">2. ¿En qué sección del documento se coloca todo el contenido VISIBLE del sitio?</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p2" id="p2_a" value="a" required>
+                                    <label class="form-check-label" for="p2_a">Dentro de la etiqueta &lt;head&gt;</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p2" id="p2_b" value="b">
+                                    <label class="form-check-label" for="p2_b">Dentro de la etiqueta &lt;title&gt;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p2" id="p2_c" value="c">
+                                    <label class="form-check-label" for="p2_c">Dentro de la etiqueta &lt;body&gt;</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="card mb-3 border-0 bg-light">
+                            <div class="card-body">
+                                <label class="form-label fw-bold">3. ¿Qué etiqueta define el título que se observa en la pestaña del navegador?</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p3" id="p3_a" value="a" required>
+                                    <label class="form-check-label" for="p3_a">&lt;title&gt;</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p3" id="p3_b" value="b">
+                                    <label class="form-check-label" for="p3_b">&lt;h1&gt;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p3" id="p3_c" value="c">
+                                    <label class="form-check-label" for="p3_c">&lt;meta&gt;</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="card mb-3 border-0 bg-light">
+                            <div class="card-body">
+                                <label class="form-label fw-bold">4. ¿Para qué se utiliza la etiqueta &lt;strong&gt;?</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p4" id="p4_a" value="a" required>
+                                    <label class="form-check-label" for="p4_a">Para crear un salto de línea.</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="p4" id="p4_b" value="b">
+                                    <label class="form-check-label" for="p4_b">Para resaltar texto con importancia semántica (negrita).</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p4" id="p4_c" value="c">
+                                    <label class="form-check-label" for="p4_c">Para cambiar el color de fondo de la página.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" name="btn_enviar_evaluacion" class="btn btn-success fw-bold mt-2">
+                            <i class="bi bi-send me-1"></i> Enviar Evaluación
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

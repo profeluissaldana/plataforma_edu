@@ -74,8 +74,8 @@ def inicio(request):
 @login_required
 def detalle_espacio(request, espacio_id):
     """
-    Vista responsiva que muestra el detalle de un Espacio Educativo,
-    calculando la barra de progreso global y las actividades completadas.
+    Vista responsiva que muestra el detalle de un Espacio Educativo.
+    Si es el curso de Git y GitHub (ID 4), renderiza la plantilla especial gitgithub.html.
     """
     espacio = get_object_or_404(
         EspacioEducativo,
@@ -83,7 +83,32 @@ def detalle_espacio(request, espacio_id):
         activo=True
     )
 
-    # Optimizamos la consulta trayendo módulos, lecciones y actividades ordenadas
+    # -------------------------------------------------------------------------
+    # CASO ESPECIAL: CURSO DE GIT Y GITHUB (ID 4)
+    # -------------------------------------------------------------------------
+    if espacio.id == 4:
+        contexto = {
+            'espacio': espacio,
+            'progreso_porcentaje': 0,
+            'examen_desbloqueado': False,
+            'clave_error': False
+        }
+
+        # Procesar intento de desbloqueo del examen en la plantilla interactiva
+        if request.method == 'POST':
+            clave_ingresada = request.POST.get('clave_acceso', '').strip()
+            if clave_ingresada == "GIT123":  # Clave para desbloquear examen
+                contexto['examen_desbloqueado'] = True
+                messages.success(request, "¡Examen desbloqueado con éxito!")
+            else:
+                contexto['clave_error'] = True
+                messages.error(request, "Clave incorrecta. Intenta nuevamente.")
+
+        return render(request, 'educacion/gitgithub.html', contexto)
+
+    # -------------------------------------------------------------------------
+    # CASO ESTÁNDAR: RESTO DE CURSOS (PYTHON, OFIMÁTICA, ETC.)
+    # -------------------------------------------------------------------------
     modulos = espacio.modulos.filter(
         activo=True
     ).order_by('orden').prefetch_related(
@@ -95,7 +120,6 @@ def detalle_espacio(request, espacio_id):
         'lecciones__actividades'
     )
 
-    # Cálculo de porcentaje global e historial de completados
     porcentaje_avance, actividades_resueltas_ids = obtener_progreso_estudiante(request.user, espacio)
 
     return render(
@@ -108,6 +132,59 @@ def detalle_espacio(request, espacio_id):
             'actividades_resueltas_ids': actividades_resueltas_ids,
         }
     )
+
+
+@login_required
+def html_css_modulo1_view(request):
+    """
+    Vista para renderizar el Módulo 1 de HTML y procesar su evaluación.
+    """
+    if request.method == 'POST' and 'btn_enviar_evaluacion' in request.POST:
+        p1 = request.POST.get('p1')
+        p2 = request.POST.get('p2')
+        p3 = request.POST.get('p3')
+        p4 = request.POST.get('p4')
+
+        # Respuestas correctas: p1='b', p2='c', p3='a', p4='b'
+        aciertos = 0
+        if p1 == 'b': aciertos += 1
+        if p2 == 'c': aciertos += 1
+        if p3 == 'a': aciertos += 1
+        if p4 == 'b': aciertos += 1
+
+        porcentaje = round((aciertos / 4) * 100)
+
+        if porcentaje >= 70:
+            messages.success(request, f'¡Felicidades! Aprobaste el Módulo 1 con un {porcentaje}% ({aciertos}/4 aciertos).')
+        else:
+            messages.warning(request, f'Obtuviste un {porcentaje}% ({aciertos}/4 aciertos). Revisa el contenido e intenta nuevamente.')
+
+        return redirect('educacion:html_css_modulo1')
+
+    return render(request, 'educacion/htmlcss_modulo1.html')
+
+
+@login_required
+def git_github_view(request):
+    """
+    Vista directa para renderizar el módulo interactivo de Git y GitHub.
+    """
+    contexto = {
+        'progreso_porcentaje': 0,
+        'examen_desbloqueado': False,
+        'clave_error': False
+    }
+
+    if request.method == 'POST':
+        clave_ingresada = request.POST.get('clave_acceso', '').strip()
+        if clave_ingresada == "GIT123":  # Clave para desbloquear examen
+            contexto['examen_desbloqueado'] = True
+            messages.success(request, "¡Examen desbloqueado con éxito!")
+        else:
+            contexto['clave_error'] = True
+            messages.error(request, "Clave incorrecta. Intenta nuevamente.")
+
+    return render(request, 'educacion/gitgithub.html', contexto)
 
 
 @login_required
@@ -125,7 +202,7 @@ def marcar_teoria_completada(request, actividad_id):
     )
     
     messages.success(request, f'¡Excelente! Has completado: {actividad.titulo}')
-    return redirect('detalle_espacio', espacio_id=actividad.leccion.modulo.espacio_educativo.id)
+    return redirect('educacion:detalle_espacio', espacio_id=actividad.leccion.modulo.espacio_educativo.id)
 
 
 @login_required
@@ -188,7 +265,7 @@ def realizar_actividad(request, actividad_id):
                 entrega.save()
 
                 messages.success(request, '¡Tu archivo de práctica ha sido subido con éxito!')
-                return redirect('realizar_actividad', actividad_id=actividad.id)
+                return redirect('educacion:realizar_actividad', actividad_id=actividad.id)
             else:
                 messages.error(request, 'Debes adjuntar un archivo para poder realizar la entrega.')
 
@@ -216,7 +293,7 @@ def realizar_actividad(request, actividad_id):
             if clave_ingresada == actividad.clave_acceso.strip():
                 request.session[session_key] = True
                 messages.success(request, '¡Clave correcta! Puedes comenzar la evaluación.')
-                return redirect('realizar_actividad', actividad_id=actividad.id)
+                return redirect('educacion:realizar_actividad', actividad_id=actividad.id)
             else:
                 messages.error(request, 'La clave ingresada es incorrecta.')
 
@@ -273,7 +350,7 @@ def realizar_actividad(request, actividad_id):
             del request.session[session_key]
 
         messages.success(request, '¡Tus respuestas han sido guardadas y enviadas correctamente!')
-        return redirect('realizar_actividad', actividad_id=actividad.id)
+        return redirect('educacion:realizar_actividad', actividad_id=actividad.id)
 
     # -------------------------------------------------------------
     # CASO 5: MOSTRAR PREGUNTAS DEL CUESTIONARIO

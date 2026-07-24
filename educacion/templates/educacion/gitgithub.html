@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Curso Interactiva de Git y GitHub{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Encabezado del Módulo -->
+    <div class="card shadow-sm border-0 mb-4 bg-dark text-white">
+        <div class="card-body p-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-danger mb-2">Control de Versiones</span>
+                    <h1 class="h2 mb-1 fw-bold">Git y GitHub para Desarrollo de Software</h1>
+                    <p class="text-white-50 mb-0">Aprende los conceptos fundamentales, comandos de terminal y el flujo de trabajo colaborativo.</p>
+                </div>
+                <div>
+                    <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-arrow-left me-1"></i> Volver a los Cursos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Barra Lateral de Navegación del Módulo -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 sticky-top" style="top: 80px; z-index: 10;">
+                <div class="card-header bg-white fw-bold py-3">
+                    <i class="bi bi-list-nested me-2 text-primary"></i>Contenido de la Lección
+                </div>
+                <div class="list-group list-group-flush" id="modulo-nav">
+                    <a href="#introduccion" class="list-group-item list-group-item-action active">
+                        1. ¿Qué es Git y GitHub?
+                    </a>
+                    <a href="#instalacion" class="list-group-item list-group-item-action">
+                        2. Instalación y Configuración
+                    </a>
+                    <a href="#comandos-basicos" class="list-group-item list-group-item-action">
+                        3. Comandos Esenciales de Git
+                    </a>
+                    <a href="#flujo-github" class="list-group-item list-group-item-action">
+                        4. Flujo de Trabajo en GitHub
+                    </a>
+                    <a href="#evaluacion-final" class="list-group-item list-group-item-action list-group-item-warning fw-bold">
+                        <i class="bi bi-lock-fill me-1"></i> 5. Evaluación Final
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="col-lg-8">
+            
+            <!-- Mensajes Flash de Django -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Sección 1: Introducción -->
+            <section id="introduccion" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">1. ¿Qué es Git y GitHub?</h2>
+                    <p>
+                        <strong>Git</strong> es un sistema de control de versiones distribuido diseñado para rastrear cambios en el código fuente durante el desarrollo de software.
+                    </p>
+                    <p>
+                        <strong>GitHub</strong> es una plataforma basada en la nube que permite alojar repositorios Git, facilitando la colaboración en proyectos de código abierto o privados.
+                    </p>
+                    <div class="alert alert-info border-0 shadow-sm mb-0">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        <strong>Diferencia clave:</strong> Git es la herramienta local de terminal; GitHub es el servicio web remoto donde compartes tus repositorios.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 2: Instalación -->
+            <section id="instalacion" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">2. Instalación y Configuración</h2>
+                    <p>Tras instalar Git en tu sistema operativo, configura tu nombre de usuario y correo global en la consola:</p>
+                    <pre class="bg-dark text-light p-3 rounded"><code>git config --global user.name "Tu Nombre"
+git config --global user.email "tu_email@ejemplo.com"</code></pre>
+                </div>
+            </section>
+
+            <!-- Sección 3: Comandos Básicos -->
+            <section id="comandos-basicos" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">3. Comandos Esenciales de Git</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Comando</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>git init</code></td>
+                                    <td>Inicializa un nuevo repositorio Git en el directorio actual.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git status</code></td>
+                                    <td>Muestra el estado de los archivos (modificados, rastreados o no).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git add .</code></td>
+                                    <td>Agrega todos los archivos modificados al área de preparación (Staging Area).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git commit -m "mensaje"</code></td>
+                                    <td>Guarda una foto (snapshot) del proyecto con un mensaje descriptivo.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git push origin main</code></td>
+                                    <td>Envía las confirmaciones locales al repositorio remoto en GitHub.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4: Flujo en GitHub -->
+            <section id="flujo-github" class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-primary fw-bold mb-3">4. Flujo de Trabajo en GitHub</h2>
+                    <ol class="mb-0">
+                        <li class="mb-2"><strong>Fork o Crear Repositorio:</strong> Crea tu proyecto en GitHub o clona uno existente.</li>
+                        <li class="mb-2"><strong>Crear Ramas (Branches):</strong> Trabaja en nuevas funcionalidades en ramas independientes con <code>git checkout -b nueva-rama</code>.</li>
+                        <li class="mb-2"><strong>Pull Requests (PR):</strong> Solicita la integración de tu código revisado a la rama principal.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Sección 5: Evaluación Final / Examen -->
+            <section id="evaluacion-final" class="card shadow-sm border-0 mb-4 border-start border-4 border-warning">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-warning-emphasis fw-bold mb-3">
+                        <i class="bi bi-shield-lock me-2"></i>5. Evaluación Final de Git y GitHub
+                    </h2>
+
+                    {% if not examen_desbloqueado %}
+                        <p class="text-muted">
+                            Para rendir la evaluación final de este módulo, ingresa la clave de acceso proporcionada por el docente:
+                        </p>
+                        
+                        <form method="POST" action="" class="row g-3 align-items-center">
+                            {% csrf_token %}
+                            <div class="col-auto">
+                                <label for="clave_acceso" class="visually-hidden">Clave de Acceso</label>
+                                <input type="password" 
+                                       class="form-control {% if clave_error %}is-invalid{% endif %}" 
+                                       id="clave_acceso" 
+                                       name="clave_acceso" 
+                                       placeholder="Ingresa la clave aquí" 
+                                       required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-warning fw-bold">
+                                    Desbloquear Examen
+                                </button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <div class="alert alert-success border-0 shadow-sm mb-4">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <strong>¡Examen Desbloqueado!</strong> Responde las siguientes preguntas y presiona enviar al finalizar.
+                        </div>
+
+                        <!-- Preguntas del Examen -->
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">1. ¿Qué comando se utiliza para guardar los cambios preparados en el historial?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_a" value="a">
+                                    <label class="form-check-label" for="p1_a">git save</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_b" value="b">
+                                    <label class="form-check-label" for="p1_b">git commit</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p1" id="p1_c" value="c">
+                                    <label class="form-check-label" for="p1_c">git push</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">2. ¿Cuál es el propósito principal de GitHub?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p2" id="p2_a" value="a">
+                                    <label class="form-check-label" for="p2_a">Compilar código Python en la nube.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="p2" id="p2_b" value="b">
+                                    <label class="form-check-label" for="p2_b">Alojar repositorios Git y facilitar el trabajo colaborativo.</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="btn_enviar_examen" class="btn btn-success fw-bold">
+                                Enviar Respuestas del Examen
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

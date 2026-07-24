@@ -1,0 +1,33 @@
+Markdown
+* Elemento con viñeta 1
+* Elemento con viñeta 2
+  * Sub-elemento
+
+1. Primer paso
+2. Segundo paso
+3. Tercer paso
+
+<!-- Insertar imagen -->
+![Texto alternativo para accesibilidad](https://ejemplo.com/imagen.jpg)
+
+<!-- Insertar enlace -->
+[Visitar sitio web](https://ejemplo.com)
+
+Tablas
+Markdown
+| Nombre | Rol | Estado |
+| :--- | :---: | ---: |
+| Juan | Docente | Activo |
+| Ana | Alumno | Pendiente |
+
+*Nota: `:---` alinea a la izquierda, `:---:` al centro, y `---:` a la derecha.*
+
+# Título Principal (H1)
+## Subtítulo (H2)
+### Sección (H3)
+
+**Texto en negrita**
+*Texto en cursiva*
+~~Texto tachado~~
+
+> Esto es un bloque de cita o nota destacada.

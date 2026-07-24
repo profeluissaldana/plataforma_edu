@@ -25,6 +25,9 @@ def obtener_progreso_estudiante(estudiante, espacio):
     Calcula el porcentaje global de avance del alumno en un Espacio Educativo
     y devuelve la lista de IDs de actividades completadas.
     """
+    if not estudiante.is_authenticated:
+        return 0, set()
+
     total_actividades = Actividad.objects.filter(
         leccion__modulo__espacio_educativo=espacio,
         activo=True
@@ -91,7 +94,8 @@ def detalle_espacio(request, espacio_id):
             'espacio': espacio,
             'progreso_porcentaje': 0,
             'examen_desbloqueado': False,
-            'clave_error': False
+            'clave_error': False,
+            'estudiante': request.user,
         }
 
         # Procesar intento de desbloqueo del examen en la plantilla interactiva
@@ -130,6 +134,7 @@ def detalle_espacio(request, espacio_id):
             'modulos': modulos,
             'porcentaje_avance': porcentaje_avance,
             'actividades_resueltas_ids': actividades_resueltas_ids,
+            'estudiante': request.user,
         }
     )
 
@@ -172,7 +177,8 @@ def git_github_view(request):
     contexto = {
         'progreso_porcentaje': 0,
         'examen_desbloqueado': False,
-        'clave_error': False
+        'clave_error': False,
+        'estudiante': request.user,
     }
 
     if request.method == 'POST':
@@ -247,6 +253,7 @@ def realizar_actividad(request, actividad_id):
                 'puntaje_obtenido': puntaje_obtenido,
                 'puntaje_total': puntaje_total,
                 'porcentaje': porcentaje,
+                'estudiante': request.user,
             }
         )
 
@@ -277,6 +284,7 @@ def realizar_actividad(request, actividad_id):
                 'entrega': entrega,
                 'es_practica': True,
                 'ya_enviado': False,
+                'estudiante': request.user,
             }
         )
 
@@ -304,6 +312,7 @@ def realizar_actividad(request, actividad_id):
                 'actividad': actividad,
                 'requiere_clave': True,
                 'ya_enviado': False,
+                'estudiante': request.user,
             }
         )
 
@@ -369,5 +378,6 @@ def realizar_actividad(request, actividad_id):
             'respuestas_existentes': respuestas_existentes,
             'requiere_clave': False,
             'ya_enviado': False,
+            'estudiante': request.user,
         }
     )

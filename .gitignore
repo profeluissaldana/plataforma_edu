@@ -19,11 +19,11 @@ __pycache__/
 # ==========================================
 # Django & Local Database files
 # ==========================================
-*.sqlite3
-*.sqlite3-journal
-db.sqlite3
-db.sqlite3-shm
-db.sqlite3-wal
+#*.sqlite3
+#*.sqlite3-journal
+#db.sqlite3
+#db.sqlite3-shm
+#db.sqlite3-wal
 
 # Static & Media temporary files
 /staticfiles/

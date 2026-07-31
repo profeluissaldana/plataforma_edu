@@ -91,7 +91,20 @@ class Leccion(models.Model):
     def __str__(self):
         return f'{self.modulo} - {self.titulo}'
 
+class Subleccion(models.Model):
+    leccion = models.ForeignKey(Leccion, on_delete=models.CASCADE, related_name='sublecciones')
+    titulo = models.CharField(max_length=200)
+    orden = models.PositiveIntegerField(default=1)
+    activo = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['orden']
+        verbose_name = 'Sublección'
+        verbose_name_plural = 'Sublecciones'
+
+    def __str__(self):
+        return f"{self.leccion.titulo} - Parte {self.orden}: {self.titulo}"
+    
 class Contenido(models.Model):
 
     TIPO_CONTENIDO = [
@@ -105,7 +118,16 @@ class Contenido(models.Model):
     leccion = models.ForeignKey(
         Leccion,
         on_delete=models.CASCADE,
-        related_name='contenidos'
+        related_name='contenidos',
+        null=True, 
+        blank=True  # Hace que la lección sea opcional si pertenece a una sublección
+    )
+    subleccion = models.ForeignKey(
+        Subleccion, 
+        on_delete=models.CASCADE, 
+        related_name='contenidos', 
+        null=True, 
+        blank=True  # Hace que la sublección sea opcional si pertenece directo a la lección
     )
 
     titulo = models.CharField(
@@ -154,8 +176,19 @@ class Actividad(models.Model):
     leccion = models.ForeignKey(
         Leccion,
         on_delete=models.CASCADE,
-        related_name='actividades'
+        related_name='actividades',
+        null=True, 
+        blank=True
     )
+    subleccion = models.ForeignKey(
+        Subleccion, 
+        on_delete=models.CASCADE, 
+        related_name='actividades', 
+        null=True, 
+        blank=True
+    )
+
+
 
     titulo = models.CharField(
         max_length=200

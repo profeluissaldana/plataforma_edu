@@ -1,20 +1,15 @@
 from django.contrib import admin
-from .models import (
-    Actividad,
-    Contenido,
-    EntregaActividad,
-    EspacioEducativo,
-    Leccion,
-    Modulo,
-    Opcion,
-    Pregunta,
-    RespuestaUsuario,
-)
+from .models import EspacioEducativo,Modulo, Leccion, Subleccion, Contenido, Actividad, Pregunta, Opcion, EntregaActividad, RespuestaUsuario, ProgresoTeoria
 
 
 # ==============================================================================
 # CONFIGURACIÓN DE MODELOS EDUCATIVOS
 # ==============================================================================
+@admin.register(Subleccion)
+class SubleccionAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'leccion', 'orden', 'activo')
+    list_filter = ('leccion__modulo', 'leccion', 'activo')
+    search_fields = ('titulo', 'leccion__titulo')
 
 @admin.register(EspacioEducativo)
 class EspacioEducativoAdmin(admin.ModelAdmin):
@@ -41,7 +36,7 @@ class LeccionAdmin(admin.ModelAdmin):
 
 @admin.register(Contenido)
 class ContenidoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'leccion', 'tipo', 'orden', 'activo')
+    list_display = ('titulo', 'leccion', 'subleccion', 'tipo', 'orden', 'activo')
     list_filter = ('tipo', 'activo', 'leccion__modulo__espacio_educativo')
     search_fields = ('titulo', 'texto')
 
@@ -57,7 +52,7 @@ class OpcionInline(admin.TabularInline):
 
 @admin.register(Actividad)
 class ActividadAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'leccion', 'tipo', 'clave_acceso', 'fecha_limite', 'activo')
+    list_display = ('titulo', 'leccion', 'subleccion', 'tipo', 'clave_acceso', 'fecha_limite', 'activo')
     list_filter = ('tipo', 'activo', 'leccion__modulo__espacio_educativo')
     search_fields = ('titulo', 'descripcion', 'clave_acceso')
 

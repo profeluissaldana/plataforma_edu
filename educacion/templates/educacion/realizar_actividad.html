@@ -123,7 +123,7 @@
                             <span class="badge bg-light text-dark border">{{ pregunta.puntaje }} pto(s)</span>
                         </div>
 
-                        <p class="fs-6 fw-semibold mb-3">{{ pregunta.texto }}</p>
+                        <p class="fs-6 fw-semibold mb-3">{{ pregunta.texto|safe }}</p>
 
                         {% if pregunta.tipo == 'OPCION_MULTIPLE' or pregunta.tipo == 'VERDADERO_FALSO' %}
                             <div class="d-flex flex-column gap-2">

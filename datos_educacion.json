@@ -1,0 +1,244 @@
+[
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 1,
+    "fields": {
+        "nombre": "Curso de Python",
+        "descripcion": "Curso introductorio de programación con Python.",
+        "fecha_creacion": "2026-07-22T15:42:42.453Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 2,
+    "fields": {
+        "nombre": "Ofimática",
+        "descripcion": "Procesadores de texto, planillas de cálculo y presentaciones eficaces para el ámbito académico.",
+        "fecha_creacion": "2026-07-22T19:29:13.093Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 3,
+    "fields": {
+        "nombre": "Visual Studio Code",
+        "descripcion": "Configuración del entorno de desarrollo, extensiones clave y trucos para escribir código velozmente.",
+        "fecha_creacion": "2026-07-22T19:29:49.862Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 4,
+    "fields": {
+        "nombre": "Curso de Git y GitHub",
+        "descripcion": "Control de versiones, repositorios y trabajo colaborativo en GitHub.",
+        "fecha_creacion": "2026-07-24T11:44:41.714Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 5,
+    "fields": {
+        "nombre": "HTML Y CSS",
+        "descripcion": "HTML y CSS son las dos tecnologías fundamentales para crear y diseñar sitios web. HTML define la estructura y el contenido (los cimientos), mientras que CSS se encarga del diseño, la estética y la adaptabilidad visual (la decoración).",
+        "fecha_creacion": "2026-07-24T14:03:21.002Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.espacioeducativo",
+    "pk": 6,
+    "fields": {
+        "nombre": "Programación Web con Django",
+        "descripcion": "Curso paso a paso para aprender el desarrollo web profesional con Python y Django.",
+        "fecha_creacion": "2026-07-24T15:57:47.026Z",
+        "activo": true
+    }
+},
+{
+    "model": "educacion.modulo",
+    "pk": 1,
+    "fields": {
+        "espacio_educativo": 1,
+        "nombre": "Introducción a Python",
+        "descripcion": "Conceptos básicos del lenguaje Python.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.modulo",
+    "pk": 2,
+    "fields": {
+        "espacio_educativo": 4,
+        "nombre": "Módulo 2: Ramas, Merges y Trabajo Colaborativo",
+        "descripcion": "Este módulo enseña a usar sistemas de control de versiones como Git y GitHub para trabajar en equipo sin dañar el código principal. Sus temas centrales son las ramas para separar tareas, los merges para unir los cambios y las reglas de equipo para evitar problemas.",
+        "orden": 2,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.modulo",
+    "pk": 3,
+    "fields": {
+        "espacio_educativo": 5,
+        "nombre": "Módulo 1: Fundamentos y Estructura Básica de HTML.",
+        "descripcion": "Introduce los conceptos y la organización del Lenguaje de Marcado de Hipertexto (HTML), cubriendo etiquetas y la organización visual.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.modulo",
+    "pk": 4,
+    "fields": {
+        "espacio_educativo": 6,
+        "nombre": "La Magia de Django y los Entornos Virtuales",
+        "descripcion": "Guía práctica para crear sitios web seguros y aislar herramientas de programación usando Python. Descubre cómo construir aplicaciones robustas sin mezclar archivos.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 1,
+    "fields": {
+        "modulo": 1,
+        "titulo": "¿Qué es Python?",
+        "descripcion": "Introducción al lenguaje Python.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 2,
+    "fields": {
+        "modulo": 2,
+        "titulo": "Lección 1: Creación y Gestión de Ramas (git branch)",
+        "descripcion": "La creación y gestión de ramas en Git permite aislar el trabajo en un proyecto para desarrollar funciones o corregir errores en paralelo sin alterar la versión principal. El comando principal es git branch",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 3,
+    "fields": {
+        "modulo": 3,
+        "titulo": "Estructura y Etiquetas Principales.",
+        "descripcion": "Esta guía explica la base del diseño web a través de la organización visual y el uso de marcas. Aprenderás sobre <!DOCTYPE html>, <html>, <head> y <body>.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 4,
+    "fields": {
+        "modulo": 4,
+        "titulo": "¿Qué es Django y por qué usamos venv?",
+        "descripcion": "Aquí aprenderemos la importancia de instalar Django en un entorno virtual.",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 5,
+    "fields": {
+        "modulo": 4,
+        "titulo": "Creando nuestra primera App con Base de Datos",
+        "descripcion": "En esta lección práctica aplicaremos los conceptos aprendidos creando un proyecto real: una Agenda de Contactos conectada a una base de datos.",
+        "orden": 3,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.leccion",
+    "pk": 6,
+    "fields": {
+        "modulo": 4,
+        "titulo": "Creando nuestra primera App en Django",
+        "descripcion": "Esta lección contiene la guía completa de configuración del entorno, la explicación de los componentes y todo el código fuente estructurado para realizar la actividad en clase.",
+        "orden": 2,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.subleccion",
+    "pk": 1,
+    "fields": {
+        "leccion": 6,
+        "titulo": "Configuración del Entorno",
+        "descripcion": "",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.subleccion",
+    "pk": 2,
+    "fields": {
+        "leccion": 6,
+        "titulo": "Creación de la Estructura del Proyecto",
+        "descripcion": "<p>Este paso establece la base estructural del proyecto web mediante el uso de la interfaz de l&iacute;nea de comandos de Django.<!--TgQPHd|||[]--></p>",
+        "orden": 2,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.contenido",
+    "pk": 1,
+    "fields": {
+        "leccion": 1,
+        "subleccion": null,
+        "titulo": "Características de Python",
+        "tipo": "TEXTO",
+        "contenido": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general.",
+        "url": "",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.contenido",
+    "pk": 2,
+    "fields": {
+        "leccion": 2,
+        "subleccion": null,
+        "titulo": "Comando Principales",
+        "tipo": "TEXTO",
+        "contenido": "Creación de ramas\r\ngit branch <nombre>: crea una nueva rama local.\r\ngit switch -c <nombre> o git checkout -b <nombre>: crea la rama y te pasa a ella de inmediato.\r\n\r\nCambio y navegación\r\ngit branch: muestra una lista de todas las ramas locales y señala la activa.\r\ngit switch <nombre> o git checkout <nombre>: te mueve a la rama elegida.",
+        "url": "",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.contenido",
+    "pk": 3,
+    "fields": {
+        "leccion": 3,
+        "subleccion": null,
+        "titulo": "1. Fundamentos, Estructura y Etiquetas Básicas de HTML.",
+        "tipo": "TEXTO",
+        "contenido": "<h3>1. ¿Qué es HTML?</h3>\r\n<p>HTML (HyperText Markup Language) es el lenguaje estándar utilizado para estructurar y organizar el contenido de una página web. No es un lenguaje de programación, sino un lenguaje de marcado por etiquetas.</p>\r\n\r\n<h3>2. Estructura Básica de un Documento HTML5</h3>\r\n<img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCmxCy69v0IQO4b6GMcURPkCgkCdnZv4Gv7S21eWbM8Gg7fz00plnKPW0&s=10\" alt=\"Estructura de HTML\" class=\"img-fluid rounded border my-3\" style=\"width: 350px; height: auto;\">\r\n<p>Todo documento HTML5 estándar debe contar con las siguientes etiquetas fundamentales:</p>\r\n<ul>\r\n    <li><strong>&lt;!DOCTYPE html&gt;:</strong> Declara el tipo de documento y el estándar HTML5.</li>\r\n    <li><strong>&lt;html lang=\"es\"&gt;:</strong> Etiqueta raíz que encierra todo el sitio e indica el idioma.</li>\r\n    <li><strong>&lt;head&gt;:</strong> Contiene metadatos, títulos e instrucciones para el navegador.</li>\r\n    <li><strong>&lt;body&gt;:</strong> Contiene todo el contenido visible para los usuarios.</li>\r\n</ul>\r\n\r\n<h3>3. Etiquetas de Texto Principales</h3>\r\n<ul>\r\n    <li><strong>&lt;h1&gt; a &lt;h6&gt;:</strong> Encabezados jerárquicos.</li>\r\n    <li><strong>&lt;p&gt;:</strong> Define un párrafo de texto.</li>\r\n    <li><strong>&lt;strong&gt;:</strong> Destaca texto en negrita.</li>\r\n    <li><strong>&lt;em&gt;:</strong> Aplica énfasis en cursiva.</li>\r\n</ul>",
+        "url": "",
+        "orden": 1,
+        "activo": true
+    }
+},
+{
+    "model": "educacion.contenido",
+    "pk": 4,
+    "fields": {
+        "leccion": 4,
+        "subleccion": null,
+        "titulo": "¿Qué es Django y por qué usamos venv?",
+        "tipo": "TEXTO",
+        "contenido": 

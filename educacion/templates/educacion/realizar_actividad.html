@@ -106,7 +106,7 @@
                     </div>
                     <h2 class="h3 fw-bold text-dark mb-2">{{ actividad.titulo }}</h2>
                     {% if actividad.descripcion %}
-                    <p class="text-muted mb-0">{{ actividad.descripcion }}</p>
+                    <p class="text-muted mb-0">{{ actividad.descripcion|safe }}</p>
                     {% endif %}
                 </div>
             </div>

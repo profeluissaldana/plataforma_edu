@@ -66,7 +66,7 @@ Inicio - Taller de Computación
                     {{ espacio.nombre }}
                 </h5>
                 <p class="card-text text-muted">
-                    {{ espacio.descripcion }}
+                    {{ espacio.descripcion|safe }}
                 </p>
                 <a href="{% url 'educacion:detalle_espacio' espacio.id %}" class="btn btn-outline-primary mt-auto fw-semibold">
                     <i class="bi bi-journal-text me-1"></i> Ver contenido

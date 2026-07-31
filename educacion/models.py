@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class EspacioEducativo(models.Model):
@@ -8,7 +9,7 @@ class EspacioEducativo(models.Model):
         max_length=200
     )
 
-    descripcion = models.TextField(
+    descripcion = RichTextField(
         blank=True
     )
 
@@ -40,7 +41,7 @@ class Modulo(models.Model):
         max_length=200
     )
 
-    descripcion = models.TextField(
+    descripcion = RichTextField(
         blank=True
     )
 
@@ -72,7 +73,7 @@ class Leccion(models.Model):
         max_length=200
     )
 
-    descripcion = models.TextField(
+    descripcion = RichTextField(
         blank=True
     )
 
@@ -91,11 +92,30 @@ class Leccion(models.Model):
     def __str__(self):
         return f'{self.modulo} - {self.titulo}'
 
+
 class Subleccion(models.Model):
-    leccion = models.ForeignKey(Leccion, on_delete=models.CASCADE, related_name='sublecciones')
-    titulo = models.CharField(max_length=200)
-    orden = models.PositiveIntegerField(default=1)
-    activo = models.BooleanField(default=True)
+
+    leccion = models.ForeignKey(
+        Leccion,
+        on_delete=models.CASCADE,
+        related_name='sublecciones'
+    )
+
+    titulo = models.CharField(
+        max_length=200
+    )
+
+    descripcion = RichTextField(
+        blank=True
+    )
+
+    orden = models.PositiveIntegerField(
+        default=1
+    )
+
+    activo = models.BooleanField(
+        default=True
+    )
 
     class Meta:
         ordering = ['orden']
@@ -104,7 +124,8 @@ class Subleccion(models.Model):
 
     def __str__(self):
         return f"{self.leccion.titulo} - Parte {self.orden}: {self.titulo}"
-    
+
+
 class Contenido(models.Model):
 
     TIPO_CONTENIDO = [
@@ -119,15 +140,16 @@ class Contenido(models.Model):
         Leccion,
         on_delete=models.CASCADE,
         related_name='contenidos',
-        null=True, 
-        blank=True  # Hace que la lección sea opcional si pertenece a una sublección
+        null=True,
+        blank=True
     )
+
     subleccion = models.ForeignKey(
-        Subleccion, 
-        on_delete=models.CASCADE, 
-        related_name='contenidos', 
-        null=True, 
-        blank=True  # Hace que la sublección sea opcional si pertenece directo a la lección
+        Subleccion,
+        on_delete=models.CASCADE,
+        related_name='contenidos',
+        null=True,
+        blank=True
     )
 
     titulo = models.CharField(
@@ -139,7 +161,7 @@ class Contenido(models.Model):
         choices=TIPO_CONTENIDO
     )
 
-    contenido = models.TextField(
+    contenido = RichTextField(
         blank=True
     )
 
@@ -160,7 +182,8 @@ class Contenido(models.Model):
         verbose_name_plural = 'Contenidos'
 
     def __str__(self):
-        return f'{self.leccion} - {self.titulo}'
+        padre = self.leccion or self.subleccion
+        return f'{padre} - {self.titulo}'
 
 
 class Actividad(models.Model):
@@ -177,24 +200,23 @@ class Actividad(models.Model):
         Leccion,
         on_delete=models.CASCADE,
         related_name='actividades',
-        null=True, 
+        null=True,
         blank=True
     )
+
     subleccion = models.ForeignKey(
-        Subleccion, 
-        on_delete=models.CASCADE, 
-        related_name='actividades', 
-        null=True, 
+        Subleccion,
+        on_delete=models.CASCADE,
+        related_name='actividades',
+        null=True,
         blank=True
     )
-
-
 
     titulo = models.CharField(
         max_length=200
     )
 
-    descripcion = models.TextField(
+    descripcion = RichTextField(
         blank=True
     )
 
@@ -228,7 +250,8 @@ class Actividad(models.Model):
         verbose_name_plural = 'Actividades'
 
     def __str__(self):
-        return f'{self.leccion} - {self.titulo}'
+        padre = self.leccion or self.subleccion
+        return f'{padre} - {self.titulo}'
 
 
 class Pregunta(models.Model):
@@ -246,7 +269,7 @@ class Pregunta(models.Model):
         related_name='preguntas'
     )
 
-    texto = models.TextField()
+    texto = RichTextField()
 
     tipo = models.CharField(
         max_length=30,
@@ -338,10 +361,7 @@ class Inscripcion(models.Model):
         verbose_name_plural = 'Inscripciones'
 
     def __str__(self):
-        return (
-            f'{self.usuario} - '
-            f'{self.espacio_educativo}'
-        )
+        return f'{self.usuario} - {self.espacio_educativo}'
 
 
 class EntregaActividad(models.Model):

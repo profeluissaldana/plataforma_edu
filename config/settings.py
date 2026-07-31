@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Aplicaciones propias
     'usuarios',
     'educacion',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

@@ -9,7 +9,7 @@
 <div class="row justify-content-center my-4">
     <div class="col-12 col-lg-10 col-xl-9">
         
-        <!-- Botón Volver fuera de la tarjeta para navegación rápida -->
+        <!-- Botón Volver -->
         <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-secondary btn-sm mb-3">
             <i class="bi bi-arrow-left me-1"></i> Volver a materias
         </a>
@@ -17,7 +17,7 @@
         <!-- TARJETA PRINCIPAL DEL ESPACIO CURRICULAR -->
         <div class="card shadow border-0 overflow-hidden">
             
-            <!-- Encabezado de la Tarjeta Principal -->
+            <!-- Encabezado -->
             <div class="card-header bg-primary text-white p-4">
                 <div class="d-flex align-items-center mb-2">
                     <i class="bi bi-journal-bookmark-fill fs-2 me-3"></i>
@@ -26,11 +26,11 @@
                 
                 {% if espacio.descripcion %}
                 <p class="text-white-50 mb-0 small">
-                    {{ espacio.descripcion }}
+                    {{ espacio.descripcion|safe }}
                 </p>
                 {% endif %}
 
-                <!-- Barra de Progreso Global dentro del Header -->
+                <!-- Barra de Progreso Global -->
                 <div class="mt-4 pt-3 border-top border-white-50">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                         <span class="fw-semibold text-white small">
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <!-- Cuerpo de la Tarjeta Principal: Listado de Módulos -->
+            <!-- Cuerpo: Módulos -->
             <div class="card-body p-3 p-md-4 bg-light">
                 <h2 class="h6 text-uppercase fw-bold text-muted mb-3 tracking-wide">
                     <i class="bi bi-layers me-1"></i> Módulos del Curso
@@ -55,19 +55,17 @@
 
                 <div class="d-flex flex-column gap-3">
                     {% for modulo in modulos %}
-                    <!-- Sub-tarjeta para cada Módulo -->
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white border-bottom p-3">
                             <h3 class="h5 mb-1 fw-bold text-dark">
                                 <i class="bi bi-folder2-open me-2 text-primary"></i>Módulo {{ modulo.orden }}: {{ modulo.nombre }}
                             </h3>
                             {% if modulo.descripcion %}
-                            <p class="text-muted small mb-0">{{ modulo.descripcion }}</p>
+                            <p class="text-muted small mb-0">{{ modulo.descripcion|safe }}</p>
                             {% endif %}
                         </div>
 
                         <div class="card-body p-3">
-                            <!-- Acordeón Responsivo de Lecciones -->
                             <div class="accordion accordion-flush" id="acordeonModulo{{ modulo.id }}">
                                 {% for leccion in modulo.lecciones.all %}
                                 {% if leccion.activo %}
@@ -85,11 +83,11 @@
                                         data-bs-parent="#acordeonModulo{{ modulo.id }}">
                                         <div class="accordion-body bg-light border-top">
                                             {% if leccion.descripcion %}
-                                            <p class="small text-muted mb-3">{{ leccion.descripcion }}</p>
+                                            <p class="small text-muted mb-3">{{ leccion.descripcion|safe }}</p>
                                             {% endif %}
 
                                             {% if leccion.sublecciones.exists %}
-                                                <!-- CASO A: SI TIENE SUBLECCIONES -->
+                                                <!-- CASO A: TIENE SUBLECCIONES -->
                                                 <div class="d-flex flex-column gap-3">
                                                     {% for sub in leccion.sublecciones.all %}
                                                     {% if sub.activo %}
@@ -114,9 +112,9 @@
                                                                             <span class="badge bg-secondary">{{ contenido.get_tipo_display }}</span>
                                                                             <strong class="small">{{ contenido.titulo }}</strong>
                                                                         </div>
-                                                                        {% if contenido.texto %}
+                                                                        {% if contenido.contenido %}
                                                                         <div class="mt-2 text-dark small">
-                                                                            {{ contenido.texto|render_markdown }}
+                                                                            {{ contenido.contenido|safe }}
                                                                         </div>
                                                                         {% endif %}
                                                                     </div>
@@ -135,7 +133,7 @@
                                                                 {% endfor %}
                                                             </div>
 
-                                                            <!-- Actividades y Ejercicios de la Sublección -->
+                                                            <!-- Actividades y Ejercicios -->
                                                             <h5 class="h6 fw-bold text-secondary mb-2">
                                                                 <i class="bi bi-pencil-square me-1"></i> Actividades y Ejercicios:
                                                             </h5>
@@ -202,8 +200,7 @@
                                                 </div>
 
                                             {% else %}
-                                                <!-- CASO B: SI NO TIENE SUBLECCIONES (Directo de la Lección) -->
-                                                <!-- Material de Estudio -->
+                                                <!-- CASO B: NO TIENE SUBLECCIONES -->
                                                 <h5 class="h6 fw-bold text-secondary mb-2">
                                                     <i class="bi bi-file-earmark-text me-1"></i> Material de Estudio:
                                                 </h5>
@@ -217,9 +214,9 @@
                                                                 <strong class="small">{{ contenido.titulo }}</strong>
                                                             </div>
                                                             
-                                                            {% if contenido.texto %}
+                                                            {% if contenido.contenido %}
                                                             <div class="mt-2 text-dark small">
-                                                                {{ contenido.texto|render_markdown }}
+                                                                {{ contenido.contenido|safe }}
                                                             </div>
                                                             {% endif %}
                                                         </div>
@@ -239,7 +236,6 @@
                                                     {% endfor %}
                                                 </div>
 
-                                                <!-- Actividades y Ejercicios -->
                                                 <h5 class="h6 fw-bold text-secondary mb-2">
                                                     <i class="bi bi-pencil-square me-1"></i> Actividades y Ejercicios:
                                                 </h5>

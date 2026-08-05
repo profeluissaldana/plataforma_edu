@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "nombre": "Curso de Python",
-        "descripcion": "Curso introductorio de programación con Python.",
+        "descripcion": "Curso introductorio de programaci�n con Python.",
         "fecha_creacion": "2026-07-22T15:42:42.453Z",
         "activo": true
     }
@@ -13,8 +13,8 @@
     "model": "educacion.espacioeducativo",
     "pk": 2,
     "fields": {
-        "nombre": "Ofimática",
-        "descripcion": "Procesadores de texto, planillas de cálculo y presentaciones eficaces para el ámbito académico.",
+        "nombre": "Ofim�tica",
+        "descripcion": "Procesadores de texto, planillas de c�lculo y presentaciones eficaces para el �mbito acad�mico.",
         "fecha_creacion": "2026-07-22T19:29:13.093Z",
         "activo": true
     }
@@ -24,7 +24,7 @@
     "pk": 3,
     "fields": {
         "nombre": "Visual Studio Code",
-        "descripcion": "Configuración del entorno de desarrollo, extensiones clave y trucos para escribir código velozmente.",
+        "descripcion": "Configuraci�n del entorno de desarrollo, extensiones clave y trucos para escribir c�digo velozmente.",
         "fecha_creacion": "2026-07-22T19:29:49.862Z",
         "activo": true
     }
@@ -44,7 +44,7 @@
     "pk": 5,
     "fields": {
         "nombre": "HTML Y CSS",
-        "descripcion": "HTML y CSS son las dos tecnologías fundamentales para crear y diseñar sitios web. HTML define la estructura y el contenido (los cimientos), mientras que CSS se encarga del diseño, la estética y la adaptabilidad visual (la decoración).",
+        "descripcion": "HTML y CSS son las dos tecnolog�as fundamentales para crear y dise�ar sitios web. HTML define la estructura y el contenido (los cimientos), mientras que CSS se encarga del dise�o, la est�tica y la adaptabilidad visual (la decoraci�n).",
         "fecha_creacion": "2026-07-24T14:03:21.002Z",
         "activo": true
     }
@@ -53,7 +53,7 @@
     "model": "educacion.espacioeducativo",
     "pk": 6,
     "fields": {
-        "nombre": "Programación Web con Django",
+        "nombre": "Programaci�n Web con Django",
         "descripcion": "Curso paso a paso para aprender el desarrollo web profesional con Python y Django.",
         "fecha_creacion": "2026-07-24T15:57:47.026Z",
         "activo": true
@@ -64,8 +64,8 @@
     "pk": 1,
     "fields": {
         "espacio_educativo": 1,
-        "nombre": "Introducción a Python",
-        "descripcion": "Conceptos básicos del lenguaje Python.",
+        "nombre": "Introducci�n a Python",
+        "descripcion": "Conceptos b�sicos del lenguaje Python.",
         "orden": 1,
         "activo": true
     }
@@ -75,8 +75,8 @@
     "pk": 2,
     "fields": {
         "espacio_educativo": 4,
-        "nombre": "Módulo 2: Ramas, Merges y Trabajo Colaborativo",
-        "descripcion": "Este módulo enseña a usar sistemas de control de versiones como Git y GitHub para trabajar en equipo sin dañar el código principal. Sus temas centrales son las ramas para separar tareas, los merges para unir los cambios y las reglas de equipo para evitar problemas.",
+        "nombre": "M�dulo 2: Ramas, Merges y Trabajo Colaborativo",
+        "descripcion": "Este m�dulo ense�a a usar sistemas de control de versiones como Git y GitHub para trabajar en equipo sin da�ar el c�digo principal. Sus temas centrales son las ramas para separar tareas, los merges para unir los cambios y las reglas de equipo para evitar problemas.",
         "orden": 2,
         "activo": true
     }
@@ -86,8 +86,8 @@
     "pk": 3,
     "fields": {
         "espacio_educativo": 5,
-        "nombre": "Módulo 1: Fundamentos y Estructura Básica de HTML.",
-        "descripcion": "Introduce los conceptos y la organización del Lenguaje de Marcado de Hipertexto (HTML), cubriendo etiquetas y la organización visual.",
+        "nombre": "M�dulo 1: Fundamentos y Estructura B�sica de HTML.",
+        "descripcion": "Introduce los conceptos y la organizaci�n del Lenguaje de Marcado de Hipertexto (HTML), cubriendo etiquetas y la organizaci�n visual.",
         "orden": 1,
         "activo": true
     }
@@ -98,7 +98,7 @@
     "fields": {
         "espacio_educativo": 6,
         "nombre": "La Magia de Django y los Entornos Virtuales",
-        "descripcion": "Guía práctica para crear sitios web seguros y aislar herramientas de programación usando Python. Descubre cómo construir aplicaciones robustas sin mezclar archivos.",
+        "descripcion": "Gu�a pr�ctica para crear sitios web seguros y aislar herramientas de programaci�n usando Python. Descubre c�mo construir aplicaciones robustas sin mezclar archivos.",
         "orden": 1,
         "activo": true
     }
@@ -108,8 +108,8 @@
     "pk": 1,
     "fields": {
         "modulo": 1,
-        "titulo": "¿Qué es Python?",
-        "descripcion": "Introducción al lenguaje Python.",
+        "titulo": "�Qu� es Python?",
+        "descripcion": "Introducci�n al lenguaje Python.",
         "orden": 1,
         "activo": true
     }
@@ -119,8 +119,8 @@
     "pk": 2,
     "fields": {
         "modulo": 2,
-        "titulo": "Lección 1: Creación y Gestión de Ramas (git branch)",
-        "descripcion": "La creación y gestión de ramas en Git permite aislar el trabajo en un proyecto para desarrollar funciones o corregir errores en paralelo sin alterar la versión principal. El comando principal es git branch",
+        "titulo": "Lecci�n 1: Creaci�n y Gesti�n de Ramas (git branch)",
+        "descripcion": "La creaci�n y gesti�n de ramas en Git permite aislar el trabajo en un proyecto para desarrollar funciones o corregir errores en paralelo sin alterar la versi�n principal. El comando principal es git branch",
         "orden": 1,
         "activo": true
     }
@@ -131,7 +131,7 @@
     "fields": {
         "modulo": 3,
         "titulo": "Estructura y Etiquetas Principales.",
-        "descripcion": "Esta guía explica la base del diseño web a través de la organización visual y el uso de marcas. Aprenderás sobre <!DOCTYPE html>, <html>, <head> y <body>.",
+        "descripcion": "Esta gu�a explica la base del dise�o web a trav�s de la organizaci�n visual y el uso de marcas. Aprender�s sobre <!DOCTYPE html>, <html>, <head> y <body>.",
         "orden": 1,
         "activo": true
     }
@@ -141,7 +141,7 @@
     "pk": 4,
     "fields": {
         "modulo": 4,
-        "titulo": "¿Qué es Django y por qué usamos venv?",
+        "titulo": "�Qu� es Django y por qu� usamos venv?",
         "descripcion": "<p>En esta lecci&oacute;n introductoria aprender&aacute;s los fundamentos esenciales de <strong>Django</strong>, el framework web de Python preferido por gigantes tecnol&oacute;gicos como Instagram, Spotify y YouTube.</p>\r\n\r\n<p>Recorreremos brevemente su historia desde su origen en 2003, comprender&aacute;s qu&eacute; es un framework y por qu&eacute; agiliza el desarrollo web. Adem&aacute;s, aprender&aacute;s a preparar tu entorno de trabajo profesional configurando un entorno virtual (<code>venv</code>), instalando herramientas de calidad de c&oacute;digo (<code>pylint</code> y <code>autopep8</code>), y realizando la instalaci&oacute;n oficial de Django.</p>\r\n\r\n<p><strong>Objetivos de la lecci&oacute;n:</strong></p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Conocer la historia, creadores y casos de &eacute;xito de Django.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Entender el concepto y ventajas de usar un Framework web.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Crear y activar entornos virtuales aislados (<code>venv</code>).</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Garantizar la calidad del c&oacute;digo mediante <code>pylint</code> y <code>autopep8</code>.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Dejar todo listo para construir tu primera aplicaci&oacute;n web.</p>\r\n\t</li>\r\n</ul>",
         "orden": 1,
         "activo": true
@@ -153,7 +153,7 @@
     "fields": {
         "modulo": 4,
         "titulo": "Creando nuestra primera App con Base de Datos",
-        "descripcion": "En esta lección práctica aplicaremos los conceptos aprendidos creando un proyecto real: una Agenda de Contactos conectada a una base de datos.",
+        "descripcion": "En esta lecci�n pr�ctica aplicaremos los conceptos aprendidos creando un proyecto real: una Agenda de Contactos conectada a una base de datos.",
         "orden": 3,
         "activo": true
     }
@@ -164,7 +164,7 @@
     "fields": {
         "modulo": 4,
         "titulo": "Creando nuestra primera App en Django",
-        "descripcion": "Esta lección contiene la guía completa de configuración del entorno, la explicación de los componentes y todo el código fuente estructurado para realizar la actividad en clase.",
+        "descripcion": "Esta lecci�n contiene la gu�a completa de configuraci�n del entorno, la explicaci�n de los componentes y todo el c�digo fuente estructurado para realizar la actividad en clase.",
         "orden": 2,
         "activo": true
     }
@@ -174,7 +174,7 @@
     "pk": 1,
     "fields": {
         "leccion": 6,
-        "titulo": "Configuración del Entorno",
+        "titulo": "Configuraci�n del Entorno",
         "descripcion": "",
         "orden": 1,
         "activo": true
@@ -185,7 +185,7 @@
     "pk": 2,
     "fields": {
         "leccion": 6,
-        "titulo": "Creación de la Estructura del Proyecto",
+        "titulo": "Creaci�n de la Estructura del Proyecto",
         "descripcion": "<p>Este paso establece la base estructural del proyecto web mediante el uso de la interfaz de l&iacute;nea de comandos de Django.<!--TgQPHd|||[]--></p>",
         "orden": 2,
         "activo": true
@@ -196,7 +196,7 @@
     "pk": 3,
     "fields": {
         "leccion": 4,
-        "titulo": "Introducción a Django",
+        "titulo": "Introducci�n a Django",
         "descripcion": "<p>Descubre qu&eacute; es Django, su origen en 2003, sus creadores y por qu&eacute; es el framework elegido por plataformas como Instagram y Spotify. En esta lecci&oacute;n pr&aacute;ctica aprender&aacute;s a configurar tu entorno de desarrollo paso a paso: creaci&oacute;n de entornos virtuales (<code>venv</code>), instalaci&oacute;n de herramientas de calidad de c&oacute;digo (<code>pylint</code> y <code>autopep8</code>) e instalaci&oacute;n inicial de Django. Incluye evaluaci&oacute;n te&oacute;rica al finalizar.</p>",
         "orden": 1,
         "activo": true
@@ -207,1360 +207,5 @@
     "pk": 4,
     "fields": {
         "leccion": 5,
-        "titulo": "Creación de la Agenda",
-        "descripcion": "<p><span style=\"color:#333333\">&iexcl;Bienvenido/a a tu primer proyecto real con Django y Base de Datos! 🎉 Hoy vas a construir una <strong>Agenda de Contactos</strong>. Aprender&aacute;s a crear un sitio web conectado a una <strong>Base de Datos</strong>, donde podr&aacute;s guardar el nombre, tel&eacute;fono, email y notas de tus contactos, adem&aacute;s de consultar la informaci&oacute;n en tiempo real desde una interfaz web.</span></p>",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 1,
-    "fields": {
-        "leccion": 1,
-        "subleccion": null,
-        "titulo": "Características de Python",
-        "tipo": "TEXTO",
-        "contenido": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general.",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 2,
-    "fields": {
-        "leccion": 2,
-        "subleccion": null,
-        "titulo": "Comando Principales",
-        "tipo": "TEXTO",
-        "contenido": "Creación de ramas\r\ngit branch <nombre>: crea una nueva rama local.\r\ngit switch -c <nombre> o git checkout -b <nombre>: crea la rama y te pasa a ella de inmediato.\r\n\r\nCambio y navegación\r\ngit branch: muestra una lista de todas las ramas locales y señala la activa.\r\ngit switch <nombre> o git checkout <nombre>: te mueve a la rama elegida.",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 3,
-    "fields": {
-        "leccion": 3,
-        "subleccion": null,
-        "titulo": "1. Fundamentos, Estructura y Etiquetas Básicas de HTML.",
-        "tipo": "TEXTO",
-        "contenido": "<h3>1. ¿Qué es HTML?</h3>\r\n<p>HTML (HyperText Markup Language) es el lenguaje estándar utilizado para estructurar y organizar el contenido de una página web. No es un lenguaje de programación, sino un lenguaje de marcado por etiquetas.</p>\r\n\r\n<h3>2. Estructura Básica de un Documento HTML5</h3>\r\n<img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCmxCy69v0IQO4b6GMcURPkCgkCdnZv4Gv7S21eWbM8Gg7fz00plnKPW0&s=10\" alt=\"Estructura de HTML\" class=\"img-fluid rounded border my-3\" style=\"width: 350px; height: auto;\">\r\n<p>Todo documento HTML5 estándar debe contar con las siguientes etiquetas fundamentales:</p>\r\n<ul>\r\n    <li><strong>&lt;!DOCTYPE html&gt;:</strong> Declara el tipo de documento y el estándar HTML5.</li>\r\n    <li><strong>&lt;html lang=\"es\"&gt;:</strong> Etiqueta raíz que encierra todo el sitio e indica el idioma.</li>\r\n    <li><strong>&lt;head&gt;:</strong> Contiene metadatos, títulos e instrucciones para el navegador.</li>\r\n    <li><strong>&lt;body&gt;:</strong> Contiene todo el contenido visible para los usuarios.</li>\r\n</ul>\r\n\r\n<h3>3. Etiquetas de Texto Principales</h3>\r\n<ul>\r\n    <li><strong>&lt;h1&gt; a &lt;h6&gt;:</strong> Encabezados jerárquicos.</li>\r\n    <li><strong>&lt;p&gt;:</strong> Define un párrafo de texto.</li>\r\n    <li><strong>&lt;strong&gt;:</strong> Destaca texto en negrita.</li>\r\n    <li><strong>&lt;em&gt;:</strong> Aplica énfasis en cursiva.</li>\r\n</ul>",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 4,
-    "fields": {
-        "leccion": 4,
-        "subleccion": 3,
-        "titulo": "¿Qué es Django y por qué usamos venv?",
-        "tipo": "TEXTO",
-        "contenido": "<h1><span style=\"color:#365f91\"><span style=\"color:#0c4b33\">M&oacute;dulo 1: Introducci&oacute;n, Historia y Configuraci&oacute;n de Django</span></span></h1>\r\n\r\n<p><span style=\"color:#333333\">Imagina que quieres construir una casa de juguetes: puedes fabricar los ladrillos, las puertas y las ventanas desde cero con pl&aacute;stico derretido... o puedes usar una caja de <strong>LEGO</strong> que ya trae las piezas listas para ensamblar.</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f0f7ff; border-bottom:none; border-left:4px solid #0066cc; border-right:none; border-top:none; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\">💡 <strong><span style=\"color:#004085\">Django es ese kit de LEGO para hacer p&aacute;ginas web.</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">1. &iquest;Qu&eacute; es Django y cu&aacute;l es su Historia?</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Django es un <strong>Framework web de c&oacute;digo abierto</strong> escrito en Python. Un <strong>Framework</strong> (o marco de trabajo) es una estructura de c&oacute;digo preconfigurada que le proporciona a los desarrolladores herramientas listas para usar (seguridad, bases de datos, autenticaci&oacute;n de usuarios, administraci&oacute;n) sin tener que reinventar la rueda.</span></p>\r\n\r\n<h3><span style=\"color:#4f81bd\"><span style=\"color:#222222\">📜 Origen y Creadores</span></span></h3>\r\n\r\n<p><span style=\"color:#333333\">Django surgi&oacute; en el a&ntilde;o <strong>2003</strong> dentro de las oficinas del peri&oacute;dico <em>Lawrence Journal-World</em> en Kansas, EE. UU. Fue creado por los programadores <strong>Adrian Holovaty y Simon Willison</strong>, quienes necesitaban crear aplicaciones web de noticias de forma extremadamente r&aacute;pida para cumplir con las exigentes entregas period&iacute;sticas.</span></p>\r\n\r\n<p><span style=\"color:#333333\">En julio de <strong>2005</strong>, los desarrolladores decidieron liberarlo al p&uacute;blico como un proyecto de c&oacute;digo abierto. El nombre <strong>Django</strong> rinde homenaje al legendario guitarrista de jazz itinerante <strong>Django Reinhardt</strong>.</span></p>\r\n\r\n<h3><span style=\"color:#4f81bd\"><span style=\"color:#222222\">🏢 Empresas y Plataformas que utilizan Django</span></span></h3>\r\n\r\n<p><span style=\"color:#333333\">Gracias a su lema <em>&quot;El framework para perfeccionistas con fechas l&iacute;mite&quot;</em>, Django es utilizado por algunas de las plataformas web m&aacute;s grandes y con mayor tr&aacute;fico del mundo:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Plataforma / Empresa</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Uso Principal en Django</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Instagram</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Gestiona la motorizaci&oacute;n del backend y el manejo de datos masivos a escala mundial.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Spotify</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Procesa servicios backend, autenticaci&oacute;n e iteraci&oacute;n r&aacute;pida de funcionalidades.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>YouTube</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Maneja partes clave de su arquitectura y servicios web de alta velocidad.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Pinterest</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Utiliza Django para la gesti&oacute;n de contenido y la plataforma comunitaria.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Disqus</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">El sistema de comentarios global impulsado completamente por Django.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">2. Preparaci&oacute;n del Entorno de Trabajo</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Antes de escribir c&oacute;digo en Django, debemos preparar nuestra <strong>&quot;caja de herramientas&quot;</strong> para que el proyecto sea ordenado, profesional e independiente.</span></p>\r\n\r\n<h3><span style=\"color:#4f81bd\"><span style=\"color:#222222\">Paso 1: Crear y activar el Entorno Virtual (venv)</span></span></h3>\r\n\r\n<p><span style=\"color:#333333\">Un <strong>entorno virtual</strong> es una carpeta aislada donde se instalar&aacute;n &uacute;nicamente las librer&iacute;as de nuestro proyecto. Funciona como una burbuja que evita que las instalaciones de un proyecto interfieran con las de otro.</span></p>\r\n\r\n<ul>\r\n\t<li><span style=\"color:#333333\"><strong>Abre la terminal </strong>dentro de la carpeta donde guardar&aacute;s tu proyecto (o cr&eacute;ala con mkdir mi_proyecto y entra con cd mi_proyecto).</span></li>\r\n\t<li><span style=\"color:#333333\"><strong>Ejecuta el comando para crear el entorno:</strong></span></li>\r\n</ul>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Crear el entorno virtual (llamado &#39;venv&#39;)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python -m venv venv</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><span style=\"color:#333333\"><strong>Activa el entorno virtual </strong>seg&uacute;n tu sistema operativo:</span></li>\r\n</ul>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Windows (CMD)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">venv\\Scripts\\activate</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Windows (PowerShell)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">.\\venv\\Scripts\\Activate.ps1</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Linux / macOS</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">source venv/bin/activate</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fff8e7; border-bottom:none; border-left:4px solid #d97706; border-right:none; border-top:none; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\">📌 <strong><span style=\"color:#7c2d12\">Sabr&aacute;s que el entorno est&aacute; activo porque aparecer&aacute; (venv) al inicio de la l&iacute;nea de comandos en tu terminal.</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><span style=\"color:#4f81bd\"><span style=\"color:#222222\">Paso 2: Instalar herramientas de calidad (pylint y autopep8)</span></span></h3>\r\n\r\n<p><span style=\"color:#333333\">Con el entorno activo, instalamos dos utilidades clave que nos ayudar&aacute;n a escribir c&oacute;digo limpio y est&aacute;ndar en Python:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">pip install pylint autopep8</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:173px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Librer&iacute;a / Herramienta</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:154px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Rol / Apodo</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:298px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Funci&oacute;n Principal</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:173px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>pylint</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:154px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>🔍 El Inspector</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:298px\">\r\n\t\t\t<p><span style=\"color:#333333\">Analiza el c&oacute;digo Python sin ejecutarlo. Nos avisa de errores de sintaxis, variables sin usar y malas pr&aacute;cticas.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:173px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>autopep8</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:154px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>🎨 El Organizador</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:298px\">\r\n\t\t\t<p><span style=\"color:#333333\">Formatea autom&aacute;ticamente nuestro c&oacute;digo para cumplir con la PEP 8 (est&aacute;ndar oficial de estilo: sangr&iacute;as, espacios y saltos).</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">3. Instalaci&oacute;n de Django</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Una vez activado el entorno virtual e instaladas nuestras herramientas de calidad, procedemos a instalar el framework ejecutable con:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Instalar la versi&oacute;n m&aacute;s reciente de Django</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">pip install django</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><span style=\"color:#4f81bd\"><span style=\"color:#222222\">⚡ Resumen R&aacute;pido de Comandos del M&oacute;dulo</span></span></h3>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Acci&oacute;n / Prop&oacute;sito</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Comando Terminal</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Crear carpeta del proyecto</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">mkdir mi_proyecto &amp;&amp; cd mi_proyecto</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Crear entorno virtual</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">python -m venv venv</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Activar entorno (Windows CMD)</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">venv\\Scripts\\activate</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Activar entorno (macOS / Linux)</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">source venv/bin/activate</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Instalar linter y formateador</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">pip install pylint autopep8</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:269px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Instalar Django</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:355px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#aa1111\">pip install django</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 5,
-    "fields": {
-        "leccion": 5,
-        "subleccion": 4,
-        "titulo": "Guía Paso a Paso: Agenda de Contactos",
-        "tipo": "TEXTO",
-        "contenido": "<h1><span style=\"color:#365f91\"><span style=\"color:#0c4b33\">📖</span><span style=\"color:#0c4b33\"> Proyecto Pr&aacute;ctico: Mi Primera Agenda de Contactos en Django</span></span></h1>\r\n\r\n<p><span style=\"color:#333333\">&iexcl;Bienvenido/a a tu primer proyecto real con Django y Base de Datos! 🎉 Hoy vas a construir una <strong>Agenda de Contactos</strong>. Aprender&aacute;s a crear un sitio web conectado a una <strong>Base de Datos</strong>, donde podr&aacute;s guardar el nombre, tel&eacute;fono, email y notas de tus contactos, adem&aacute;s de consultar la informaci&oacute;n en tiempo real desde una interfaz web.</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f0f7ff; border-bottom:none; border-left:4px solid #0066cc; border-right:none; border-top:none; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\">💡 <strong><span style=\"color:#004085\">Los 5 Pasos Clave del Proyecto:<br />\r\n\t\t\t1. El Terreno y Entorno: Crear la carpeta y el entorno virtual (venv).<br />\r\n\t\t\t2. Instalaci&oacute;n y Estructura: Instalar Django y crear la app &#39;contactos&#39;.<br />\r\n\t\t\t3. El Modelo de Datos: Definir la estructura de la base de datos en models.py y migrar.<br />\r\n\t\t\t4. Panel de Administraci&oacute;n: Registrar el modelo para gestionar datos desde el Admin.<br />\r\n\t\t\t5. Vistas, Rutas y Plantillas: Mostrar la lista de contactos en la pantalla del usuario.</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">🛠️</span><span style=\"color:#0c4b33\"> Paso 1: Crear la Carpeta y el Entorno Virtual</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Abre tu terminal o CMD y ejecuta los siguientes comandos ordenadamente:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># 1. Crear carpeta del proyecto y entrar</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">mkdir mi_agenda</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">cd mi_agenda</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># 2. Crear entorno virtual</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python -m venv env</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># 3. Activar entorno virtual (Windows)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">env\\Scripts\\activate</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Activar en macOS / Linux:</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># source env/bin/activate</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">📦</span><span style=\"color:#0c4b33\"> Paso 2: Instalar Django, Herramientas y Crear la App</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\"><strong>2.1. Instalaci&oacute;n de librer&iacute;as necesarias:</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">pip install django pylint autopep8</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:192px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Herramienta</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:432px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Prop&oacute;sito en el Proyecto</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:192px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>Django</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:432px\">\r\n\t\t\t<p><span style=\"color:#333333\">Framework web completo para construir la aplicaci&oacute;n y gestionar la base de datos.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:192px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>pylint</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:432px\">\r\n\t\t\t<p><span style=\"color:#333333\">Linter / Inspector que detecta errores de sintaxis y variables no utilizadas.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:192px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>autopep8</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:432px\">\r\n\t\t\t<p><span style=\"color:#333333\">Formateador autom&aacute;tico que ordena sangr&iacute;as y espacios seg&uacute;n PEP 8.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\"><strong>2.2. Crear el Proyecto Principal:</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Crear estructura base en la carpeta actual (&iexcl;atenci&oacute;n al punto final!)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">django-admin startproject configuracion .</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fff8e7; border-bottom:none; border-left:4px solid #d97706; border-right:none; border-top:none; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\">❓ <strong><span style=\"color:#7c2d12\">&iquest;Por qu&eacute; incluimos el punto &#39;.&#39; al final?<br />\r\n\t\t\t&bull; SIN el punto: Django crear&aacute; carpetas duplicadas (mi_agenda/configuracion/configuracion/manage.py).<br />\r\n\t\t\t&bull; CON el punto: Los archivos se crean ordenados directamente en la carpeta ra&iacute;z (mi_agenda/manage.py).</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\"><strong>2.3. Crear la Aplicaci&oacute;n &quot;contactos&quot; y Registrarla:</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Crear el m&oacute;dulo de la agenda</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python manage.py startapp contactos</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\">Registra la app dentro de configuracion/settings.py en la lista INSTALLED_APPS:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">INSTALLED_APPS = [</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.admin&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.auth&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.contenttypes&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.sessions&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.messages&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;django.contrib.staticfiles&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\">&nbsp;&nbsp;&nbsp; # Nuestra app:</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &#39;contactos&#39;,</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">]</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">📁</span><span style=\"color:#0c4b33\"> Paso 3: Estructura del Proyecto y Modelo de Datos</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Un <strong>Modelo</strong> en Django es la plantilla o plano que define qu&eacute; informaci&oacute;n guardar&aacute; la base de datos de cada contacto. Abre contactos/models.py y escribe:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.db import models</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">class Contacto(models.Model):</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; nombre = models.CharField(max_length=100)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; telefono = models.CharField(max_length=20)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; email = models.EmailField(blank=True, null=True)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; notas = models.TextField(blank=True, null=True)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; fecha_creacion = models.DateTimeField(auto_now_add=True)</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; def __str__(self):</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return self.nombre</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse; border:none\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Elemento / Campo</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#f2f4f3; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:1px solid #dddddd; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong><span style=\"color:#0c4b33\">Explicaci&oacute;n y Funci&oacute;n</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>models.Model</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Otorga a la clase la capacidad de conectarse e interactuar con la Base de Datos.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>CharField</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Campo para texto corto (nombres, tel&eacute;fonos). Requiere max_length.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>EmailField</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Campo de texto especial que valida autom&aacute;ticamente que el correo incluya @.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>TextField</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Bloque de texto largo para notas o descripciones extensas.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>blank=True, null=True</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Permite que el campo sea opcional (se puede dejar vac&iacute;o en formularios y BD).</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>DateTimeField(auto_now_add=True)</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:#fafafa; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Guarda la fecha y hora exacta de creaci&oacute;n autom&aacute;ticamente.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:211px\">\r\n\t\t\t<p><span style=\"color:#333333\"><strong>def __str__(self):</strong></span></p>\r\n\t\t\t</td>\r\n\t\t\t<td style=\"background-color:white; border-bottom:1px solid #dddddd; border-left:none; border-right:none; border-top:none; vertical-align:top; width:413px\">\r\n\t\t\t<p><span style=\"color:#333333\">Muestra el nombre real del contacto en el panel Admin en vez de un ID gen&eacute;rico.</span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\"><strong>3.1. Aplicar Migraciones (Crear las tablas en la Base de Datos):</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># 1. Preparar las instrucciones (Crea el plano/receta)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python manage.py makemigrations</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># 2. Aplicar los cambios (Crea las tablas en db.sqlite3)</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python manage.py migrate</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">⚙️ Paso 4: Panel de Control e Ingreso de Datos (Admin)</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Para poder cargar contactos f&aacute;cilmente, registraremos el modelo en el Panel de Administraci&oacute;n de Django. Abre contactos/admin.py y a&ntilde;ade:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.contrib import admin</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from .models import Contacto</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#68d391\"># Registrar el modelo para gestionar los contactos desde el Administrador</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">admin.site.register(Contacto)</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\">Crea un superusuario para acceder al panel de administraci&oacute;n:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python manage.py createsuperuser</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">🌐</span><span style=\"color:#0c4b33\"> Paso 5: Vistas, Plantillas HTML y Rutas (Mostrando la informaci&oacute;n)</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\"><strong>5.1. Crear la Vista (contactos/views.py):</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.shortcuts import render</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from .models import Contacto</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">def lista_contactos(request):</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; contactos = Contacto.objects.all()</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\">&nbsp;&nbsp;&nbsp; <span style=\"color:#f7fafc\">return render(request, &#39;contactos/lista.html&#39;, {&#39;contactos&#39;: contactos})</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#f0f7ff; border-bottom:none; border-left:4px solid #0066cc; border-right:none; border-top:none; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\">🔍 <strong><span style=\"color:#004085\">Explicaci&oacute;n de la Vista:<br />\r\n\t\t\t&bull; request: Petici&oacute;n HTTP del navegador.<br />\r\n\t\t\t&bull; Contacto.objects.all(): Consulta ORM que trae todos los registros almacenados.<br />\r\n\t\t\t&bull; render(): Funci&oacute;n que combina la plantilla HTML con el contexto {&#39;contactos&#39;: contactos}.</span></strong></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\"><strong>5.2. Crear la Plantilla HTML (contactos/templates/contactos/lista.html):</strong></span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;!DOCTYPE html&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;html lang=&quot;es&quot;&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;head&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &lt;title&gt;Mi Agenda de Contactos&lt;/title&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;/head&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;body&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\">&nbsp;&nbsp;&nbsp; <span style=\"color:#f7fafc\">&lt;h1&gt;</span><span style=\"color:#f7fafc\">📇</span><span style=\"color:#f7fafc\"> Mi Agenda de Contactos&lt;/h1&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\">&nbsp;&nbsp;&nbsp; </span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &lt;ul&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; {% for contacto in contactos %}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;strong&gt;{{ contacto.nombre }}&lt;/strong&gt; - </span><span style=\"color:#f7fafc\">📞</span><span style=\"color:#f7fafc\"> {{ contacto.telefono }}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% if contacto.email %}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | ✉️ {{ contacto.email }}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endif %}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/li&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; {% empty %}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;No hay contactos guardados todav&iacute;a.&lt;/li&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\">&nbsp;&nbsp;&nbsp; <span style=\"color:#f7fafc\">{% endfor %}</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; &lt;/ul&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;/body&gt;</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&lt;/html&gt;</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\"><strong>5.3. Configurar las Rutas (URLs):</strong></span></p>\r\n\r\n<ul>\r\n\t<li><span style=\"color:#333333\">Crea el archivo contactos/urls.py:</span></li>\r\n</ul>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.urls import path</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from . import views</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">urlpatterns = [</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; path(&#39;&#39;, views.lista_contactos, name=&#39;lista_contactos&#39;),</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">]</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><span style=\"color:#333333\">Con&eacute;ctalo con el archivo principal configuracion/urls.py:</span></li>\r\n</ul>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.contrib import admin</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">from django.urls import path, include</span></span></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">urlpatterns = [</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; path(&#39;admin/&#39;, admin.site.urls),</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">&nbsp;&nbsp;&nbsp; path(&#39;&#39;, include(&#39;contactos.urls&#39;)),</span></span></p>\r\n\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">]</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><span style=\"color:#4f81bd\"><span style=\"color:#0c4b33\">🎉 &iexcl;Resultado Final!</span></span></h2>\r\n\r\n<p><span style=\"color:#333333\">Inicia el servidor de desarrollo en la terminal:</span></p>\r\n\r\n<table align=\"center\" cellspacing=\"0\" class=\"Table\" style=\"border-collapse:collapse\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td style=\"background-color:#2d3748; vertical-align:top; width:624px\">\r\n\t\t\t<p><span style=\"color:#333333\"><span style=\"color:#f7fafc\">python manage.py runserver</span></span></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#333333\">Abre tu navegador en <strong>http://127.0.0.1:8000/</strong> para ver tu lista de contactos desplegada en pantalla, o en <strong>http://127.0.0.1:8000/admin/</strong> para a&ntilde;adir, editar o eliminar contactos desde el panel interactivo.</span></p>\r\n\r\n<p>&nbsp;</p>",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 6,
-    "fields": {
-        "leccion": 6,
-        "subleccion": 1,
-        "titulo": "Configuración del Entorno",
-        "tipo": "TEXTO",
-        "contenido": "<h2><span style=\"color:#000000\"><strong>📄 PARTE 1: Manual de Configuraci&oacute;n del Entorno</strong></span></h2>\r\n\r\n<h3><span style=\"color:#000000\"><strong>1. Creaci&oacute;n del Entorno Virtual e Instalaci&oacute;n de Librer&iacute;as</strong></span></h3>\r\n\r\n<p><span style=\"color:#000000\">Abre la terminal en la carpeta donde trabajar&aacute;s y ejecuta los siguientes comandos:</span></p>\r\n\r\n<p style=\"margin-left:12px; margin-right:12px\"><span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># 1. Crear el entorno virtual</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">python -m venv .venv</span></span><br />\r\n<br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># 2. Activar el entorno virtual (en Windows PowerShell / CMD)</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">.venv\\Scripts\\activate</span></span><br />\r\n<br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># 3. Instalaci&oacute;n de paquetes necesarios</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">pip install django django-bootstrap5 pylint autopep8</span></span></p>\r\n\r\n<h3><span style=\"color:#000000\"><strong>2. &iquest;Qu&eacute; es cada componente que instalamos?</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>.venv (Entorno Virtual):</strong></span><span style=\"color:#000000\"> Es un espacio aislado en tu computadora. Evita que las librer&iacute;as de este proyecto interfieran con otros proyectos de Python o con el sistema operativo.</span></li>\r\n</ul>\r\n\r\n<p><span style=\"color:#000000\">El par&aacute;metro </span><span style=\"color:#188038\"><strong>-m</strong></span><span style=\"color:#000000\"> proviene de la palabra </span><span style=\"color:#000000\"><strong>&quot;module&quot; (m&oacute;dulo)</strong></span><span style=\"color:#000000\">.</span></p>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:circle\"><span style=\"color:#000000\">Le indica al int&eacute;rprete de Python que </span><span style=\"color:#000000\"><strong>ejecute un m&oacute;dulo instalado como un script est&aacute;ndar</strong></span><span style=\"color:#000000\"> (es decir, como si fuera un programa independiente).</span></li>\r\n\t<li style=\"list-style-type:circle\"><span style=\"color:#000000\">Si solo escribes </span><span style=\"color:#188038\">python venv</span><span style=\"color:#000000\">, Python buscar&iacute;a un archivo llamado </span><span style=\"color:#188038\">venv.py</span><span style=\"color:#000000\"> dentro del directorio actual en el que est&aacute;s parado.</span></li>\r\n\t<li style=\"list-style-type:circle\"><span style=\"color:#000000\">Al poner </span><span style=\"color:#188038\"><strong>python -m venv</strong></span><span style=\"color:#000000\">, le dices a Python: </span><span style=\"color:#000000\"><em>&quot;Busca dentro de las librer&iacute;as del sistema el m&oacute;dulo interno llamado </em></span><span style=\"color:#188038\"><em>venv</em></span><span style=\"color:#000000\"><em> y ejec&uacute;talo como una herramienta&quot;</em></span><span style=\"color:#000000\">.</span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:48px\"><span style=\"color:#000000\">&nbsp;&nbsp;&iquest;Qu&eacute; es el </span><span style=\"color:#188038\">venv</span><span style=\"color:#000000\"> que contin&uacute;a al par&aacute;metro?&nbsp;</span></p>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:circle\"><span style=\"color:#000000\">El primer </span><span style=\"color:#188038\">venv</span><span style=\"color:#000000\"> (el que va justo despu&eacute;s de </span><span style=\"color:#188038\">-m</span><span style=\"color:#000000\">) es el </span><span style=\"color:#000000\"><strong>nombre del m&oacute;dulo</strong></span><span style=\"color:#000000\"> que viene incluido de manera est&aacute;ndar en Python para crear entornos virtuales.&nbsp;</span></li>\r\n\t<li style=\"list-style-type:circle\"><span style=\"color:#000000\">Es la herramienta oficial encargada de aislar dependencias y librer&iacute;as para que no interfieran con otros proyectos o con el sistema operativo. </span></li>\r\n</ul>\r\n\r\n<p><span style=\"color:#000000\">&iquest;Qu&eacute; es el </span><span style=\"color:#188038\">.venv</span><span style=\"color:#000000\"> del final?&nbsp;</span></p>\r\n\r\n<p style=\"margin-left:47px\"><span style=\"color:#000000\">El &uacute;ltimo t&eacute;rmino (</span><span style=\"color:#188038\">.venv</span><span style=\"color:#000000\">) es el </span><span style=\"color:#000000\"><strong>nombre del directorio/carpeta</strong></span><span style=\"color:#000000\"> que la herramienta </span><span style=\"color:#188038\">venv</span><span style=\"color:#000000\"> va a crear en tu computadora para guardar ese entorno virtual.&nbsp;</span></p>\r\n\r\n<p><span style=\"color:#000000\"><strong>&iquest;Por qu&eacute; lleva un punto al principio (</strong></span><span style=\"color:#188038\"><strong>.venv</strong></span><span style=\"color:#000000\"><strong>)?:</strong></span><span style=\"color:#000000\"> En sistemas basados en Unix/Linux/macOS y en algunas herramientas de desarrollo, poner un punto antes del nombre hace que la carpeta sea invisible/oculta. Esto es una buena pr&aacute;ctica para que las carpetas de configuraci&oacute;n no estorben visualmente en tu explorador de archivos o repositorio.</span></p>\r\n\r\n<p><span style=\"color:#000000\"><strong>Puedes llamarlo como quieras:</strong></span><span style=\"color:#000000\"> Podr&iacute;as ejecutar </span><span style=\"color:#188038\">python -m venv mi_entorno</span><span style=\"color:#000000\"> y crear&aacute; una carpeta llamada </span><span style=\"color:#188038\">mi_entorno</span><span style=\"color:#000000\">. Sin embargo, usar </span><span style=\"color:#188038\">.venv</span><span style=\"color:#000000\"> o </span><span style=\"color:#188038\">venv</span><span style=\"color:#000000\"> es la convenci&oacute;n est&aacute;ndar en la comunidad.</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Django:</strong></span><span style=\"color:#000000\"> El framework web de Python que maneja la l&oacute;gica, las URLs, la base de datos y la renderizaci&oacute;n de las plantillas HTML.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>django-bootstrap5:</strong></span><span style=\"color:#000000\"> Un paquete que integra la biblioteca CSS/JS de Bootstrap 5 con Django, permiti&eacute;ndonos usar componentes adaptables (responsive) de forma limpia.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>pylint:</strong></span><span style=\"color:#000000\"> Un analizador de c&oacute;digo que revisa el archivo .py en busca de errores sint&aacute;cticos, malas pr&aacute;cticas y ayuda a mantener el c&oacute;digo ordenado.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>autopep8:</strong></span><span style=\"color:#000000\"> Una herramienta que formatea autom&aacute;ticamente el c&oacute;digo Python siguiendo la gu&iacute;a de estilo oficial PEP 8 (mantiene los espacios, sangr&iacute;as y saltos de l&iacute;nea seg&uacute;n las reglas est&aacute;ndar).</span></li>\r\n</ul>",
-        "url": "",
-        "orden": 1,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.contenido",
-    "pk": 7,
-    "fields": {
-        "leccion": 6,
-        "subleccion": 2,
-        "titulo": "Creación de la Estructura del Proyecto",
-        "tipo": "TEXTO",
-        "contenido": "<h2><span style=\"color:#000000\"><strong>🛠️ PARTE 2: Creaci&oacute;n de la Estructura del Proyecto</strong></span></h2>\r\n\r\n<p><span style=\"color:#000000\">Ejecuta los comandos para armar el proyecto Django seg&uacute;n los nombres indicados:</span></p>\r\n\r\n<p style=\"margin-left:12px; margin-right:12px\"><span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># Crear el proyecto con el nombre de carpeta principal &#39;config&#39;</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">django-admin startproject config .</span></span><br />\r\n<br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># Crear la aplicaci&oacute;n &#39;portal&#39;</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">python manage.py startapp portal</span></span><br />\r\n<br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\"># Crear la base de datos inicial vac&iacute;a</span></span><br />\r\n<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">python manage.py migrate</span></span><br />\r\n&nbsp;</p>\r\n\r\n<h3><span style=\"color:#000000\"><strong>Explicaci&oacute;n de los comandos</strong></span></h3>\r\n\r\n<h3><span style=\"color:#000000\"><strong>1. </strong></span><span style=\"color:#188038\"><strong>django-admin</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>&iquest;Qu&eacute; es?:</strong></span><span style=\"color:#000000\"> Es la herramienta de l&iacute;nea de comandos oficial que viene instalada junto con Django para realizar tareas de administraci&oacute;n del framework.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Funci&oacute;n:</strong></span><span style=\"color:#000000\"> Permite ejecutar comandos de configuraci&oacute;n global antes de que exista un proyecto, como crear la estructura inicial de directorios o inspeccionar plantillas.</span></li>\r\n</ul>\r\n\r\n<h3><span style=\"color:#000000\"><strong>2. </strong></span><span style=\"color:#188038\"><strong>startproject</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>&iquest;Qu&eacute; es?:</strong></span><span style=\"color:#000000\"> Es el subcomando de </span><span style=\"color:#188038\">django-admin</span><span style=\"color:#000000\"> encargada de generar la plantilla inicial de un proyecto de Django.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Funci&oacute;n:</strong></span><span style=\"color:#000000\"> Crea autom&aacute;ticamente una carpeta con la configuraci&oacute;n base del sitio, incluyendo archivos clave como </span><span style=\"color:#188038\">settings.py</span><span style=\"color:#000000\">, </span><span style=\"color:#188038\">urls.py</span><span style=\"color:#000000\">, </span><span style=\"color:#188038\">wsgi.py</span><span style=\"color:#000000\"> y el gestor de comandos </span><span style=\"color:#188038\">manage.py</span><span style=\"color:#000000\">.</span></li>\r\n</ul>\r\n\r\n<h3><span style=\"color:#000000\"><strong>3. </strong></span><span style=\"color:#188038\"><strong>config</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>&iquest;Qu&eacute; es?:</strong></span><span style=\"color:#000000\"> Es el </span><span style=\"color:#000000\"><strong>nombre</strong></span><span style=\"color:#000000\"> que se le asigna al m&oacute;dulo/paquete principal de configuraci&oacute;n de tu proyecto.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Funci&oacute;n:</strong></span><span style=\"color:#000000\"> Define c&oacute;mo se llamar&aacute; la carpeta interna que contendr&aacute; los archivos de configuraci&oacute;n (</span><span style=\"color:#188038\">settings.py</span><span style=\"color:#000000\">, </span><span style=\"color:#188038\">urls.py</span><span style=\"color:#000000\">, etc.). Podr&iacute;as ponerle otro nombre (como </span><span style=\"color:#188038\">mi_proyecto</span><span style=\"color:#000000\"> o </span><span style=\"color:#188038\">core</span><span style=\"color:#000000\">), pero usar </span><span style=\"color:#188038\">config</span><span style=\"color:#000000\"> es una convenci&oacute;n muy popular en la comunidad de Django para mantener un c&oacute;digo claro y profesional.</span></li>\r\n</ul>\r\n\r\n<h3><span style=\"color:#000000\"><strong>4. </strong></span><span style=\"color:#188038\"><strong>.</strong></span><span style=\"color:#000000\"><strong> (el punto al final)</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>&iquest;Qu&eacute; es?:</strong></span><span style=\"color:#000000\"> Representa el </span><span style=\"color:#000000\"><strong>directorio o carpeta actual</strong></span><span style=\"color:#000000\"> en la que te encuentras parado en la terminal.</span></li>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Funci&oacute;n:</strong></span><span style=\"color:#000000\"> Le indica a Django que instale los archivos del proyecto directamente en la carpeta actual en lugar de crear una carpeta contenedora adicional con el nombre </span><span style=\"color:#188038\">config</span><span style=\"color:#000000\">.</span></li>\r\n</ul>\r\n\r\n<h3><span style=\"color:#000000\"><strong>💡 Comparativa importante: Con punto vs. Sin punto</strong></span></h3>\r\n\r\n<ul>\r\n\t<li style=\"list-style-type:disc\"><span style=\"color:#000000\"><strong>Sin el punto (</strong></span><span style=\"color:#188038\"><strong>django-admin startproject config</strong></span><span style=\"color:#000000\"><strong>):</strong></span><span style=\"color:#000000\"> Django crear&aacute; una carpeta contenedora externa y otra interna con el mismo nombre, quedando una estructura anidada:</span><span style=\"color:#000000\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtQAAACkCAYAAAC3kLkYAAAQAElEQVR4AeydB5wURfbH32ICFUVFxbyKKOasmFc99cx6ZkxgzmI+9VAwZzGLESOcJ8JfOBAUFRCQJMhJzohKEEmSQf77La2xt3dmp2d3Zmdm58eH2u6ufl3h291Vr16/qqlVv3791QpioGdAz4CeAT0Degb0DOgZ0DOgZ6Byz0At0z8REAERyAsCKqQIiIAIiIAI5CYBKdS5eV9UKhEQAREQAREQgXwloHIXHAEp1AV3y1VhERABERABERABERCBdBKQQp1OmkqrOgkoLxEQAREQAREQARHICQJSqHPiNqgQIiACIiACNZeAaiYCIlDTCUihrul3WPUTAREQAREQAREQARHIKIEao1BnlJISFwEREAEREAEREAEREIEEBKRQJwCjaBEQARHIEAElKwIiIAIiUMMISKGuYTdU1REBERABERABERCB9BBQKlEJSKGOSkpyIiACIiACIiACIiACIhCHgBTqOFAUJQLVSUB5iYAIiIAIiIAI5DcBKdT5ff9UehEQAREQARGoLgLKRwREIAEBKdQJwChaBERABERABERABERABKIQkEIdhVJ1yigvERABERABERABERCBvCIghTqvbpcKKwIiIAK5Q0AlEQEREAER+IOAFOo/OOivCIiACIiACIiACIhAzSSQ8VpJoc44YmUgAiIgAiIgAiIgAiJQkwlIoa7Jd1d1E4HqJKC8REAEREAERKBACUihLtAbr2qLgAiIgAiIQKESUL1FIN0EpFCnm6jSEwEREAEREAEREAERKCgCUqgL6nZXZ2WVlwiIgAiIgAiIgAgUBgEp1IVxn1VLERABERCBRAQULwIiIAJVJCCFuooAdbkIiIAIiIAIiIAIiEBhE6guhbqwKav2IiACIiACIiACIiACNZaAFOoae2tVMREQgcoR0FUiIAIiIAIikBoBKdSp8ZK0CIiACIiACIiACOQGAZUiZwhIoc6ZW6GCiIAIiIAIiIAIiIAI5CMBKdT5eNdU5uokoLxEQAREQAREQAREoEICUqgrxKOTIiACIiACIpAvBFROERCBbBGQQp0t8spXBERABERABERABESgRhAoSIX69ttvt9GjR1u3bt1s5513TulGSlgEREAEREAEREAERKAsgWOOOca+/vprGzZsmJ1zzjllTxbAUY1RqLfcckv74IMP7Mcff7TZs2fbjBkz7JtvvrELLrig3G1s0qSJ1a9f33bbbTc75JBDyp2vasRJJ51k3377rX322WdGuaqanq4XARHILAHe02eeeca+//57mzx5snt/H3jgAVt//fUzm3FmU1fqeUagRYsWNnbsWHvvvffyrOT5X9yePXu69/+MM87I/8pUsQZPPfWU9e7dOxY++ugj++c//5lUn/n73/9uO+20k2299dYZ0a2qWK2MX15jFOq77rrLjj76aJs0aZJ9+OGH9tVXX1m9evWsYcOG5SCiaP/yyy82cuRI69+/f7nzFUXss88+RqhIhhdy8803twEDBthPP/1UkajOiYAIZJkAX6nat29vF154oW200UauNLy/V111lbVr1y5vlermzZvb559/bnSOrlIF9Cdf6167dm33vNWpU6eA7lZuVHXddde19dZbz9Zaa63cKFAWS1FcXGy77rprLBx55JF26623Wq9evYx3K1HRPv30Uxs3bpxNnTrVvvzyy0RiCeLTG40xpKSkxL1P6U05cWo1RqHea6+9bO7cufbggw/addddZ+edd55hKb7//vvL1f6JJ56wXXbZxU488URnDSgnECeCm/P+++87N5FLLrkkjsQfUXzywOqNhfyTTz75I1J/RUAEyhA4/vjj4w52ywhV0wEuYI0bN3ZftBiUb7/99nbaaae5juHggw+266+/vppKkt5sGBTQztE5pjfl3E+tkOue+3dHJcwHAsuXL3eD8U033dQOO+ww+7//+z/bYIMN7JZbbjH0nHh1QOFGdv/993fy8WSqI65p06Y2cOBAe+6555IaQNNZnrQq1Geeeaa1adPGXnzxRbvmmmsSjgy83PPPP+9GOyirwUrx+RUr7+GHH+4+MfCpgTTZci4o6/dr1aplK1assMWLF/somzhxYmyfnWOPPdb59eDbQzj55JMTlhH5YDmx8jDawZ0EtxLOxwuku/HGG9sXX3xhQ4YMiSeiOBHICoFcyBQXLBq6xx9/3L3b2S4TbcyBBx5ov/76q73yyiuxATbv7r///W8314KvWcFy8oXqoYcecu3cY489ZoceemjwtKsX7RdtAYE8aONuu+02d02wbSQt2hms5EcddZRrP9uUtqEYA8okGjigMyPfRG2ib+doh7gMqyfl8IE8ifeBsmF1oj0mzWD5vExlttSJ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CIiACIiACAQIaFcE8odAWhXq/Km2SioCIiACIiACIiACIiAC6SEghTo9HPM2FRVcBERABERABERABESgagTSqlDj6vHjjz8arh9VK1Zmr86XcmaWglIXAREQgbwioMKKgAiIQM4SSKtCnbO1VMFEQAREQAREQAREQAREIEMEyirUGcpEyYqACIiACIiACIiACIhATSUghbqm3tlqrNftt99uo0ePtm7duhmrvFRj1sqqgAmo6iIgAiIgAiKQKwSkUOfKncjjcjRp0sTq169vu+22mx1yyCF5XBMVXQREQAREQATSTkAJFgABKdQFcJN9FZs3b26ff/65PfXUUz4q4ZZfWezevbsde+yxCWX8iW+++cZ++eUXGzlypPXv399Hp3W7/vrrW0lJibFNa8JKTAREQAREQAREQASqSEAKdRUB5tPlm2++ue2yyy5WXFyctNg77rijNW7c2DbaaKOksk888YRL98QTT7SxY8cmlU9VoGnTpjZw4EB77rnnbJ999ol/uWJFQAREQAREQAREIEsEpFBnCXyybLfccktjeb8XX3zRLUN45plnJrzkmGOOsccee8yQ5RquDQpjZT7nnHNs4403dtG1a9c2jn3wSir+z+RD/FprrWVFRUW27bbbxmRPPvnkMhZiny7yhPB5l1npn8MPP9zOOOMMo1wnnXSSqw9LK7Jferrcf8px1113ufo88sgj1qJFC6tbt65NmjTJwj/JSxqkRd25hmvLJRghAss35adO7N92220u/0Q84RQvL673dY2QrUREQAQKkICqLAIiUPMISKHOwXuKgty1a1e79dZbnTJ7wQUX2Msvv2y4YASVOBS/999/39577z279NJLnSzXIHf22WfHanbfffc55bB58+a29tpr24EHHuiOUUIJl1xyiZNFEcQKTNwOO+xg6623nt15550x2YcffriMhdinizwhfN4lWvoHhfiZZ55x6bz++utGfQht27a1e+65p1Tir//NmjWzLl262C233OLqc/nll9sWW2xhyJ5++uk2bNiwmPDzzz9vPj0Ueq5hYiSTJGNCEXcYVFD++++/32B/xx13uPzh2aNHDwvyRPF+6aWXXBmDyZ966qmuji1btjS+BgTPaV8EREAEREAERKDmEqihCnV+37BmpUplgwYNrH379rb99tsbiuTgwYOtcePGhkXW1+6hhx6yo48+2r7//ntDBtm33nrLNtlkE7vhhhusYcOGTrR169Z23XXXGeeWL19ugwYNcsfEEd5++20n16lTJ7vxxhvdOazBixYtcpZvZAh33313GYXWp0v8rFmzXBqJ/qCcU/5WrVrZpptuaijDyGLpRZllf//993flXmONNQzLNHIo4/PmzTOUfhR+5Agor8cff7z9/PPPTvGl7o8//ritXr3a+X1vt912iKUcGEjUqVPHrrrqKjvssMPcyiWU48orr4xZ5/v06WMLFixwgwvPmIywxG+wwQbGvQoq/pxTEAEREAEREAERqLkEatXcqiWvGdZeLKuEDh06OD9dlCWOKwq9evVySlPnzp2dRbIiWc6FrbDJSrbuuuvaypUr3SQ/XBz69etn5557rh166KH29NNPu8tRQlHgUDbbtGljyCCLhXXcuHG29dZb2wEHHOBkP/vsM/vwww/t119/dcdLly51x8QRvPKH/3PHjh3duRUrVjjldNq0ae4YOSy35OESKf3j0x0zZoytWrWqNCbxf+qDwo6lGSnqQdobbrihocQSt9NOO7nBwIgRI2L1xAL/xRdfOGV27733RswF3FZwS5k5c6a7F5QLX26U7OOOO86mTp3q5FL9s2TJEmcNp6zwgOfkyZOtUaNGTnEnPRiNHz/eWc7xGyeOrwX77befLV682L788kuiFEQgGgFJiYAIiIAI5D2BglaosYjiKkDAzQLFjkl7HFcU9txzTysuLnYKbkVy/twJJ5yQ0oOCsoZrBoo47hv4Bm+11Vb2008/xdJBwWPCIIoqSh2KOwFfapTNddZZx5UxdkGWd1Dihw8fHisFCvDvv/9utWrVMizSsROlO8SXbmL/qWPs4M8dLOgMEFBiv/76a+f6gbV74sSJf0pUboOlvXfv3rGLSW/ChAmG8r7ZZpvF4gcMGODKffDBB7s43EB4JqZMmeJcRlyk/oiACIiACIhADSKgqiQmUNAK9SeffOLcG3BnQHl98803na8yxxUF/Ixxn3jggQdi11ck37p168R3IM4ZJsK98sortnDhQkNhxDcYK+0bb7zhLLXBS5hoiEIdDPgcc+38+fODojm/j2V9zpw5ttdee9kVV1zhyotVnrWtcT/Bcu0iS/8MGTLEuacMHTrUrYF92mmnuXuHtT3o71wqmtJ/XGJQooMXUSYUalw/fDwDnRkzZjg3HAZmRx11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GMfIViacdNJJTgEnrbvuust8vqmmRRlOPvlkO/bYY115fPlYupA6BNNDhrrHy4tz1Dd8TfB67YuACFRAQKdEQAREQAQyRkAKdcbQVi5hlMbnnnvOWrRoUSaBSy65xIjnPCcOO+wwe/rpp53yjNKLotq1a1e74447nILdunVra9eunVNikU8lPP/88/b666/bBRdc4NK65ZZbrFu3bnb77benkoyTZSDw8MMP2/3332/B8t16663Wo0cPO/vss50cf1C8X3rpJSM/jn049dRTXT1btmxpm2++uY/WVgREQAREQAREoAYSyMcqSaHOx7tWWuavv/7aKZ6PPfaYLVq0yHbZZRebO3cYiwAAEABJREFUP3++XXTRRXb33XfbmDFjnAL722+/lUpH/4/yevzxxzt/a6zf22+/vT3++OO2evVqZ2XebrvtoicWkNxhhx2sTp06dtVVVxmDART0TTfd1K688sqY0t+nTx9bsGCBoYQ3bNgwdjXW9w022MAGDx5sw4YNi8VrRwREQAREQAREQARygUBBK9S4FmDdJXTo0MEGDhxoKHUcVxR69erllLvOnTs7y2lFspy755570n6vmWjYqVMnN9kQZXfVqlWGdRer72uvvWZHHHGEs1CnmnHt2rVtrbXWspkzZ7o6opA/8cQThpJ93HHH2dSpU1NN0skvWbLE2rZta5R57NixzmLNyiONGjVyVnCEOnbsaOPHj7ctttjCTjzxRKKcsr3ffvvZ4sWL7csvv3Rx+pMOAkpDBERABERABEQgXQQKWqHef//9nTKHJfaYY44xrKhYejmuKOy5555WXFxshx56aOz6iuRPOOGEdN2vhOnMmTPHuVAkFIh4YtKkSfbrr78aSixWcFw/8GueOHFixBTii82aNct69+4dO0l6EyZMcMr7ZpttFosfMGCArbHGGnbwwQe7ONxAYD1lyhRncXeR+iMCIiACIlA4BFRTEcgDAgWpUGMlvfHGG+26666LBazIb775pr388suxuOD54D6+zG+99ZY98MADSWW5rnXr1nnwKPxRxCFDhhhshg4davXr17fTTjvNMcHVIujv/Id09L/Lly83lOjgFQwCsIbj+uHju3fvbjNmzLDGjRsbA56jjjrKsJr37dvXsJZ7OW1FQAREQAREQAREIFcIFKRCjcsB7gUffvih+fDqq6/anXfeaffee28szp8Lb1GkmfyHYh0+F+/4s88+q/L9Xm+99aqcRgUJlDnVr18/w6qOUnvDDTc4VxjcMJgsGPRtLnNRkgPWvsY3OijGih0rVqyw2bNnx6JR6EeOHOkmH7Kyx6677mrz5s1zrjgxIe2IgAiIgAiIgAiIQA4RKEiFOof4lyvKypUrXVytWn/dGpRY/L3diSr8Wbp0qaHAkjbL2cVLiiXyGADgAoNFGN/y888/33AFQalHCQ5fxxJ9/Ppiq1atwqdix7h1sBa2j8D6vOOOOxrrYuPO4ePZ4itNOVGot9pqKxs+fLjht845BREQgUInoPqLgAiIQO4R+Etry72yFWSJcK1gtY59993XnnrqKWvatKkxKRA/4iAQFGx8m7fddlsrKipyvsjejxtFNCjr97H84mbBNaTZrFkzQ3lmmTwv06BBA9tjjz3shRdecBMHSROLPNewmgiTIb0s2yZNmtjVV1/tVuZghRHKRHw44NqBHOtPk++DDz5oW2+9tY0ePbqcbzRWfhT43XbbzdVr0KBB4eR0LAIiIAIiIAIiIAI5QyCuQp0zpSvAgmCJxY+YiXkXX3yxPfvss+5HVZggGMTBetS4nOCmguWYCZWsKEK47777gqKxfXyYWWmDFTPOOussp6jvtddeTrHFCo4gvuTt27c30sTyTHoXXnihW5IPxZs0kPMBd425c+e6w4ULFxqTD91B6A/xo0aNsptuusnly4CBtFhLG0t4UJxjfLiJmz59unXp0oVdBREQAREQAREQARHISQJSqHPwtvCjJ6eccoqb8Mg6zVicsVTj/vDoo4+6ErPlmAl94cA6z04ozp927dpZSUmJW/+ZCZNYlFHOUW4RR5m9+eabDcszeSPTvHlzO+igg+yDDz5ApEzgOtaWRvbcc881Jg+WEfjzgKX9nnnmGbcqCmleeumlbl1rBhB/ipTZsB417i8jRowoN5mxjKAOCp2A6i8CIiACIiACWScghTrrtyB+AXD9wPWBFUnCbhbxr4geS3qkS/qJFOCgDL9wiKKdKAcmeZIe20QyPp78yDdemvhn49tNOOSQQ9za0/hm+2u1FQEREAEREIH8JaCS12QCUqhr8t3No7rhE87KK/3793frVeMSwqCCuDyqhooqAiIgAiIgAiJQgASkUBfgTa/OKmPZHjdunBHYT5R33bp1jdU++HnyevXqOaW6ZcuWicQTxuuECIiACIiACIiACFQ3ASnU1U28wPLDyswESAL7iarP+tMsz9eoUSNjgiSri0RxIUmUnuJFQAREIMcJqHgiIAI1iEBaFWrWOcYKybYGMVJVREAEREAEREAEREAERCAhgbQq1G3atHFLvLHWcMIcq/OE8hIBERABERABERABERCBDBNIq0Kd4bIqeREQARGosQRUMREQAREQgfwlIIU6f++dSi4CIiACIiACIiAC1U1A+cUhkFaFGlePH3/80XD9iJOXokRABERABERABERABESgxhFIq0Jd4+ioQiKQLQLKVwREQAREQAREIG8ISKHOm1ulgoqACIiACIhA7hFQiURABMykUOspEAEREAEREAEREAEREIEqEJBCXQV41XepchIBERABERABERABEchVAlKoc/XOxCnX+uuvbyUlJcY2zmlFiYAIiED2CagEIiACIlCABKRQ58lNb9q0qQ0cONCee+4522efffKk1CqmCIiACIiACIiACOQmgXSWqiAUaiy6J598sh177LF2zjnn2DPPPOO2W265pbVu3doeffRR23///ctw5ZrmzZvb888/by+++KJdc8015SzDXH/GGWfY4Ycfbuz/85//dLJsOS6TYOlBlDRLxdz/nXfe2e666y6X3iOPPGItWrSwunXr2qRJk+y3335zMv7PMcccY4899piTTZS3l61oS/k8J/Zvu+22hGnC8swzzzTKGU6Tc3CJxyAsq2MREAEREAEREAERyHcCBaFQY9F9+OGHnSL90EMP2YUXXmgPPvigvfXWW05RvuyyywylFSWSG4qC+tlnnzkl9bzzznPKN4p3165dyyiQhx12mD399NPWqlUr6969u916661Olm379u3LyEZNk/ybNWtmXbp0sVtuucWld/nll9sWW2xhbdu2tdNPP92GDRuGmFPw33//fXvvvffs0ksvdbLkTVnOPvtsJ5PKH8/p/vvvN+p6xx13xNLs0aOHBdNE8X7ppZdcGYN5nHrqqU4Jb9mypW2++ebBU9ovSAKqtAiIgAiIgAjUfAIFoVD724iF99lnn3UK6IYbbmjrrruuYUmdMmWKbbfddnb00Uc70d9//92WLVtmn3zyiaE077XXXtarVy/bZZddyimQXLDbbrvZ2LFjnewJJ5xgo0ePtsaNG1vzUgs35wlR08RSfsMNN9gaa6zhlPxNN93UWafnzZtnl1xyiSsv6REYHFDm77//3ina22+/vRskbLLJJkYaDRs2RCzlsMMOO1idOnXsqquucnXq1q2bUY4rr7zSKfEk2KdPH1uwYIFzPwnmg7V+gw02sMGDB8cUf+QVREAEREAERCCnCahwIlAFAhlRqHEDwE2C0KFDB+f7iwLGcUUBpRVFrHPnzs7KWZEs5+65556Uqj5//nz77rvvbObMmbZy5UobM2aM9evXz6ZNm2ZrrbWW1a5d26X35ZdfWklJiWEZRlH+6aef7KOPPnKuFijVTijw54cffjAsssgOGTLEPv30U5c+iqkXi5rmTjvtZCjEI0aMcNZvrscK/cUXXzhldu+99ybKKbIoryjabdq0cfXAFQTr8rhx42zrrbe2Aw44wMmm+mfJkiXOGt6pUyc3UCDNyZMnW6NGjZzFmvQ6duxo48ePd5bzE088kShXvv32288WL15s1NdF6o8IiIAIiIAIiIAI1HACGVGosbLiq0zA1QHFEkWU44rCnnvuacXFxXbooYc6xa0iWc5hDa7K/Vm0aFHCy/FfHjp0qKFIojhee+21hpW5Vq3yyFDIUaZ9Ysixj5WZrQ+ppOnT8NcyAPD7bFFuN9poI6e4o9AywCDgS83AYJ111jFYIptqmDVrlvXu3Tt22cSJE23ChAlu0LHZZpvF4gcMGOAs6QcffLCLww2EPKdMmeJcRlxk2T86EgEREAEREAEREIEaR6C8dliFKmLRvPHGG+26666LBazIb775pr388suxuOD54D4rWODX/MADDySV5brWrVtXobSJL2WS4k033eQmAaJYfvXVV876iptI4qsqPhM1TazLc+bMMdxMrrjiCpcoA4xDDjnEGABguXaRf/7ZeOONDYU6GPC3XrhwoWGR/1Mspc3y5csNJTp4EWXCio/rh4/HV3vGjBnOvYVB1FFHHeWs/H379nXWfC+nrQiIgAjkHwGVWAREQASiE0irQo2VFleADz/80Hx49dVX7c4777R77703FufPhbco0kyEQ7EOn4t3zMTB6FWNLonyitsCZW7WrJmh2LKPUhk9lbKSUdPEZYSVRbBQwwNrL+4m22yzjfPphi8pr1q1ylnMsaDjOx0O+HAziEE21YBvORMUg9exYseKFSts9uzZsWjKOnLkSDf5kJU9dt11V8MFBfeemJB2REAEREAEREAERKCGE0irQp0qq1yVx60DhRrrqy8jCiaT7fxxqttU0mzXrp21atXKsDJjkX7nnXfs3HPPdauI+HyHDx9uuGZgjQ5OfuQ8vt8XXHABu+UCy//17NnTpV/u5J8RuHUceeSRfx6ZW1Jwxx13dBM1UfBjJ0p38JVG0Uah3mqrrYxy4Qtfekr/RUAEREAEREAERKAgCEihjnOb586da/Xr1zeW02vSpIndfvvthqV6zTXXjCMdLSqVNFm+76yzzjIUVVYlwcLP5MlgTrhksLQdvtKsPc3EQfzKWcruvvvuc2tY44IRvIa6XH311W5C40UXXWSsIx087/dx7UCOdKk3SwwyyZHVS8jTy7HlywFrY7PSCdcNGjSIaAURqGkEVB8REAEREAERSEigVsIzBXyCVTNwpTj++OPdetCs7YwyiUW4sliipskKKa+//roddNBBbqk6VknBzYLA5EiUW18Gls179913DaUayzOTElkrmuXsWHcb67GXZUsaKPbsY/1OVB/iR40aZfiRP/HEE7bvvvs6n2rW3GYlEa73gWMmb3I8ffp0x4t9BREQAREQAREQgWwQUJ7ZIFAQCjWT5FhBhMA+EwRxT2jRooVjjqUWH2SsrUTgsoALAz+WwuRHlFTWq95jjz3cuszIEJDnOq7n2AeffjA+apr4TbP0HL/mSN4+4FfNZEFcP4LpsnII/tmsEY1s06ZNDWvxBx984IsT22LVZm1pZEkHFrGTgZ3Vq1e7H8HB4k2acIAHdQiIxXZR4FmFBPcU8oid0I4IiIAIiIAIiIAIFACBglCoK3Mfsbzi3oDSnEjxTDXdZGmyrjSTCfmhlieffLLMJE5cOpiEyYRBlswL5s062aywQlmRCZ4L7zNxFFm24XPhY+pNmnCg7MHzTFLENYWAQo/POb7ZQZmavK+6iYAIiIAIiIAIiIAnIIXak8ihLcoqrh/BInHMxEj8qnHJCJ6r7n3Kwmoj/fv3d+tV4xIybNgwI666y6L8REAEREAEKiSgkyIgAtVAQAp1NUCOmgUWYRTT4jlcsYoAAAGCSURBVOJit0Qev5CIXzTbLl26GD+Ow1J1WI2jppmKHFZo1sEmsJ/o2rp16xqrfdSpU8fq1avnlGp+KTKRvOJFQAREQAREQAREoCYTkEKdjrubxjTwWWbtbizRxxxzjOHHzBb/6bZt2xqrblSk7FalKCjzrC5CYD9RWij1559/vuF60rBhQ1fGKC4kidJTvAiIgAiIgAiIgAjkMwEp1Dl291CWsfbuvvvu1qBBA7fSB1uOied8jhVZxREBEcgjAiqqCIiACIhA+glIoU4/U6UoAiIgAiIgAiIgAiJQNQJ5dbUU6ry6XSqsCIiACIiACIiACIhArhGQQp1rd0TlEYHqJKC8REAEREAEREAEqkxACnWVESoBERABERABERCBTBNQ+iKQywSkUOfy3VHZREAEREAEREAEREAEcp6AFOqcv0XVWUDlJQIiIAIiIAIiIAIikCoBKdSpEpO8CIiACIhA9gmoBCIgAiKQQwSkUOfQzVBRREAEREAEREAEREAE8o/A/wMAAP//z18aewAAAAZJREFUAwANRvD16XSl7wAAAABJRU5ErkJggg==\" style=\"border:none; height:141px; width:624px\" /></span>\r\n\r\n\t<p><span style=\"color:#000000\"><strong>Con el punto (</strong></span><span style=\"color:#188038\"><strong>django-admin startproject config .</strong></span><span style=\"color:#000000\"><strong>):</strong></span><span style=\"color:#000000\"> Django coloca el archivo </span><span style=\"color:#188038\">manage.py</span><span style=\"color:#000000\"> directamente en tu carpeta actual y crea solo el paquete </span><span style=\"color:#188038\">config</span><span style=\"color:#000000\">, dejando una estructura m&aacute;s limpia:</span></p>\r\n\t<span style=\"color:#000000\"><img src=\"data:image/png;base64,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+uqrk6x1ao4QEAJCQAgIgdRHoFCRHywl9erVs1tuucX4YOaQIUPc9uyzz7a+ffvak08+aZUqVcp01TinZcuWNmLECHvuueesbdu2WSwunH/nnXdajRo1jP2//OUvTpYtx5kUZhzEojNDzP2/9NJLrUePHk7fE088YZ06dbITTzzRVq9ebXw/zQkd/HPzzTfboEGDnGy0ug+KZruhfR4n9rt27RpVJ1jedddd7nMm4UopA5dIGITL6lgICAGHgP4IASGQBAgUKvKDpWTgwIEG6Xn88cetadOmNmDAABs7dqwjNffdd59BMBjwwR4y8eGHHzpCcffddzuiBEmaMmVKpsG+evXqNnjwYOvTp49NnTrVunTp4mTZTpgwIZNsrDqpv0WLFvbuu+9a586dnb7777/fzjrrLHv++eftjjvusC+++AIxR8Zef/11e+2116xVq1ZOlrppS8OGDZ1MPH88Tv369TP62q1bt5DOadOmWVAnJGnkyJGujcE66tev7wjTY489ZmeeeWawSPtCQAgIASEgBJIagUJFfjzSWE6GDRvmyMLJJ59sxx13nGGhWLNmjV1wwQV20003OdHff//ddu/ebe+8845BcCpUqGDTp0+3yy+/PMtgzwlXXHGFffvtt062Tp069s0339hll11mLTMsR5STYtWJBap9+/Z2xBFHOEJ2+umnO6vP1q1brXnz5q696CNB5Gjz119/7UjRhRde6AjdaaedZui4+OKLEYs7XXTRRXbsscfagw8+6Pr03nvvGe1o3bq1I1wonDVrlm3bts254IL1YAU76aSTbMGCBSGShrxSjAhITAgIASEgBAoMgVyRH1w2uIpIEydOdLEqDJYcZ5cgGAyakydPdtaD7GQp69mzZ1wA/frrr/bll1/ahg0bbN++fbZs2TKbM2eOrV271o466igrXry40zdjxgyrWbOmYXGB1Pz444/25ptvOncTBMgJBf785z//MSwdyC5cuNDef/99px8S4cVi1XnJJZcY5OWrr75yViXOx7rz8ccfO+Jx1VVXkeVIB0QDUjR06FDXD9xhWG2WL19u5557rl177bVONt4/u3btclamSZMmOVKHzu+++87KlCnjLEHoe+utt2zFihXOIlW3bl2yXPuuueYa27lzp9Ffl6k/QkAICAEhIARSBIFckR+sF8TWkHD3QAIgDRxnl8qXL2/p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\" style=\"border:none; height:76px; width:293px\" /></span>\r\n\r\n\t<h3><span style=\"color:#000000\"><strong>📁 Estructura final de archivos a construir</strong></span></h3>\r\n\r\n\t<p style=\"margin-left:12px; margin-right:12px\"><span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">proyecto_juegos/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">├── config/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; ├── settings.py</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; └── urls.py</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">├── portal/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; ├── static/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; └── portal/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; └── css/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └── estilos.css</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; ├── templates/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; └── portal/</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; ├── base.html</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; ├── navbar.html</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; ├── inicio.html</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; │ &nbsp; &nbsp; &nbsp; └── juegos.html</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; ├── urls.py</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">│ &nbsp; └── views.py</span></span><br />\r\n\t<span style=\"color:#d4d4d4\"><span style=\"background-color:#1e1e1e\">└── manage.py</span></span></p>\r\n\t<br />\r\n\t&nbsp;</li>\r\n</ul>",
-        "url": "",
-        "orden": 2,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 1,
-    "fields": {
-        "leccion": 1,
-        "subleccion": null,
-        "titulo": "Evaluación inicial",
-        "descripcion": "Evaluación sobre los conceptos básicos de Python.",
-        "tipo": "CUESTIONARIO",
-        "orden": 1,
-        "fecha_limite": "2026-07-22T15:49:14Z",
-        "clave_acceso": "EXAMEN2026",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 2,
-    "fields": {
-        "leccion": 3,
-        "subleccion": null,
-        "titulo": "Evaluación Módulo 1: Fundamentos de HTML.",
-        "descripcion": "",
-        "tipo": "CUESTIONARIO",
-        "orden": 1,
-        "fecha_limite": null,
-        "clave_acceso": "EXAMEN2026",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 3,
-    "fields": {
-        "leccion": 5,
-        "subleccion": null,
-        "titulo": "Entrega de Práctica: Agenda de Contactos",
-        "descripcion": "Pegas los requisitos de entrega (crear el modelo, cargar 3 contactos en el admin y subir el archivo .zip).",
-        "tipo": "PRACTICA",
-        "orden": 1,
-        "fecha_limite": null,
-        "clave_acceso": null,
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 4,
-    "fields": {
-        "leccion": 6,
-        "subleccion": 1,
-        "titulo": "Configuración del Entorno",
-        "descripcion": "<p>Demuestra tu comprensi&oacute;n sobre la configuraci&oacute;n del entorno virtual y los componentes iniciales instalados en el proyecto. Selecciona la opci&oacute;n correcta en cada pregunta.</p>",
-        "tipo": "CUESTIONARIO",
-        "orden": 1,
-        "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 5,
-    "fields": {
-        "leccion": 6,
-        "subleccion": 2,
-        "titulo": "Creación de la Estructura del Proyecto",
-        "descripcion": "<p>Demuestra tu comprensi&oacute;n sobre el comando startproject, el uso de la carpeta config, el par&aacute;metro punto (.) y la estructura inicial del proyecto Django. Selecciona la opci&oacute;n correcta en cada pregunta.<!--TgQPHd|||[]--></p>",
-        "tipo": "CUESTIONARIO",
-        "orden": 1,
-        "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.actividad",
-    "pk": 6,
-    "fields": {
-        "leccion": 4,
-        "subleccion": 3,
-        "titulo": "Intoducción",
-        "descripcion": "<p>Descubre qu&eacute; es Django, su origen en 2003, sus creadores y por qu&eacute; es el framework elegido por plataformas como Instagram y Spotify. En esta lecci&oacute;n pr&aacute;ctica aprender&aacute;s a configurar tu entorno de desarrollo paso a paso: creaci&oacute;n de entornos virtuales (<code>venv</code>), instalaci&oacute;n de herramientas de calidad de c&oacute;digo (<code>pylint</code> y <code>autopep8</code>) e instalaci&oacute;n inicial de Django. Incluye evaluaci&oacute;n te&oacute;rica al finalizar.</p>",
-        "tipo": "CUESTIONARIO",
-        "orden": 1,
-        "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 1,
-    "fields": {
-        "actividad": 1,
-        "texto": "¿Cuál de las siguientes opciones describe mejor a Python?",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 1,
-        "puntaje": "1.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 2,
-    "fields": {
-        "actividad": 2,
-        "texto": "¿Qué significan las siglas HTML?",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 1,
-        "puntaje": "1.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 3,
-    "fields": {
-        "actividad": 2,
-        "texto": "¿En qué sección del documento se coloca todo el contenido VISIBLE del sitio?",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 2,
-        "puntaje": "1.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 4,
-    "fields": {
-        "actividad": 2,
-        "texto": "¿Qué etiqueta define el título que se observa en la pestaña del navegador?",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 3,
-        "puntaje": "25.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 5,
-    "fields": {
-        "actividad": 2,
-        "texto": "¿Para qué se utiliza la etiqueta <strong>?",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 4,
-        "puntaje": "25.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 6,
-    "fields": {
-        "actividad": 4,
-        "texto": "<p>&iquest;Cu&aacute;l es la funci&oacute;n principal del directorio o espacio aislado <strong>.venv</strong>?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 1,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 7,
-    "fields": {
-        "actividad": 4,
-        "texto": "<p>Al ejecutar el comando python -m venv .venv, &iquest;qu&eacute; le indica la bandera o par&aacute;metro -m al int&eacute;rprete de Python?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 2,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 8,
-    "fields": {
-        "actividad": 4,
-        "texto": "<p>En la convenci&oacute;n de carpetas para entornos virtuales, &iquest;cu&aacute;l es la raz&oacute;n principal de colocar un punto al inicio del nombre (por ejemplo, .venv?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 3,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 9,
-    "fields": {
-        "actividad": 4,
-        "texto": "<p>&iquest;Qu&eacute; comando se debe utilizar en la terminal de Windows (PowerShell / CMD) para <strong>activar</strong> el entorno virtual creado en la carpeta <strong><code>.venv</code></strong>?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 4,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 10,
-    "fields": {
-        "actividad": 4,
-        "texto": "<p>Relacione las librer&iacute;as instaladas con su funci&oacute;n. &iquest;Qu&eacute; herramienta se encarga de <strong>analizar el c&oacute;digo</strong>&nbsp;en busca de errores sint&aacute;cticos o malas pr&aacute;cticas, y cu&aacute;l lo <strong>formatea autom&aacute;ticamente</strong>&nbsp;seg&uacute;n la gu&iacute;a de estilo PEP 8?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 5,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 11,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>&iquest;Qu&eacute; herramienta de l&iacute;nea de comandos (consola) de Django se utiliza para realizar tareas de administraci&oacute;n global, como crear la plantilla inicial de un proyecto?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 1,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 12,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>En el comando &quot;<strong>django-admin startproject config .</strong>&quot;, &iquest;qu&eacute; funci&oacute;n cumple el punto (<strong>.</strong>) al final de la instrucci&oacute;n?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 2,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 13,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>&iquest;Qu&eacute; sucede si ejecutas el comando &quot;<strong>django-admin startproject config&quot;</strong> SIN colocar el punto (<strong>.</strong>) al final?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 3,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 14,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>&iquest;Cu&aacute;l es la funci&oacute;n principal de la carpeta &quot;<strong>config</strong>&quot; creada durante la inicializaci&oacute;n del proyecto?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 4,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 15,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>Dentro de la estructura de carpetas est&aacute;ndar de Django, &iquest;en qu&eacute; archivo se ejecutan las migraciones iniciales para crear la base de datos previa al desarrollo del sitio?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 5,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 16,
-    "fields": {
-        "actividad": 5,
-        "texto": "<p>Dentro de la estructura de carpetas est&aacute;ndar de Django, &iquest;cu&aacute;l es la l&iacute;nea de comandos que ejecutan las migraciones iniciales para crear la base de datos previa al desarrollo del sitio?</p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 5,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 17,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><strong>&nbsp;</strong><span style=\"color:#333333\">&iquest;En qu&eacute; a&ntilde;o surgi&oacute; Django y por qui&eacute;nes fue creado originalmente?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 1,
-        "puntaje": "1.60",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 18,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><span style=\"color:#333333\">&iquest;Qu&eacute; es conceptualmente un Framework web como Django?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 2,
-        "puntaje": "2.00",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 19,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><span style=\"color:#333333\">&iquest;Qu&eacute; plataformas o empresas populares utilizan Django en su infraestructura?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 3,
-        "puntaje": "1.60",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 20,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><span style=\"color:#333333\">&iquest;Cu&aacute;l es la funci&oacute;n principal de un entorno virtual (venv)?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 4,
-        "puntaje": "1.59",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 21,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><span style=\"color:#333333\">&iquest;Qu&eacute; herramientas/librer&iacute;as auxiliares de calidad se instalan junto con el proyecto para revisar y formatear el c&oacute;digo Python?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 5,
-        "puntaje": "1.60",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.pregunta",
-    "pk": 22,
-    "fields": {
-        "actividad": 6,
-        "texto": "<p><span style=\"color:#333333\">&iquest;Qu&eacute; comando activa el entorno virtual en Windows utilizando CMD?</span></p>",
-        "tipo": "OPCION_MULTIPLE",
-        "orden": 6,
-        "puntaje": "1.59",
-        "activo": true
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 1,
-    "fields": {
-        "pregunta": 1,
-        "texto": "Es un lenguaje de programación",
-        "es_correcta": true,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 2,
-    "fields": {
-        "pregunta": 1,
-        "texto": "Es solamente un sistema operativo",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 3,
-    "fields": {
-        "pregunta": 1,
-        "texto": "Es un procesador de textos",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 4,
-    "fields": {
-        "pregunta": 2,
-        "texto": "HighText Machine Language",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 5,
-    "fields": {
-        "pregunta": 2,
-        "texto": "HyperText Markup Language",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 6,
-    "fields": {
-        "pregunta": 2,
-        "texto": "HyperTool Multi Language",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 7,
-    "fields": {
-        "pregunta": 3,
-        "texto": "Dentro de la etiqueta <head>",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 8,
-    "fields": {
-        "pregunta": 3,
-        "texto": "Dentro de la etiqueta <title>",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 9,
-    "fields": {
-        "pregunta": 3,
-        "texto": "Dentro de la etiqueta <body>",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 10,
-    "fields": {
-        "pregunta": 4,
-        "texto": "<title>",
-        "es_correcta": true,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 11,
-    "fields": {
-        "pregunta": 4,
-        "texto": "<h1>",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 12,
-    "fields": {
-        "pregunta": 4,
-        "texto": "<meta>",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 13,
-    "fields": {
-        "pregunta": 5,
-        "texto": "Para crear un salto de línea.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 14,
-    "fields": {
-        "pregunta": 5,
-        "texto": "Para resaltar texto con importancia semántica (negrita).",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 15,
-    "fields": {
-        "pregunta": 5,
-        "texto": "Para cambiar el color de fondo de la página.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 16,
-    "fields": {
-        "pregunta": 6,
-        "texto": "Ejecutar el servidor web de Django automáticamente en segundo plano.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 17,
-    "fields": {
-        "pregunta": 6,
-        "texto": "Evitar que las librerías del proyecto interfieran con otros proyectos de Python o con el sistema operativo.",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 18,
-    "fields": {
-        "pregunta": 6,
-        "texto": "Instalar la versión más reciente del sistema operativo Windows o Linux.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 19,
-    "fields": {
-        "pregunta": 6,
-        "texto": "Formatear el código Python según la guía de estilo PEP 8.",
-        "es_correcta": false,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 20,
-    "fields": {
-        "pregunta": 7,
-        "texto": "Que el entorno virtual debe crearse de forma predeterminada como oculto.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 21,
-    "fields": {
-        "pregunta": 7,
-        "texto": "Que instale la librería llamada \"module\" antes de continuar.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 22,
-    "fields": {
-        "pregunta": 7,
-        "texto": "Que ejecute un módulo interno del sistema (como venv) como si fuera un script o herramienta independiente.",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 23,
-    "fields": {
-        "pregunta": 7,
-        "texto": "Que busque un archivo local llamado venv.py en el directorio actual.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 24,
-    "fields": {
-        "pregunta": 8,
-        "texto": "Es un requisito obligatorio de Python sin el cual el entorno no funciona.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 25,
-    "fields": {
-        "pregunta": 8,
-        "texto": "Hace que la carpeta sea invisible u oculta en sistemas Unix/Linux/Windows y herramientas de desarrollo para no molestar en la vista del proyecto.",
-        "es_correcta": true,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 26,
-    "fields": {
-        "pregunta": 8,
-        "texto": "Indica a Django que esa carpeta contiene los modelos de la base de datos.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 27,
-    "fields": {
-        "pregunta": 8,
-        "texto": "Sirve para que la carpeta sea compartida públicamente en el repositorio.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 28,
-    "fields": {
-        "pregunta": 9,
-        "texto": "python -m venv activate",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 29,
-    "fields": {
-        "pregunta": 9,
-        "texto": "pip install .venv",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 30,
-    "fields": {
-        "pregunta": 9,
-        "texto": ".venv\\Scripts\\activate",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 31,
-    "fields": {
-        "pregunta": 9,
-        "texto": "django-admin startproject .venv",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 32,
-    "fields": {
-        "pregunta": 10,
-        "texto": "django analiza el código y django-bootstrap5 lo formatea.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 33,
-    "fields": {
-        "pregunta": 10,
-        "texto": "pylint revisa errores o malas prácticas y autopep8 formatea el código siguiendo PEP 8.",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 34,
-    "fields": {
-        "pregunta": 10,
-        "texto": "autopep8 analiza errores y pylint aplica la guía PEP 8.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 35,
-    "fields": {
-        "pregunta": 10,
-        "texto": ".venv analiza el código y pip lo formatea automáticamente.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 36,
-    "fields": {
-        "pregunta": 11,
-        "texto": "python manage.py",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 37,
-    "fields": {
-        "pregunta": 11,
-        "texto": "django-admin",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 38,
-    "fields": {
-        "pregunta": 11,
-        "texto": "pip install",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 39,
-    "fields": {
-        "pregunta": 11,
-        "texto": "django-bootstrap5",
-        "es_correcta": false,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 40,
-    "fields": {
-        "pregunta": 12,
-        "texto": "Le indica a Django que cree un superusuario administrador automáticamente.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 41,
-    "fields": {
-        "pregunta": 12,
-        "texto": "Indica instalar los archivos del proyecto directamente en la carpeta actual en lugar de crear una carpeta contenedora adicional.",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 42,
-    "fields": {
-        "pregunta": 12,
-        "texto": "Es un parámetro que sirve para ocultar la carpeta config del sistema operativo.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 43,
-    "fields": {
-        "pregunta": 12,
-        "texto": "Indica que se deben aplicar todas las migraciones pendientes inmediatamente.",
-        "es_correcta": false,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 44,
-    "fields": {
-        "pregunta": 13,
-        "texto": "El comando da un error de sintaxis y la ejecución se interrumpe.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 45,
-    "fields": {
-        "pregunta": 13,
-        "texto": "Se crea únicamente la aplicación portal sin el archivo manage.py.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 46,
-    "fields": {
-        "pregunta": 13,
-        "texto": "Django crea una carpeta contenedora externa y otra interna con el mismo nombre (config), generando una estructura anidada.",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 47,
-    "fields": {
-        "pregunta": 13,
-        "texto": "Se borra la base de datos predeterminada de SQLite.",
-        "es_correcta": false,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 48,
-    "fields": {
-        "pregunta": 14,
-        "texto": "Almacenar los archivos estáticos como CSS, imágenes y scripts JS.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 49,
-    "fields": {
-        "pregunta": 14,
-        "texto": "Guardar exclusivamente las plantillas HTML de las vistas del usuario.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 50,
-    "fields": {
-        "pregunta": 14,
-        "texto": "Contener el paquete de configuración principal del proyecto, como settings.py y urls.py.",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 51,
-    "fields": {
-        "pregunta": 14,
-        "texto": "Administrar el entorno virtual .venv de Python.",
-        "es_correcta": false,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 52,
-    "fields": {
-        "pregunta": 15,
-        "texto": "django-admin startproject",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 53,
-    "fields": {
-        "pregunta": 15,
-        "texto": "python manage.py startapp",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 54,
-    "fields": {
-        "pregunta": 15,
-        "texto": "pip install django",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 55,
-    "fields": {
-        "pregunta": 15,
-        "texto": "python manage.py migrate",
-        "es_correcta": true,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 56,
-    "fields": {
-        "pregunta": 16,
-        "texto": "django-admin startproject",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 57,
-    "fields": {
-        "pregunta": 16,
-        "texto": "python manage.py startapp",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 58,
-    "fields": {
-        "pregunta": 16,
-        "texto": "pip install django",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 59,
-    "fields": {
-        "pregunta": 16,
-        "texto": "python manage.py migrate",
-        "es_correcta": true,
-        "orden": 4
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 60,
-    "fields": {
-        "pregunta": 17,
-        "texto": "Surgió en 2003, creado por Adrian Holovaty y Simon Willison en un periódico de noticias.",
-        "es_correcta": true,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 61,
-    "fields": {
-        "pregunta": 17,
-        "texto": "Surgió en 2015, creado por el equipo de desarrollo de Instagram.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 62,
-    "fields": {
-        "pregunta": 17,
-        "texto": "Surgió en 1991, creado por Guido van Rossum como parte de Python.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 63,
-    "fields": {
-        "pregunta": 18,
-        "texto": "Un programa antivirus especializado en servidores Python.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 64,
-    "fields": {
-        "pregunta": 18,
-        "texto": "Una estructura de código preconfigurada que proporciona herramientas listas para construir aplicaciones web rápidamente.",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 65,
-    "fields": {
-        "pregunta": 18,
-        "texto": "Un sistema operativo para servidores de bases de datos.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 66,
-    "fields": {
-        "pregunta": 19,
-        "texto": "únicamente pequeñas páginas personales.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 67,
-    "fields": {
-        "pregunta": 19,
-        "texto": "Windows Update y Microsoft Paint.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 68,
-    "fields": {
-        "pregunta": 19,
-        "texto": "Instagram, Spotify, YouTube y Pinterest.",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 69,
-    "fields": {
-        "pregunta": 20,
-        "texto": "Acelerar la velocidad de conexión a internet.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 70,
-    "fields": {
-        "pregunta": 20,
-        "texto": "Aislar las librerías del proyecto para evitar conflictos de versiones entre programas.",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 71,
-    "fields": {
-        "pregunta": 20,
-        "texto": "Instalar el sistema operativo Linux.",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 72,
-    "fields": {
-        "pregunta": 21,
-        "texto": "Django y SQLite.",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 73,
-    "fields": {
-        "pregunta": 21,
-        "texto": "HTML5 y CSS3.",
-        "es_correcta": false,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 74,
-    "fields": {
-        "pregunta": 21,
-        "texto": "pylint (para detectar errores y malas prácticas) y autopep8 (para formatear según PEP 8).",
-        "es_correcta": true,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 75,
-    "fields": {
-        "pregunta": 22,
-        "texto": "pip install django",
-        "es_correcta": false,
-        "orden": 1
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 76,
-    "fields": {
-        "pregunta": 22,
-        "texto": "venv\\Scripts\\activate",
-        "es_correcta": true,
-        "orden": 2
-    }
-},
-{
-    "model": "educacion.opcion",
-    "pk": 77,
-    "fields": {
-        "pregunta": 22,
-        "texto": "python manage.py runserver",
-        "es_correcta": false,
-        "orden": 3
-    }
-},
-{
-    "model": "educacion.inscripcion",
-    "pk": 1,
-    "fields": {
-        "usuario": 2,
-        "espacio_educativo": 1,
-        "fecha_inscripcion": "2026-07-22T17:22:50.376Z",
-        "estado": "ACTIVA"
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 2,
-    "fields": {
-        "actividad": 1,
-        "estudiante": 1,
-        "fecha_envio": "2026-07-23T18:09:28.584Z",
-        "estado": "ENVIADO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 4,
-    "fields": {
-        "actividad": 1,
-        "estudiante": 2,
-        "fecha_envio": "2026-07-23T19:07:25.860Z",
-        "estado": "ENVIADO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": "1.00"
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 5,
-    "fields": {
-        "actividad": 2,
-        "estudiante": 1,
-        "fecha_envio": "2026-07-24T15:05:53.156Z",
-        "estado": "EN_PROCESO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 6,
-    "fields": {
-        "actividad": 4,
-        "estudiante": 1,
-        "fecha_envio": "2026-07-31T16:52:12.251Z",
-        "estado": "EN_PROCESO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 7,
-    "fields": {
-        "actividad": 5,
-        "estudiante": 1,
-        "fecha_envio": "2026-07-31T19:10:02.387Z",
-        "estado": "EN_PROCESO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 8,
-    "fields": {
-        "actividad": 6,
-        "estudiante": 1,
-        "fecha_envio": "2026-08-04T13:46:19.582Z",
-        "estado": "EN_PROCESO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.entregaactividad",
-    "pk": 9,
-    "fields": {
-        "actividad": 3,
-        "estudiante": 1,
-        "fecha_envio": "2026-08-04T13:48:05.631Z",
-        "estado": "EN_PROCESO",
-        "archivo_adjunto": "",
-        "comentario_estudiante": null,
-        "puntaje_obtenido": null,
-        "calificacion": null
-    }
-},
-{
-    "model": "educacion.respuestausuario",
-    "pk": 2,
-    "fields": {
-        "entrega": 2,
-        "pregunta": 1,
-        "opcion_seleccionada": 1,
-        "texto_respuesta": ""
-    }
-},
-{
-    "model": "educacion.respuestausuario",
-    "pk": 3,
-    "fields": {
-        "entrega": 4,
-        "pregunta": 1,
-        "opcion_seleccionada": 1,
-        "texto_respuesta": ""
-    }
-}
-]
+        "titulo": "Creaci�n de la Agenda",
+        "descripcion": 

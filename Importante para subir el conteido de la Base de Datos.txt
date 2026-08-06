@@ -1,0 +1,22 @@
+¡Excelente! Dado que estás en CMD de Windows, la solución directa es establecer la variable PYTHONUTF8=1 con el comando set.
+
+Ejecuta estas líneas una por una en tu terminal CMD:
+
+1. Activar UTF-8 y exportar los datos
+DOS
+set PYTHONUTF8=1
+python manage.py dumpdata educacion --indent 4 -o datos_educacion.json
+2. Verificar la carga localmente
+Proba importar el archivo generado para confirmar que no tenga ningún carácter corrupto:
+
+DOS
+python manage.py loaddata datos_educacion.json
+(Si todo sale bien, dirá algo como Installed X object(s) from 1 fixture(s)).
+
+3. Subir el archivo corregido a GitHub
+Una vez que veas que no tira error, subí los cambios para que Render los tome:
+
+DOS
+git add datos_educacion.json
+git commit -m "Fix: Exportacion limpia con UTF-8 en CMD"
+git push origin main

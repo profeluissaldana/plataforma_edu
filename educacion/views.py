@@ -305,6 +305,7 @@ def realizar_actividad(request, actividad_id):
             else:
                 messages.error(request, 'La clave ingresada es incorrecta.')
 
+        # Si requiere clave y aún no ha sido validada, detiene el flujo aquí
         return render(
             request,
             'educacion/realizar_actividad.html',

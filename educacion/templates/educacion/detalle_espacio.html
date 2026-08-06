@@ -103,95 +103,13 @@
                                                             <h5 class="h6 fw-bold text-secondary mb-2">
                                                                 <i class="bi bi-file-earmark-text me-1"></i> Material de Estudio:
                                                             </h5>
-                                                            <div class="list-group mb-3">
-                                                                {% for contenido in sub.contenidos.all %}
-                                                                {% if contenido.activo %}
-                                                                <div class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-                                                                    <div class="w-100">
-                                                                        <div class="d-flex align-items-center gap-2 mb-1">
-                                                                            <span class="badge bg-secondary">{{ contenido.get_tipo_display }}</span>
-                                                                            <strong class="small">{{ contenido.titulo }}</strong>
-                                                                        </div>
-                                                                        {% if contenido.contenido %}
-                                                                        <div class="mt-2 text-dark small">
-                                                                            {{ contenido.contenido|safe }}
-                                                                        </div>
-                                                                        {% endif %}
-                                                                    </div>
-                                                                    {% if contenido.url %}
-                                                                    <a href="{{ contenido.url }}" target="_blank" rel="noopener noreferrer"
-                                                                        class="btn btn-sm btn-outline-primary flex-shrink-0 align-self-start align-self-sm-center">
-                                                                        <i class="bi bi-box-arrow-up-right me-1"></i> Abrir enlace
-                                                                    </a>
-                                                                    {% endif %}
-                                                                </div>
-                                                                {% endif %}
-                                                                {% empty %}
-                                                                <div class="list-group-item text-muted small fst-italic">
-                                                                    No hay contenidos cargados para esta parte.
-                                                                </div>
-                                                                {% endfor %}
-                                                            </div>
+                                                            {% include 'educacion/includes/lista_contenidos.html' with contenidos=sub.contenidos.all empty_msg="No hay contenidos cargados para esta parte." %}
 
                                                             <!-- Actividades y Ejercicios -->
                                                             <h5 class="h6 fw-bold text-secondary mb-2">
                                                                 <i class="bi bi-pencil-square me-1"></i> Actividades y Ejercicios:
                                                             </h5>
-                                                            <div class="list-group">
-                                                                {% for actividad in sub.actividades.all %}
-                                                                {% if actividad.activo %}
-                                                                <div class="list-group-item border-warning-subtle d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-                                                                    <div>
-                                                                        <span class="badge bg-warning text-dark me-1">{{ actividad.get_tipo_display }}</span>
-                                                                        <strong class="small">{{ actividad.titulo }}</strong>
-
-                                                                        {% if actividad.id in actividades_resueltas_ids %}
-                                                                        <span class="badge bg-success ms-1">
-                                                                            <i class="bi bi-check-circle-fill me-1"></i> Completado
-                                                                        </span>
-                                                                        {% endif %}
-
-                                                                        {% if actividad.fecha_limite %}
-                                                                        <div class="small text-danger mt-1">
-                                                                            <i class="bi bi-clock-history me-1"></i> Límite: {{ actividad.fecha_limite|date:"d/m/Y H:i" }}
-                                                                        </div>
-                                                                        {% endif %}
-                                                                    </div>
-
-                                                                    <div>
-                                                                        {% if actividad.tipo == 'TEORIA' %}
-                                                                            {% if actividad.id in actividades_resueltas_ids %}
-                                                                            <button class="btn btn-sm btn-outline-success disabled fw-semibold">
-                                                                                <i class="bi bi-check2-all me-1"></i> Leído / Visto
-                                                                            </button>
-                                                                            {% else %}
-                                                                            <a href="{% url 'educacion:marcar_teoria_completada' actividad.id %}"
-                                                                                class="btn btn-sm btn-info text-white fw-semibold shadow-sm">
-                                                                                <i class="bi bi-check-lg me-1"></i> Marcar como Leído
-                                                                            </a>
-                                                                            {% endif %}
-                                                                        {% else %}
-                                                                            {% if actividad.id in actividades_resueltas_ids %}
-                                                                            <a href="{% url 'educacion:realizar_actividad' actividad.id %}"
-                                                                                class="btn btn-sm btn-outline-secondary fw-semibold">
-                                                                                Ver Intento
-                                                                            </a>
-                                                                            {% else %}
-                                                                            <a href="{% url 'educacion:realizar_actividad' actividad.id %}"
-                                                                                class="btn btn-sm btn-warning fw-semibold shadow-sm">
-                                                                                Realizar Actividad
-                                                                            </a>
-                                                                            {% endif %}
-                                                                        {% endif %}
-                                                                    </div>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% empty %}
-                                                                <div class="list-group-item text-muted small fst-italic">
-                                                                    No hay actividades asignadas a esta parte.
-                                                                </div>
-                                                                {% endfor %}
-                                                            </div>
+                                                            {% include 'educacion/includes/lista_actividades.html' with actividades=sub.actividades.all empty_msg="No hay actividades asignadas a esta parte." %}
 
                                                         </div>
                                                     </div>
@@ -204,96 +122,12 @@
                                                 <h5 class="h6 fw-bold text-secondary mb-2">
                                                     <i class="bi bi-file-earmark-text me-1"></i> Material de Estudio:
                                                 </h5>
-                                                <div class="list-group mb-4">
-                                                    {% for contenido in leccion.contenidos.all %}
-                                                    {% if contenido.activo %}
-                                                    <div class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-                                                        <div class="w-100">
-                                                            <div class="d-flex align-items-center gap-2 mb-1">
-                                                                <span class="badge bg-secondary">{{ contenido.get_tipo_display }}</span>
-                                                                <strong class="small">{{ contenido.titulo }}</strong>
-                                                            </div>
-                                                            
-                                                            {% if contenido.contenido %}
-                                                            <div class="mt-2 text-dark small">
-                                                                {{ contenido.contenido|safe }}
-                                                            </div>
-                                                            {% endif %}
-                                                        </div>
-                                                        
-                                                        {% if contenido.url %}
-                                                        <a href="{{ contenido.url }}" target="_blank" rel="noopener noreferrer"
-                                                            class="btn btn-sm btn-outline-primary flex-shrink-0 align-self-start align-self-sm-center">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Abrir enlace
-                                                        </a>
-                                                        {% endif %}
-                                                    </div>
-                                                    {% endif %}
-                                                    {% empty %}
-                                                    <div class="list-group-item text-muted small fst-italic">
-                                                        No hay contenidos cargados para esta lección.
-                                                    </div>
-                                                    {% endfor %}
-                                                </div>
+                                                {% include 'educacion/includes/lista_contenidos.html' with contenidos=leccion.contenidos.all empty_msg="No hay contenidos cargados para esta lección." extra_class="mb-4" %}
 
                                                 <h5 class="h6 fw-bold text-secondary mb-2">
                                                     <i class="bi bi-pencil-square me-1"></i> Actividades y Ejercicios:
                                                 </h5>
-                                                <div class="list-group">
-                                                    {% for actividad in leccion.actividades.all %}
-                                                    {% if actividad.activo %}
-                                                    <div class="list-group-item border-warning-subtle d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-                                                        <div>
-                                                            <span class="badge bg-warning text-dark me-1">{{ actividad.get_tipo_display }}</span>
-                                                            <strong class="small">{{ actividad.titulo }}</strong>
-
-                                                            {% if actividad.id in actividades_resueltas_ids %}
-                                                            <span class="badge bg-success ms-1">
-                                                                <i class="bi bi-check-circle-fill me-1"></i> Completado
-                                                            </span>
-                                                            {% endif %}
-
-                                                            {% if actividad.fecha_limite %}
-                                                            <div class="small text-danger mt-1">
-                                                                <i class="bi bi-clock-history me-1"></i> Límite: {{ actividad.fecha_limite|date:"d/m/Y H:i" }}
-                                                            </div>
-                                                            {% endif %}
-                                                        </div>
-
-                                                        <div>
-                                                            {% if actividad.tipo == 'TEORIA' %}
-                                                                {% if actividad.id in actividades_resueltas_ids %}
-                                                                <button class="btn btn-sm btn-outline-success disabled fw-semibold">
-                                                                    <i class="bi bi-check2-all me-1"></i> Leído / Visto
-                                                                </button>
-                                                                {% else %}
-                                                                <a href="{% url 'educacion:marcar_teoria_completada' actividad.id %}"
-                                                                    class="btn btn-sm btn-info text-white fw-semibold shadow-sm">
-                                                                    <i class="bi bi-check-lg me-1"></i> Marcar como Leído
-                                                                </a>
-                                                                {% endif %}
-                                                            {% else %}
-                                                                {% if actividad.id in actividades_resueltas_ids %}
-                                                                <a href="{% url 'educacion:realizar_actividad' actividad.id %}"
-                                                                    class="btn btn-sm btn-outline-secondary fw-semibold">
-                                                                    Ver Intento
-                                                                </a>
-                                                                {% else %}
-                                                                <a href="{% url 'educacion:realizar_actividad' actividad.id %}"
-                                                                    class="btn btn-sm btn-warning fw-semibold shadow-sm">
-                                                                    Realizar Actividad
-                                                                </a>
-                                                                {% endif %}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    {% endif %}
-                                                    {% empty %}
-                                                    <div class="list-group-item text-muted small fst-italic">
-                                                        No hay actividades asignadas.
-                                                    </div>
-                                                    {% endfor %}
-                                                </div>
+                                                {% include 'educacion/includes/lista_actividades.html' with actividades=leccion.actividades.all empty_msg="No hay actividades asignadas." %}
                                             {% endif %}
 
                                         </div>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Carga Masiva de Usuarios desde Excel</h2>
+        <a href="{% url 'descargar_plantilla_excel' %}" class="btn btn-outline-success rounded-pill px-3 shadow-sm">
+            <i class="bi bi-file-earmark-arrow-down me-1"></i> Descargar Plantilla Modelo (.xlsx)
+        </a>
+    </div>
+
+    <p class="text-muted">
+        Puedes descargar la plantilla de ejemplo anterior para completar los datos con la estructura exacta requerida, o guiarte por el siguiente formato de columnas:
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>email</th>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>dni</th>
+                    <th>curso</th>
+                    <th>dia_cursado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>alumnos01</td>
+                    <td>Clave1234</td>
+                    <td>alumno@mail.com</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>42123456</td>
+                    <td>6to 1ra</td>
+                    <td>Lunes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card shadow-sm mt-4 p-4">
+        <h5 class="card-title mb-3">Subir Archivo Completado</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary px-4">
+                <i class="bi bi-upload me-1"></i> Procesar Archivo
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

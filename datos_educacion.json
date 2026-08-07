@@ -1544,6 +1544,20 @@
     }
 },
 {
+    "model": "educacion.entregaactividad",
+    "pk": 10,
+    "fields": {
+        "actividad": 2,
+        "estudiante": 2,
+        "fecha_envio": "2026-08-07T13:16:48.285Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
     "model": "educacion.respuestausuario",
     "pk": 2,
     "fields": {

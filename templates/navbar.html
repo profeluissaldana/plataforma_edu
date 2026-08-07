@@ -13,6 +13,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center me-3">
                 {% if user.is_authenticated %}
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-light btn-sm rounded-pill px-3" href="{% url 'cargar_usuarios_excel' %}">
+                            <i class="bi bi-file-earmark-excel me-1"></i> Carga Masiva
+                        </a>
+                    </li>
+
                     <li class="nav-item me-3 text-light font-monospace small">
                         👋 {{ user.get_full_name|default:user.username }}
                     </li>

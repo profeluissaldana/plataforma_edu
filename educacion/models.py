@@ -492,3 +492,42 @@ class ProgresoTeoria(models.Model):
 
     def __str__(self):
         return f'{self.estudiante} - {self.actividad.titulo} (Completado: {self.completado})'
+
+
+class IntercambioArchivo(models.Model):
+
+    remitente = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='archivos_enviados'
+    )
+
+    destinatario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='archivos_recibidos',
+        null=True,
+        blank=True,
+        help_text="Dejar vacío si el archivo es público para todos los alumnos"
+    )
+
+    archivo = models.FileField(
+        upload_to='intercambio_archivos/'
+    )
+
+    descripcion = models.CharField(
+        max_length=255,
+        blank=True
+    )
+
+    fecha_subida = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    class Meta:
+        verbose_name = 'Intercambio de archivo'
+        verbose_name_plural = 'Intercambio de archivos'
+        ordering = ['-fecha_subida']
+
+    def __str__(self):
+        return f"De {self.remitente} - {self.descripcion or self.archivo.name}"

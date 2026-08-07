@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'usuarios',
     'educacion',
     'ckeditor',
+    'comunicacion',
 ]
 
 MIDDLEWARE = [

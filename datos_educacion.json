@@ -1558,6 +1558,146 @@
     }
 },
 {
+    "model": "educacion.entregaactividad",
+    "pk": 11,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 11,
+        "fecha_envio": "2026-08-07T19:47:01.043Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 12,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 14,
+        "fecha_envio": "2026-08-07T19:47:01.917Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 13,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 8,
+        "fecha_envio": "2026-08-07T19:47:01.990Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 14,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 12,
+        "fecha_envio": "2026-08-07T19:47:02.777Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 15,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 15,
+        "fecha_envio": "2026-08-07T19:47:20.007Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 16,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 7,
+        "fecha_envio": "2026-08-07T19:47:25.013Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 17,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 9,
+        "fecha_envio": "2026-08-07T19:47:28.848Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 18,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 13,
+        "fecha_envio": "2026-08-07T19:47:32.186Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 19,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 6,
+        "fecha_envio": "2026-08-07T19:47:57.778Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 20,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 10,
+        "fecha_envio": "2026-08-07T19:47:59.747Z",
+        "estado": "EN_PROCESO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "puntaje_obtenido": null,
+        "calificacion": null
+    }
+},
+{
     "model": "educacion.respuestausuario",
     "pk": 2,
     "fields": {

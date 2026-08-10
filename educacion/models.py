@@ -1,25 +1,12 @@
-from django.conf import settings
-from django.db import models
 from ckeditor.fields import RichTextField
+from django.db import models
 
 
 class EspacioEducativo(models.Model):
-
-    nombre = models.CharField(
-        max_length=200
-    )
-
-    descripcion = RichTextField(
-        blank=True
-    )
-
-    fecha_creacion = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    nombre = models.CharField(max_length=200)
+    descripcion = RichTextField(blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Espacio educativo'
@@ -30,28 +17,15 @@ class EspacioEducativo(models.Model):
 
 
 class Modulo(models.Model):
-
     espacio_educativo = models.ForeignKey(
         EspacioEducativo,
         on_delete=models.CASCADE,
-        related_name='modulos'
+        related_name='modulos',
     )
-
-    nombre = models.CharField(
-        max_length=200
-    )
-
-    descripcion = RichTextField(
-        blank=True
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    nombre = models.CharField(max_length=200)
+    descripcion = RichTextField(blank=True)
+    orden = models.PositiveIntegerField(default=1)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Módulo'
@@ -62,28 +36,13 @@ class Modulo(models.Model):
 
 
 class Leccion(models.Model):
-
     modulo = models.ForeignKey(
-        Modulo,
-        on_delete=models.CASCADE,
-        related_name='lecciones'
+        Modulo, on_delete=models.CASCADE, related_name='lecciones'
     )
-
-    titulo = models.CharField(
-        max_length=200
-    )
-
-    descripcion = RichTextField(
-        blank=True
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    titulo = models.CharField(max_length=200)
+    descripcion = RichTextField(blank=True)
+    orden = models.PositiveIntegerField(default=1)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Lección'
@@ -94,28 +53,13 @@ class Leccion(models.Model):
 
 
 class Subleccion(models.Model):
-
     leccion = models.ForeignKey(
-        Leccion,
-        on_delete=models.CASCADE,
-        related_name='sublecciones'
+        Leccion, on_delete=models.CASCADE, related_name='sublecciones'
     )
-
-    titulo = models.CharField(
-        max_length=200
-    )
-
-    descripcion = RichTextField(
-        blank=True
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    titulo = models.CharField(max_length=200)
+    descripcion = RichTextField(blank=True)
+    orden = models.PositiveIntegerField(default=1)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['orden']
@@ -123,11 +67,10 @@ class Subleccion(models.Model):
         verbose_name_plural = 'Sublecciones'
 
     def __str__(self):
-        return f"{self.leccion.titulo} - Parte {self.orden}: {self.titulo}"
+        return f'{self.leccion.titulo} - Parte {self.orden}: {self.titulo}'
 
 
 class Contenido(models.Model):
-
     TIPO_CONTENIDO = [
         ('TEXTO', 'Texto'),
         ('VIDEO', 'Video'),
@@ -141,41 +84,21 @@ class Contenido(models.Model):
         on_delete=models.CASCADE,
         related_name='contenidos',
         null=True,
-        blank=True
+        blank=True,
     )
-
     subleccion = models.ForeignKey(
         Subleccion,
         on_delete=models.CASCADE,
         related_name='contenidos',
         null=True,
-        blank=True
+        blank=True,
     )
-
-    titulo = models.CharField(
-        max_length=200
-    )
-
-    tipo = models.CharField(
-        max_length=20,
-        choices=TIPO_CONTENIDO
-    )
-
-    contenido = RichTextField(
-        blank=True
-    )
-
-    url = models.URLField(
-        blank=True
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    titulo = models.CharField(max_length=200)
+    tipo = models.CharField(max_length=20, choices=TIPO_CONTENIDO)
+    contenido = RichTextField(blank=True)
+    url = models.URLField(blank=True)
+    orden = models.PositiveIntegerField(default=1)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Contenido'
@@ -187,7 +110,6 @@ class Contenido(models.Model):
 
 
 class Actividad(models.Model):
-
     TIPO_ACTIVIDAD = [
         ('TEORIA', 'Lectura / Video'),
         ('PRACTICA', 'Práctica de Programación (Subida de Archivo)'),
@@ -201,49 +123,38 @@ class Actividad(models.Model):
         on_delete=models.CASCADE,
         related_name='actividades',
         null=True,
-        blank=True
+        blank=True,
     )
-
     subleccion = models.ForeignKey(
         Subleccion,
         on_delete=models.CASCADE,
         related_name='actividades',
         null=True,
-        blank=True
+        blank=True,
     )
-
-    titulo = models.CharField(
-        max_length=200
-    )
-
-    descripcion = RichTextField(
-        blank=True
-    )
-
-    tipo = models.CharField(
-        max_length=20,
-        choices=TIPO_ACTIVIDAD
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    fecha_limite = models.DateTimeField(
-        null=True,
-        blank=True
-    )
-
+    titulo = models.CharField(max_length=200)
+    descripcion = RichTextField(blank=True)
+    tipo = models.CharField(max_length=20, choices=TIPO_ACTIVIDAD)
+    orden = models.PositiveIntegerField(default=1)
+    fecha_limite = models.DateTimeField(null=True, blank=True)
     clave_acceso = models.CharField(
         max_length=50,
         blank=True,
         null=True,
-        help_text="Clave requerida para que el alumno pueda iniciar el cuestionario en clase."
+        help_text=(
+            'Clave requerida para que el alumno pueda iniciar el cuestionario'
+            ' en clase.'
+        ),
     )
-
-    activo = models.BooleanField(
-        default=True
+    permite_entrega_archivos = models.BooleanField(
+        default=False,
+        verbose_name='Permitir entrega de archivos',
+        help_text=(
+            'Habilita la opción para que los alumnos puedan adjuntar archivos'
+            ' desde su PC para revisión del docente.'
+        ),
     )
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Actividad'
@@ -255,7 +166,6 @@ class Actividad(models.Model):
 
 
 class Pregunta(models.Model):
-
     TIPO_PREGUNTA = [
         ('OPCION_MULTIPLE', 'Opción múltiple'),
         ('VERDADERO_FALSO', 'Verdadero o falso'),
@@ -264,31 +174,13 @@ class Pregunta(models.Model):
     ]
 
     actividad = models.ForeignKey(
-        Actividad,
-        on_delete=models.CASCADE,
-        related_name='preguntas'
+        Actividad, on_delete=models.CASCADE, related_name='preguntas'
     )
-
     texto = RichTextField()
-
-    tipo = models.CharField(
-        max_length=30,
-        choices=TIPO_PREGUNTA
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
-
-    puntaje = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        default=1
-    )
-
-    activo = models.BooleanField(
-        default=True
-    )
+    tipo = models.CharField(max_length=30, choices=TIPO_PREGUNTA)
+    orden = models.PositiveIntegerField(default=1)
+    puntaje = models.DecimalField(max_digits=5, decimal_places=2, default=1)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Pregunta'
@@ -299,24 +191,12 @@ class Pregunta(models.Model):
 
 
 class Opcion(models.Model):
-
     pregunta = models.ForeignKey(
-        Pregunta,
-        on_delete=models.CASCADE,
-        related_name='opciones'
+        Pregunta, on_delete=models.CASCADE, related_name='opciones'
     )
-
-    texto = models.CharField(
-        max_length=300
-    )
-
-    es_correcta = models.BooleanField(
-        default=False
-    )
-
-    orden = models.PositiveIntegerField(
-        default=1
-    )
+    texto = models.CharField(max_length=300)
+    es_correcta = models.BooleanField(default=False)
+    orden = models.PositiveIntegerField(default=1)
 
     class Meta:
         verbose_name = 'Opción'
@@ -327,7 +207,6 @@ class Opcion(models.Model):
 
 
 class Inscripcion(models.Model):
-
     ESTADO_INSCRIPCION = [
         ('ACTIVA', 'Activa'),
         ('FINALIZADA', 'Finalizada'),
@@ -335,25 +214,18 @@ class Inscripcion(models.Model):
     ]
 
     usuario = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'usuarios.Usuario',
         on_delete=models.CASCADE,
-        related_name='inscripciones'
+        related_name='inscripciones',
     )
-
     espacio_educativo = models.ForeignKey(
         EspacioEducativo,
         on_delete=models.CASCADE,
-        related_name='inscripciones'
+        related_name='inscripciones',
     )
-
-    fecha_inscripcion = models.DateTimeField(
-        auto_now_add=True
-    )
-
+    fecha_inscripcion = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(
-        max_length=20,
-        choices=ESTADO_INSCRIPCION,
-        default='ACTIVA'
+        max_length=20, choices=ESTADO_INSCRIPCION, default='ACTIVA'
     )
 
     class Meta:
@@ -365,7 +237,6 @@ class Inscripcion(models.Model):
 
 
 class EntregaActividad(models.Model):
-
     ESTADO_ENTREGA = [
         ('EN_PROCESO', 'En proceso'),
         ('ENVIADO', 'Enviado'),
@@ -373,51 +244,36 @@ class EntregaActividad(models.Model):
     ]
 
     actividad = models.ForeignKey(
-        Actividad,
-        on_delete=models.CASCADE,
-        related_name='entregas'
+        Actividad, on_delete=models.CASCADE, related_name='entregas'
     )
-
     estudiante = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'usuarios.Usuario',
         on_delete=models.CASCADE,
-        related_name='entregas_actividades'
+        related_name='entregas_actividades',
     )
-
-    fecha_envio = models.DateTimeField(
-        auto_now=True
-    )
-
+    fecha_envio = models.DateTimeField(auto_now=True)
     estado = models.CharField(
-        max_length=20,
-        choices=ESTADO_ENTREGA,
-        default='EN_PROCESO'
+        max_length=20, choices=ESTADO_ENTREGA, default='EN_PROCESO'
     )
-
     archivo_adjunto = models.FileField(
         upload_to='entregas_alumnos/',
         blank=True,
         null=True,
-        help_text="Archivo de código o práctico entregado por el estudiante."
+        help_text=(
+            'Archivo de código o práctico entregado por el estudiante.'
+        ),
     )
-
-    comentario_estudiante = models.TextField(
+    comentario_estudiante = models.TextField(blank=True, null=True)
+    comentario_docente = models.TextField(
         blank=True,
-        null=True
+        null=True,
+        help_text='Devolución u observaciones enviadas por el profesor.',
     )
-
     puntaje_obtenido = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        null=True,
-        blank=True
+        max_digits=5, decimal_places=2, null=True, blank=True
     )
-
     calificacion = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        null=True,
-        blank=True
+        max_digits=5, decimal_places=2, null=True, blank=True
     )
 
     class Meta:
@@ -430,30 +286,22 @@ class EntregaActividad(models.Model):
 
 
 class RespuestaUsuario(models.Model):
-
     entrega = models.ForeignKey(
-        EntregaActividad,
-        on_delete=models.CASCADE,
-        related_name='respuestas'
+        EntregaActividad, on_delete=models.CASCADE, related_name='respuestas'
     )
-
     pregunta = models.ForeignKey(
         Pregunta,
         on_delete=models.CASCADE,
-        related_name='respuestas_usuarios'
+        related_name='respuestas_usuarios',
     )
-
     opcion_seleccionada = models.ForeignKey(
         Opcion,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='seleccionada_en'
+        related_name='seleccionada_en',
     )
-
-    texto_respuesta = models.TextField(
-        blank=True
-    )
+    texto_respuesta = models.TextField(blank=True)
 
     class Meta:
         verbose_name = 'Respuesta de usuario'
@@ -464,26 +312,16 @@ class RespuestaUsuario(models.Model):
 
 
 class ProgresoTeoria(models.Model):
-
     estudiante = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'usuarios.Usuario',
         on_delete=models.CASCADE,
-        related_name='progresos_teoria'
+        related_name='progresos_teoria',
     )
-
     actividad = models.ForeignKey(
-        Actividad,
-        on_delete=models.CASCADE,
-        related_name='progresos_teoria'
+        Actividad, on_delete=models.CASCADE, related_name='progresos_teoria'
     )
-
-    completado = models.BooleanField(
-        default=False
-    )
-
-    fecha_completado = models.DateTimeField(
-        auto_now_add=True
-    )
+    completado = models.BooleanField(default=False)
+    fecha_completado = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Progreso de teoría'
@@ -495,34 +333,22 @@ class ProgresoTeoria(models.Model):
 
 
 class IntercambioArchivo(models.Model):
-
     remitente = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'usuarios.Usuario',
         on_delete=models.CASCADE,
-        related_name='archivos_enviados'
+        related_name='archivos_enviados',
     )
-
     destinatario = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'usuarios.Usuario',
         on_delete=models.CASCADE,
         related_name='archivos_recibidos',
         null=True,
         blank=True,
-        help_text="Dejar vacío si el archivo es público para todos los alumnos"
+        help_text='Dejar vacío si el archivo es público para todos los alumnos',
     )
-
-    archivo = models.FileField(
-        upload_to='intercambio_archivos/'
-    )
-
-    descripcion = models.CharField(
-        max_length=255,
-        blank=True
-    )
-
-    fecha_subida = models.DateTimeField(
-        auto_now_add=True
-    )
+    archivo = models.FileField(upload_to='intercambio_archivos/')
+    descripcion = models.CharField(max_length=255, blank=True)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Intercambio de archivo'
@@ -530,4 +356,24 @@ class IntercambioArchivo(models.Model):
         ordering = ['-fecha_subida']
 
     def __str__(self):
-        return f"De {self.remitente} - {self.descripcion or self.archivo.name}"
+        return f'De {self.remitente} - {self.descripcion or self.archivo.name}'
+
+
+class RegistroCicloLectivo(models.Model):
+    anio = models.PositiveIntegerField(verbose_name='Año Lectivo')
+    fecha_reinicios = models.DateTimeField(auto_now_add=True)
+    alumnos_eliminados = models.PositiveIntegerField(default=0)
+    realizado_por = models.ForeignKey(
+        'usuarios.Usuario',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = 'Registro de Ciclo Lectivo'
+        verbose_name_plural = 'Registros de Ciclos Lectivos'
+        ordering = ['-fecha_reinicios']
+
+    def __str__(self):
+        return f"Reinicio Ciclo {self.anio} ({self.fecha_reinicios.strftime('%d/%m/%Y')})"

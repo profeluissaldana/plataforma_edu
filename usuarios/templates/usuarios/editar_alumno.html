@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 600px;">
+    <div class="card shadow-sm p-4">
+        <h3 class="mb-3">Editar Alumno: {{ alumno.username }}</h3>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label class="form-label font-weight-bold">Nombre de usuario</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">Nombre</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">Apellido</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">DNI</label>
+                    {{ form.dni }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">Email</label>
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label font-weight-bold">Curso</label>
+                    {{ form.curso }}
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label font-weight-bold">Turno</label>
+                    {{ form.turno }}
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label font-weight-bold">Día Cursado</label>
+                    {{ form.dia_cursado }}
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'lista_alumnos' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle me-1"></i> Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

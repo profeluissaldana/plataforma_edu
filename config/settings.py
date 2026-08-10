@@ -156,3 +156,6 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'educacion:inicio'
 LOGOUT_REDIRECT_URL = 'login'
+
+# Ocultar la advertencia de deprecación de django-ckeditor en la consola
+SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']

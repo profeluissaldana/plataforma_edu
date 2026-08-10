@@ -30,33 +30,6 @@ Inicio - Taller de Computación
     </div>
 </div>
 
-{% if user.is_staff %}
-<div class="row mb-5">
-    <div class="col-12 p-4 bg-light rounded shadow-sm border border-primary">
-        <h4 class="text-primary fw-bold mb-3">
-            🛠️ Panel de Gestión Pedagógica
-        </h4>
-        <p class="text-muted small mb-3">
-            Herramientas administrativas para el control de asistencia y auditoría de alumnos inscriptos en la E.E.T.P. N° 614.
-        </p>
-        <div class="d-flex flex-wrap gap-2">
-            <a href="#" class="btn btn-success fw-bold px-4 shadow-sm">
-                📝 Tomar Asistencia Jornada
-            </a>
-            <a href="#" class="btn btn-primary fw-bold px-4 shadow-sm">
-                📊 Ver Grupos Cargados
-            </a>
-            <a href="#" class="btn btn-secondary fw-bold px-4 shadow-sm">
-                🔍 Consultar Historial
-            </a>
-            <a href="#" class="btn btn-danger fw-bold px-4 shadow-sm ms-auto">
-                🔄 Reiniciar Ciclo Lectivo
-            </a>
-        </div>
-    </div>
-</div>
-{% endif %}
-
 <div class="row g-4">
     {% for espacio in espacios %}
     <div class="col-12 col-md-6 col-lg-4">

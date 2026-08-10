@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-clock-history text-primary me-2"></i>Historial de Asistencias</h2>
+    <div>
+      <a href="{% url 'educacion:tomar_asistencia_jornada' %}" class="btn btn-primary me-2">
+        <i class="bi bi-calendar-check"></i> Tomar Asistencia
+      </a>
+      <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Volver
+      </a>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped mb-0 align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Fecha</th>
+              <th>Estudiante</th>
+              <th>Estado</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for registro in asistencias %}
+              <tr>
+                <td><strong>{{ registro.fecha|date:"d/m/Y" }}</strong></td>
+                <td>{{ registro.alumno.last_name }}, {{ registro.alumno.first_name }}</td>
+                <td>
+                  {% if registro.estado == 'PRESENTE' %}
+                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Presente</span>
+                  {% elif registro.estado == 'AUSENTE' %}
+                    <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Ausente</span>
+                  {% elif registro.estado == 'TARDANZA' %}
+                    <span class="badge bg-warning text-dark"><i class="bi bi-clock me-1"></i>Tardanza</span>
+                  {% else %}
+                    <span class="badge bg-info text-dark">{{ registro.estado }}</span>
+                  {% endif %}
+                </td>
+                <td><small class="text-muted">{{ registro.observacion|default:"--" }}</small></td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center py-4 text-muted">
+                  No se registran asistencias guardadas hasta la fecha.
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

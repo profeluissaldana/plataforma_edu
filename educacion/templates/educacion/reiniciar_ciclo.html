@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Reiniciar Ciclo Lectivo</h2>
+    <a href="{% url 'educacion:inicio' %}" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card border-danger shadow-sm h-100">
+        <div class="card-header bg-danger text-white fw-bold">
+          <i class="bi bi-shield-lock-fill me-2"></i>Zona de Acción Crítica
+        </div>
+        <div class="card-body">
+          <p class="card-text text-muted">
+            Esta acción **eliminará permanentemente** todas las cuentas de estudiantes y su historial asociado para permitir la inscripción del nuevo ciclo.
+          </p>
+          
+          <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="confirmacion" class="form-label fw-bold">
+                Escriba la palabra <span class="text-danger">REINICIAR</span> para confirmar:
+              </label>
+              <input type="text" name="confirmacion" id="confirmacion" class="form-control" placeholder="REINICIAR" required autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-danger w-100 fw-bold">
+              <i class="bi bi-trash-fill me-2"></i> Confirmar y Reiniciar Ciclo
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-secondary text-white fw-bold">
+          <i class="bi bi-journal-text me-2"></i>Histórico de Reinicios
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-striped mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Año</th>
+                  <th>Alumnos Eliminados</th>
+                  <th>Realizado por</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for reg in registros %}
+                  <tr>
+                    <td><strong>{{ reg.anio }}</strong></td>
+                    <td>{{ reg.alumnos_eliminados }}</td>
+                    <td>{{ reg.realizado_por.username }}</td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="3" class="text-center py-3 text-muted">
+                      No hay registros anteriores de reinicios.
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

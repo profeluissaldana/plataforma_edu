@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2><i class="bi bi-calendar-check me-2"></i>Tomar Asistencia</h2>
+        <a href="{% url 'educacion:historial_asistencias' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-journal-text"></i> Ver Historial
+        </a>
+    </div>
+
+    <!-- Seleccionar Curso, Turno, Día y Fecha -->
+    <div class="card shadow-sm p-3 mb-4 bg-light">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Curso:</label>
+                <input type="text" name="curso" value="{{ curso_filtro }}" placeholder="Ej: 1° A" class="form-control" onchange="this.form.submit()">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold">Turno:</label>
+                <select name="turno" class="form-select" onchange="this.form.submit()">
+                    <option value="">Todos los turnos</option>
+                    <option value="Mañana" {% if turno_filtro == 'Mañana' %}selected{% endif %}>Mañana</option>
+                    <option value="Tarde" {% if turno_filtro == 'Tarde' %}selected{% endif %}>Tarde</option>
+                    <option value="Noche" {% if turno_filtro == 'Noche' %}selected{% endif %}>Noche</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold">Día:</label>
+                <select name="dia_cursado" class="form-select" onchange="this.form.submit()">
+                    <option value="">Todos los días</option>
+                    <option value="Lunes" {% if dia_filtro == 'Lunes' %}selected{% endif %}>Lunes</option>
+                    <option value="Martes" {% if dia_filtro == 'Martes' %}selected{% endif %}>Martes</option>
+                    <option value="Miércoles" {% if dia_filtro == 'Miércoles' %}selected{% endif %}>Miércoles</option>
+                    <option value="Jueves" {% if dia_filtro == 'Jueves' %}selected{% endif %}>Jueves</option>
+                    <option value="Viernes" {% if dia_filtro == 'Viernes' %}selected{% endif %}>Viernes</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Fecha:</label>
+                <input type="date" name="fecha" value="{{ fecha }}" class="form-control" onchange="this.form.submit()">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100"><i class="bi bi-filter"></i> Cargar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Lista de Alumnos para Asistencia -->
+    {% if alumnos_con_asistencia %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="fecha" value="{{ fecha }}">
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    Listado de Alumnos ({{ fecha }})
+                </h5>
+                <div>
+                    <button type="button" class="btn btn-sm btn-outline-light me-2" onclick="marcarTodosPresentes()">
+                        <i class="bi bi-check-all"></i> Marcar todos Presentes
+                    </button>
+                    <span class="badge bg-light text-dark">{{ alumnos_con_asistencia|length }} Alumnos</span>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light text-center">
+                        <tr>
+                            <th class="text-start ps-3">Alumno</th>
+                            <th>Presente</th>
+                            <th>Ausente</th>
+                            <th>Tarde</th>
+                            <th>Justificado</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in alumnos_con_asistencia %}
+                        <tr>
+                            <td class="ps-3 fw-bold">
+                                {{ item.alumno.last_name }}, {{ item.alumno.first_name }}
+                                <br>
+                                <small class="text-muted font-monospace">
+                                    Usuario: {{ item.alumno.username }}
+                                    | Curso: {{ item.alumno.curso|default:"-" }}
+                                    | Turno: {{ item.alumno.turno|default:"-" }}
+                                    {% if item.alumno.dia_cursado %}
+                                        | Día: {{ item.alumno.dia_cursado }}
+                                    {% endif %}
+                                </small>
+                            </td>
+                            <td class="text-center">
+                                <input class="form-check-input radio-presente" type="radio" name="asistencia_{{ item.alumno.id }}" value="PRESENTE" {% if item.estado == 'PRESENTE' %}checked{% endif %}>
+                            </td>
+                            <td class="text-center">
+                                <input class="form-check-input" type="radio" name="asistencia_{{ item.alumno.id }}" value="AUSENTE" {% if item.estado == 'AUSENTE' %}checked{% endif %}>
+                            </td>
+                            <td class="text-center">
+                                <input class="form-check-input" type="radio" name="asistencia_{{ item.alumno.id }}" value="TARDANZA" {% if item.estado == 'TARDANZA' %}checked{% endif %}>
+                            </td>
+                            <td class="text-center">
+                                <input class="form-check-input" type="radio" name="asistencia_{{ item.alumno.id }}" value="JUSTIFICADO" {% if item.estado == 'JUSTIFICADO' %}checked{% endif %}>
+                            </td>
+                            <td>
+                                <input type="text" name="obs_{{ item.alumno.id }}" value="{{ item.observaciones }}" class="form-control form-control-sm" placeholder="Opcional...">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-end bg-white py-3">
+                <button type="submit" class="btn btn-success btn-lg px-4 rounded-pill">
+                    <i class="bi bi-check-circle me-1"></i> Guardar Asistencias
+                </button>
+            </div>
+        </div>
+    </form>
+    {% else %}
+    <div class="alert alert-info shadow-sm">
+        <i class="bi bi-info-circle me-2"></i> No se encontraron alumnos registrados con los filtros seleccionados.
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function marcarTodosPresentes() {
+        const presentes = document.querySelectorAll('.radio-presente');
+        presentes.forEach(radio => radio.checked = true);
+    }
+</script>
+{% endblock %}

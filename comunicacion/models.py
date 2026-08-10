@@ -1,55 +1,52 @@
-from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
+
+Usuario = get_user_model()
 
 
 class MensajeChat(models.Model):
-
-    emisor = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='mensajes_enviados'
+    remitente = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name='mensajes_enviados'
     )
-
-    receptor = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='mensajes_recibidos'
+    sala = models.CharField(
+        max_length=100,
+        default='general',
+        help_text='Identificador de la sala de chat (ej: general, curso_python, etc.)',
     )
-
     contenido = models.TextField()
-
-    fecha_envio = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    leido = models.BooleanField(
-        default=False
-    )
+    fecha_envio = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Mensaje de chat'
-        verbose_name_plural = 'Mensajes de chat'
+        verbose_name = 'Mensaje de Chat'
+        verbose_name_plural = 'Mensajes de Chat'
         ordering = ['fecha_envio']
 
     def __str__(self):
-        return f"De {self.emisor} para {self.receptor} ({self.fecha_envio.strftime('%d/%m %H:%M')})"
+        return f'[{self.sala}] {self.remitente}: {self.contenido[:30]}'
 
 
-class ConfiguracionPlataforma(models.Model):
-
-    chat_habilitado = models.BooleanField(
-        default=True,
-        verbose_name="Habilitar Chat entre Usuarios"
+class ArchivoCompartido(models.Model):
+    remitente = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name='comunicacion_archivos_enviados',
     )
-
-    intercambio_archivos_habilitado = models.BooleanField(
-        default=True,
-        verbose_name="Habilitar Intercambio de Archivos"
+    destinatario = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name='comunicacion_archivos_recibidos',
+        null=True,
+        blank=True,
+        help_text='Dejar vacío para transmitir a todos los estudiantes.',
     )
+    archivo = models.FileField(upload_to='comunicacion/archivos/')
+    descripcion = models.CharField(max_length=255, blank=True)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Configuración de la plataforma'
-        verbose_name_plural = 'Configuraciones de la plataforma'
+        verbose_name = 'Archivo Compartido'
+        verbose_name_plural = 'Archivos Compartidos'
+        ordering = ['-fecha_subida']
 
     def __str__(self):
-        return "Configuración Global de la Plataforma"
+        return f'De {self.remitente} - {self.descripcion or self.archivo.name}'

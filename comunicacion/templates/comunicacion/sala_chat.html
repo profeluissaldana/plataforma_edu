@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sala de Consultas - {{ espacio.nombre }}
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <!-- Encabezado con Control Docente -->
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <div>
+                        <h4 class="fw-bold mb-1">
+                            <i class="bi bi-chat-dots-fill text-primary me-2"></i>Sala de Consultas
+                        </h4>
+                        <small class="text-muted">{{ espacio.nombre }}</small>
+                    </div>
+
+                    <!-- Panel exclusivo del docente -->
+                    {% if es_docente %}
+                    <div class="form-check form-switch bg-light border p-2 px-3 rounded d-flex align-items-center gap-2">
+                        <input 
+                            class="form-check-input ms-0" 
+                            type="checkbox" 
+                            id="switchHabilitarChat" 
+                            {% if espacio.chat_habilitado %}checked{% endif %}
+                            onchange="alternarChat()"
+                        >
+                        <label class="form-check-label fw-bold small text-secondary" for="switchHabilitarChat" id="labelSwitchChat">
+                            {% if espacio.chat_habilitado %}Chat Activado{% else %}Chat Desactivado{% endif %}
+                        </label>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Banner de Estado (para los Alumnos) -->
+            <div id="bannerChatDesactivado" class="alert alert-warning border-0 shadow-sm text-center p-4 {% if espacio.chat_habilitado %}d-none{% endif %}">
+                <i class="bi bi-lock-fill display-4 text-warning mb-2 d-block"></i>
+                <h5 class="fw-bold text-dark mb-1">La sala de consultas se encuentra cerrada</h5>
+                <p class="text-muted mb-0 small">El profesor activará el chat cuando comience el espacio de consultas e intercambios.</p>
+            </div>
+
+            <!-- Contenedor Principal del Chat -->
+            <div class="card border-0 shadow-sm">
+                <!-- Ventana de Mensajes -->
+                <div class="card-body p-3 bg-light overflow-auto" id="cajaMensajes" style="height: 400px;">
+                    {% for m in mensajes %}
+                    <div class="mb-3 d-flex flex-column {% if m.remitente == request.user or m.usuario == request.user %}align-items-end{% else %}align-items-start{% endif %}">
+                        <div class="small text-muted mb-1 px-1">
+                            <strong>{{ m.remitente.get_full_name|default:m.remitente.username }}</strong> 
+                            <span class="ms-1" style="font-size: 0.75rem;">{{ m.fecha_envio|date:"H:i" }}</span>
+                        </div>
+                        <div class="p-3 rounded-3 shadow-sm max-w-75 {% if m.remitente == request.user or m.usuario == request.user %}bg-primary text-white{% else %}bg-white border text-dark{% endif %}">
+                            {{ m.contenido|linebreaksbr }}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center text-muted my-5 small" id="sinMensajes">Aún no hay mensajes en esta sala.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Formulario de Envío -->
+                <div class="card-footer bg-white border-0 p-3 {% if not espacio.chat_habilitado and not es_docente %}d-none{% endif %}" id="contenedorFormulario">
+                    <form id="formEnviarMensaje" onsubmit="enviarMensaje(event)">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="inputMensaje" 
+                                name="contenido"
+                                class="form-control" 
+                                placeholder="Escribe tu consulta aquí..." 
+                                autocomplete="off"
+                                required
+                            >
+                            <button type="submit" class="btn btn-primary fw-bold px-4">
+                                <i class="bi bi-send-fill me-1"></i> Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Estilos rápidos para burbujas -->
+<style>
+    .max-w-75 { max-width: 75%; }
+</style>
+
+<!-- Script AJAX y Polling en tiempo real -->
+<script>
+  const urlObtener = "{% url 'comunicacion:obtener_mensajes_ajax' espacio.id %}";
+  const urlAlternar = "{% url 'comunicacion:alternar_estado_chat' espacio.id %}";
+  const urlEnviar = "{% url 'comunicacion:enviar_mensaje_chat' espacio.id %}";
+  const esDocente = {{ es_docente|yesno:"true,false" }};
+
+  function hacerScrollAbajo() {
+      const caja = document.getElementById('cajaMensajes');
+      if (caja) {
+          caja.scrollTop = caja.scrollHeight;
+      }
+  }
+
+  function actualizarUI(chatHabilitado) {
+      const bannerCerrado = document.getElementById('bannerChatDesactivado');
+      const contenedorForm = document.getElementById('contenedorFormulario');
+      const labelSwitch = document.getElementById('labelSwitchChat');
+      const switchInput = document.getElementById('switchHabilitarChat');
+
+      if (labelSwitch) {
+          labelSwitch.innerText = chatHabilitado ? 'Chat Activado' : 'Chat Desactivado';
+      }
+      if (switchInput) {
+          switchInput.checked = chatHabilitado;
+      }
+
+      if (chatHabilitado) {
+          if (bannerCerrado) bannerCerrado.classList.add('d-none');
+          if (contenedorForm) contenedorForm.classList.remove('d-none');
+      } else {
+          if (bannerCerrado) bannerCerrado.classList.remove('d-none');
+          if (contenedorForm) {
+              if (esDocente) {
+                  contenedorForm.classList.remove('d-none');
+              } else {
+                  contenedorForm.classList.add('d-none');
+              }
+          }
+      }
+  }
+
+  function renderizarMensajes(mensajes) {
+      if (!mensajes) return;
+      const caja = document.getElementById('cajaMensajes');
+      
+      if (mensajes.length === 0) {
+          caja.innerHTML = '<p class="text-center text-muted my-5 small" id="sinMensajes">Aún no hay mensajes en esta sala.</p>';
+          return;
+      }
+
+      let html = '';
+      mensajes.forEach(m => {
+          const alineacion = m.es_mio ? 'align-items-end' : 'align-items-start';
+          const estiloBurbuja = m.es_mio ? 'bg-primary text-white' : 'bg-white border text-dark';
+          const contenidoFormateado = m.contenido.replace(/\n/g, '<br>');
+
+          html += `
+              <div class="mb-3 d-flex flex-column ${alineacion}">
+                  <div class="small text-muted mb-1 px-1">
+                      <strong>${m.usuario}</strong> 
+                      <span class="ms-1" style="font-size: 0.75rem;">${m.fecha_envio}</span>
+                  </div>
+                  <div class="p-3 rounded-3 shadow-sm max-w-75 ${estiloBurbuja}">
+                      ${contenidoFormateado}
+                  </div>
+              </div>
+          `;
+      });
+
+      const debeHacerScroll = caja.scrollTop + caja.clientHeight >= caja.scrollHeight - 50;
+      caja.innerHTML = html;
+      if (debeHacerScroll) {
+          hacerScrollAbajo();
+      }
+  }
+
+  function consultarEstadoChat() {
+      fetch(urlObtener)
+          .then(response => response.json())
+          .then(data => {
+              if (data.status === 'ok') {
+                  actualizarUI(data.chat_habilitado);
+                  if (data.mensajes) {
+                      renderizarMensajes(data.mensajes);
+                  }
+              }
+          })
+          .catch(err => console.error("Error al consultar el chat:", err));
+  }
+
+  function alternarChat() {
+      fetch(urlAlternar, {
+          method: "POST",
+          headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+              "Content-Type": "application/json"
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'ok') {
+              actualizarUI(data.chat_habilitado);
+          }
+      })
+      .catch(err => console.error("Error al alternar el chat:", err));
+  }
+
+  function enviarMensaje(e) {
+      e.preventDefault();
+      const input = document.getElementById('inputMensaje');
+      const mensaje = input.value.trim();
+
+      if (!mensaje) return;
+
+      const formData = new FormData(document.getElementById('formEnviarMensaje'));
+
+      fetch(urlEnviar, {
+          method: "POST",
+          headers: {
+              "X-CSRFToken": "{{ csrf_token }}"
+          },
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'ok') {
+              input.value = '';
+              consultarEstadoChat();
+              hacerScrollAbajo();
+          } else {
+              alert(data.error || "No se pudo enviar el mensaje.");
+          }
+      })
+      .catch(err => console.error("Error al enviar mensaje:", err));
+  }
+
+  // Hacer scroll automático al cargar la página
+  document.addEventListener("DOMContentLoaded", () => {
+      hacerScrollAbajo();
+      // Polling periódico para consultar el estado del chat cada 3 segundos
+      setInterval(consultarEstadoChat, 3000);
+  });
+</script>
+{% endblock %}

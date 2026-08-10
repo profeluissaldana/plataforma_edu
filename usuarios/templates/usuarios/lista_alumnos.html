@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Gestión de Alumnos</h2>
+        <div class="d-flex gap-2">
+            <a href="{% url 'exportar_alumnos_excel' %}?q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="btn btn-outline-success rounded-pill">
+                <i class="bi bi-file-earmark-excel me-1"></i> Exportar Excel
+            </a>
+            <a href="{% url 'exportar_alumnos_pdf' %}?q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" target="_blank" class="btn btn-outline-danger rounded-pill">
+                <i class="bi bi-file-earmark-pdf me-1"></i> Exportar PDF
+            </a>
+            <a href="{% url 'cargar_usuarios_excel' %}" class="btn btn-outline-primary rounded-pill">
+                <i class="bi bi-upload me-1"></i> Carga Masiva
+            </a>
+        </div>
+    </div>
+
+    <!-- Filtros y Búsqueda -->
+    <div class="card shadow-sm p-3 mb-4 bg-light">
+        <form method="get" class="row g-3 align-items-center">
+            {% if order_by %}
+                <input type="hidden" name="order_by" value="{{ order_by }}">
+            {% endif %}
+            
+            <div class="col-md-3">
+                <input type="text" name="q" value="{{ busqueda }}" class="form-control" placeholder="Buscar Nombre, DNI, Usuario...">
+            </div>
+            
+            <div class="col-md-2">
+                <select name="curso" class="form-select">
+                    <option value="">-- Curso --</option>
+                    {% for c in cursos %}
+                        <option value="{{ c }}" {% if curso_filtro == c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="turno" class="form-select">
+                    <option value="">-- Turno --</option>
+                    {% for cod, nombre in turnos %}
+                        <option value="{{ cod }}" {% if turno_filtro == cod %}selected{% endif %}>{{ nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select name="dia_cursado" class="form-select">
+                    <option value="">-- Día --</option>
+                    {% for d in dias %}
+                        <option value="{{ d }}" {% if dia_filtro == d %}selected{% endif %}>{{ d }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Buscar</button>
+                {% if busqueda or curso_filtro or dia_filtro or turno_filtro %}
+                    <a href="{% url 'lista_alumnos' %}" class="btn btn-secondary" title="Limpiar Filtros"><i class="bi bi-x-circle"></i></a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+
+    <!-- Tabla de Alumnos -->
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            <a href="?order_by={% if order_by == 'username' %}-username{% else %}username{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                Usuario
+                                {% if order_by == 'username' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-username' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>
+                            <a href="?order_by={% if order_by == 'last_name' %}-last_name{% else %}last_name{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                Nombre Completo
+                                {% if order_by == 'last_name' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-last_name' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>
+                            <a href="?order_by={% if order_by == 'dni' %}-dni{% else %}dni{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                DNI
+                                {% if order_by == 'dni' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-dni' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>
+                            <a href="?order_by={% if order_by == 'curso' %}-curso{% else %}curso{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                Curso
+                                {% if order_by == 'curso' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-curso' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>
+                            <a href="?order_by={% if order_by == 'turno' %}-turno{% else %}turno{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                Turno
+                                {% if order_by == 'turno' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-turno' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>
+                            <a href="?order_by={% if order_by == 'dia_cursado' %}-dia_cursado{% else %}dia_cursado{% endif %}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}" class="text-white text-decoration-none">
+                                Día Cursado
+                                {% if order_by == 'dia_cursado' %}<i class="bi bi-arrow-up"></i>{% elif order_by == '-dia_cursado' %}<i class="bi bi-arrow-down"></i>{% endif %}
+                            </a>
+                        </th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in alumnos %}
+                    <tr>
+                        <td><strong>{{ a.username }}</strong></td>
+                        <td>{{ a.get_full_name|default:"-" }}</td>
+                        <td>{{ a.dni|default:"-" }}</td>
+                        <td><span class="badge bg-info text-dark">{{ a.curso|default:"-" }}</span></td>
+                        <td><span class="badge bg-warning text-dark">{{ a.get_turno_display|default:"-" }}</span></td>
+                        <td><span class="badge bg-secondary">{{ a.dia_cursado|default:"-" }}</span></td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="{% url 'editar_alumno' a.pk %}" class="btn btn-outline-primary" title="Editar"><i class="bi bi-pencil-fill"></i></a>
+                                <a href="{% url 'reset_password_alumno' a.pk %}" class="btn btn-outline-warning" title="Cambiar Contraseña"><i class="bi bi-key-fill"></i></a>
+                                <a href="{% url 'eliminar_alumno' a.pk %}" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="py-4 text-muted">No se encontraron alumnos registrados con los criterios seleccionados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Paginación -->
+        {% if page_obj.has_other_pages %}
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <small class="text-muted">Mostrando alumnos {{ page_obj.start_index }} a {{ page_obj.end_index }} de {{ page_obj.paginator.count }}</small>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-page-link page-link" href="?page={{ page_obj.previous_page_number }}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}&order_by={{ order_by }}">Anterior</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}&order_by={{ order_by }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ busqueda }}&curso={{ curso_filtro }}&dia_cursado={{ dia_filtro }}&turno={{ turno_filtro }}&order_by={{ order_by }}">Siguiente</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Siguiente</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

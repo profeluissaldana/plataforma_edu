@@ -106,7 +106,7 @@
                     </div>
                     <h2 class="h3 fw-bold text-dark mb-2">{{ actividad.titulo }}</h2>
                     {% if actividad.descripcion %}
-                    <p class="text-muted mb-0">{{ actividad.descripcion|safe }}</p>
+                    <div class="text-muted mb-0">{{ actividad.descripcion|safe }}</div>
                     {% endif %}
                 </div>
             </div>
@@ -123,7 +123,7 @@
                             <span class="badge bg-light text-dark border">{{ pregunta.puntaje }} pto(s)</span>
                         </div>
 
-                        <p class="fs-6 fw-semibold mb-3">{{ pregunta.texto|safe }}</p>
+                        <div class="fs-6 fw-semibold mb-3">{{ pregunta.texto|safe }}</div>
 
                         {% if pregunta.tipo == 'OPCION_MULTIPLE' or pregunta.tipo == 'VERDADERO_FALSO' %}
                             <div class="d-flex flex-column gap-2">
@@ -137,7 +137,7 @@
                                         value="{{ opcion.id }}"
                                         required
                                     >
-                                    <label class="form-check-label w-100 cursor-pointer" for="opcion_{{ opcion.id }}">
+                                    <label class="form-check-label w-100 style-pointer" for="opcion_{{ opcion.id }}" style="cursor: pointer;">
                                         {{ opcion.texto }}
                                     </label>
                                 </div>

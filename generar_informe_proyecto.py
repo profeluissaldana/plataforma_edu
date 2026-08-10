@@ -18,7 +18,7 @@ CARPETAS_EXCLUIDAS = {
     ".vscode",
     "migrations",
     "media",
-    "staticfiles"
+    "staticfiles",
 }
 
 ARCHIVOS_EXCLUIDOS = {
@@ -46,14 +46,16 @@ EXTENSIONES_TEXTO = {
 # ÁRBOL
 # ==============================
 
+
 def escribir_arbol(carpeta, prefijo=""):
     elementos = sorted(
         [
-            e for e in carpeta.iterdir()
+            e
+            for e in carpeta.iterdir()
             if e.name not in CARPETAS_EXCLUIDAS
             and e.name not in ARCHIVOS_EXCLUIDOS
         ],
-        key=lambda x: (x.is_file(), x.name.lower())
+        key=lambda x: (x.is_file(), x.name.lower()),
     )
 
     for i, elemento in enumerate(elementos):
@@ -70,6 +72,7 @@ def escribir_arbol(carpeta, prefijo=""):
 # ==============================
 # CONTENIDO ARCHIVOS
 # ==============================
+
 
 def recorrer(carpeta):
 
@@ -91,10 +94,7 @@ def recorrer(carpeta):
             continue
 
         try:
-            contenido = elemento.read_text(
-                encoding="utf-8",
-                errors="ignore"
-            )
+            contenido = elemento.read_text(encoding="utf-8", errors="ignore")
         except:
             continue
 
@@ -118,16 +118,10 @@ def recorrer(carpeta):
 
 
 # ==============================
-# RESUMEN
+# RESUMEN Y ESTADÍSTICAS
 # ==============================
 
-estadisticas = {
-    "archivos": 0,
-    "python": 0,
-    "html": 0,
-    "css": 0,
-    "js": 0
-}
+estadisticas = {"archivos": 0, "python": 0, "html": 0, "css": 0, "js": 0}
 
 for archivo in ROOT.rglob("*"):
 
@@ -156,27 +150,51 @@ for archivo in ROOT.rglob("*"):
 
 with open(SALIDA, "w", encoding="utf-8") as f:
 
-    f.write("# INFORME DEL PROYECTO\n\n")
+    # Encabezado con Contexto Semántico y Decisiones del Proyecto
+    f.write("# CONTEXTO DEL PROYECTO: Plataforma Edu EETP N° 614\n\n")
+    f.write("## Información General\n")
+    f.write("- Framework: Django 5.2 (Python)\n")
+    f.write(
+        "- Proyecto: Plataforma Educativa para la EETP N° 614 (Santo"
+        " Tomé).\n"
+    )
+    f.write("- Apps instaladas: `usuarios`, `educacion`, `comunicacion`.\n\n")
 
-    f.write("## Resumen\n\n")
+    f.write("## Decisiones Recientes de Código\n")
+    f.write(
+        "1. El modelo `Asistencia` pertenece a `usuarios.models` (se eliminó"
+        " de `educacion.models`).\n"
+    )
+    f.write(
+        "2. Las vistas de `educacion/views.py` gestionan entregas y progreso"
+        " tanto para `Leccion` como para `Subleccion`.\n"
+    )
+    f.write(
+        "3. `ckeditor` está integrado y su warning W001 fue silenciado en"
+        " `settings.py`.\n\n"
+    )
 
+    f.write("---\n\n")
+
+    # Métricas y Estadísticas
+    f.write("# INFORME TÉCNICO DEL PROYECTO\n\n")
+    f.write("## Resumen de Archivos\n\n")
     f.write(f"- Total archivos: {estadisticas['archivos']}\n")
     f.write(f"- Python: {estadisticas['python']}\n")
     f.write(f"- HTML: {estadisticas['html']}\n")
     f.write(f"- CSS: {estadisticas['css']}\n")
     f.write(f"- JavaScript: {estadisticas['js']}\n\n")
 
-    f.write("# Árbol del proyecto\n\n")
-
+    # Árbol del directorio
+    f.write("## Árbol del proyecto\n\n")
     f.write(ROOT.name + "\n")
-
     escribir_arbol(ROOT)
 
-    f.write("\n\n# Contenido de archivos\n")
-
+    # Código de archivos
+    f.write("\n\n## Contenido de archivos\n")
     recorrer(ROOT)
 
 print("\n=====================================")
-print("Informe generado correctamente")
+print("Informe generado correctamente con encabezado de contexto.")
 print(SALIDA)
 print("=====================================")

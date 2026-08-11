@@ -318,7 +318,7 @@
         "leccion": 1,
         "subleccion": null,
         "titulo": "Evaluación inicial",
-        "descripcion": "Evaluación sobre los conceptos básicos de Python.",
+        "descripcion": "<p>Evaluaci&oacute;n sobre los conceptos b&aacute;sicos de Python.</p>",
         "tipo": "CUESTIONARIO",
         "orden": 1,
         "fecha_limite": "2026-07-22T15:49:14Z",
@@ -338,7 +338,7 @@
         "tipo": "CUESTIONARIO",
         "orden": 1,
         "fecha_limite": null,
-        "clave_acceso": "EXAMEN2026",
+        "clave_acceso": "cuestionario2026",
         "permite_entrega_archivos": false,
         "activo": true
     }
@@ -350,11 +350,11 @@
         "leccion": 5,
         "subleccion": null,
         "titulo": "Entrega de Práctica: Agenda de Contactos",
-        "descripcion": "Pegas los requisitos de entrega (crear el modelo, cargar 3 contactos en el admin y subir el archivo .zip).",
+        "descripcion": "<p>Pegas los requisitos de entrega (crear el modelo, cargar 3 contactos en el admin y subir el archivo .zip).</p>",
         "tipo": "PRACTICA",
         "orden": 1,
         "fecha_limite": null,
-        "clave_acceso": null,
+        "clave_acceso": "cuestinario2026",
         "permite_entrega_archivos": false,
         "activo": true
     }
@@ -370,7 +370,7 @@
         "tipo": "CUESTIONARIO",
         "orden": 1,
         "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
+        "clave_acceso": "cuestionario2026",
         "permite_entrega_archivos": false,
         "activo": true
     }
@@ -386,7 +386,7 @@
         "tipo": "CUESTIONARIO",
         "orden": 1,
         "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
+        "clave_acceso": "cuestionario2026",
         "permite_entrega_archivos": false,
         "activo": true
     }
@@ -402,7 +402,7 @@
         "tipo": "CUESTIONARIO",
         "orden": 1,
         "fecha_limite": null,
-        "clave_acceso": "CUESTIONARIOS2026",
+        "clave_acceso": "cuestionario2026",
         "permite_entrega_archivos": false,
         "activo": true
     }
@@ -1722,6 +1722,156 @@
     }
 },
 {
+    "model": "educacion.entregaactividad",
+    "pk": 21,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 2,
+        "fecha_envio": "2026-08-11T15:12:24.114Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "9.98",
+        "calificacion": "9.98"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 22,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 36,
+        "fecha_envio": "2026-08-11T17:04:11.836Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "6.00",
+        "calificacion": "6.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 23,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 30,
+        "fecha_envio": "2026-08-11T16:55:57.667Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "2.00",
+        "calificacion": "2.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 24,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 37,
+        "fecha_envio": "2026-08-11T17:00:40.662Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "4.00",
+        "calificacion": "4.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 25,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 33,
+        "fecha_envio": "2026-08-11T17:02:00.013Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "2.00",
+        "calificacion": "2.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 26,
+    "fields": {
+        "actividad": 6,
+        "estudiante": 30,
+        "fecha_envio": "2026-08-11T17:00:04.161Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "8.39",
+        "calificacion": "8.39"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 27,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 29,
+        "fecha_envio": "2026-08-11T16:59:43.971Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "4.00",
+        "calificacion": "4.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 28,
+    "fields": {
+        "actividad": 5,
+        "estudiante": 30,
+        "fecha_envio": "2026-08-11T17:06:22.824Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "12.00",
+        "calificacion": "12.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 29,
+    "fields": {
+        "actividad": 4,
+        "estudiante": 31,
+        "fecha_envio": "2026-08-11T17:09:50.795Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "8.00",
+        "calificacion": "8.00"
+    }
+},
+{
+    "model": "educacion.entregaactividad",
+    "pk": 30,
+    "fields": {
+        "actividad": 5,
+        "estudiante": 33,
+        "fecha_envio": "2026-08-11T17:08:56.163Z",
+        "estado": "ENVIADO",
+        "archivo_adjunto": "",
+        "comentario_estudiante": null,
+        "comentario_docente": null,
+        "puntaje_obtenido": "4.00",
+        "calificacion": "4.00"
+    }
+},
+{
     "model": "educacion.respuestausuario",
     "pk": 2,
     "fields": {
@@ -1738,6 +1888,546 @@
         "entrega": 4,
         "pregunta": 1,
         "opcion_seleccionada": 1,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 4,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 17,
+        "opcion_seleccionada": 60,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 5,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 18,
+        "opcion_seleccionada": 64,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 6,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 19,
+        "opcion_seleccionada": 68,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 7,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 20,
+        "opcion_seleccionada": 70,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 8,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 21,
+        "opcion_seleccionada": 74,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 9,
+    "fields": {
+        "entrega": 21,
+        "pregunta": 22,
+        "opcion_seleccionada": 76,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 10,
+    "fields": {
+        "entrega": 23,
+        "pregunta": 6,
+        "opcion_seleccionada": 17,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 11,
+    "fields": {
+        "entrega": 23,
+        "pregunta": 7,
+        "opcion_seleccionada": 20,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 12,
+    "fields": {
+        "entrega": 23,
+        "pregunta": 8,
+        "opcion_seleccionada": 26,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 13,
+    "fields": {
+        "entrega": 23,
+        "pregunta": 9,
+        "opcion_seleccionada": 31,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 14,
+    "fields": {
+        "entrega": 23,
+        "pregunta": 10,
+        "opcion_seleccionada": 34,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 15,
+    "fields": {
+        "entrega": 27,
+        "pregunta": 6,
+        "opcion_seleccionada": 17,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 16,
+    "fields": {
+        "entrega": 27,
+        "pregunta": 7,
+        "opcion_seleccionada": 21,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 17,
+    "fields": {
+        "entrega": 27,
+        "pregunta": 8,
+        "opcion_seleccionada": 25,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 18,
+    "fields": {
+        "entrega": 27,
+        "pregunta": 9,
+        "opcion_seleccionada": 28,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 19,
+    "fields": {
+        "entrega": 27,
+        "pregunta": 10,
+        "opcion_seleccionada": 32,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 20,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 17,
+        "opcion_seleccionada": 60,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 21,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 18,
+        "opcion_seleccionada": 64,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 22,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 19,
+        "opcion_seleccionada": 68,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 23,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 20,
+        "opcion_seleccionada": 69,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 24,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 21,
+        "opcion_seleccionada": 74,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 25,
+    "fields": {
+        "entrega": 26,
+        "pregunta": 22,
+        "opcion_seleccionada": 76,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 26,
+    "fields": {
+        "entrega": 24,
+        "pregunta": 6,
+        "opcion_seleccionada": 18,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 27,
+    "fields": {
+        "entrega": 24,
+        "pregunta": 7,
+        "opcion_seleccionada": 21,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 28,
+    "fields": {
+        "entrega": 24,
+        "pregunta": 8,
+        "opcion_seleccionada": 25,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 29,
+    "fields": {
+        "entrega": 24,
+        "pregunta": 9,
+        "opcion_seleccionada": 28,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 30,
+    "fields": {
+        "entrega": 24,
+        "pregunta": 10,
+        "opcion_seleccionada": 33,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 31,
+    "fields": {
+        "entrega": 25,
+        "pregunta": 6,
+        "opcion_seleccionada": 16,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 32,
+    "fields": {
+        "entrega": 25,
+        "pregunta": 7,
+        "opcion_seleccionada": 22,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 33,
+    "fields": {
+        "entrega": 25,
+        "pregunta": 8,
+        "opcion_seleccionada": 26,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 34,
+    "fields": {
+        "entrega": 25,
+        "pregunta": 9,
+        "opcion_seleccionada": 28,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 35,
+    "fields": {
+        "entrega": 25,
+        "pregunta": 10,
+        "opcion_seleccionada": 32,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 36,
+    "fields": {
+        "entrega": 22,
+        "pregunta": 6,
+        "opcion_seleccionada": 17,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 37,
+    "fields": {
+        "entrega": 22,
+        "pregunta": 7,
+        "opcion_seleccionada": 22,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 38,
+    "fields": {
+        "entrega": 22,
+        "pregunta": 8,
+        "opcion_seleccionada": 25,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 39,
+    "fields": {
+        "entrega": 22,
+        "pregunta": 9,
+        "opcion_seleccionada": 28,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 40,
+    "fields": {
+        "entrega": 22,
+        "pregunta": 10,
+        "opcion_seleccionada": 34,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 41,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 11,
+        "opcion_seleccionada": 37,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 42,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 12,
+        "opcion_seleccionada": 41,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 43,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 13,
+        "opcion_seleccionada": 46,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 44,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 14,
+        "opcion_seleccionada": 50,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 45,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 15,
+        "opcion_seleccionada": 55,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 46,
+    "fields": {
+        "entrega": 28,
+        "pregunta": 16,
+        "opcion_seleccionada": 59,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 47,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 11,
+        "opcion_seleccionada": 37,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 48,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 12,
+        "opcion_seleccionada": 40,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 49,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 13,
+        "opcion_seleccionada": 45,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 50,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 14,
+        "opcion_seleccionada": 50,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 51,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 15,
+        "opcion_seleccionada": 52,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 52,
+    "fields": {
+        "entrega": 30,
+        "pregunta": 16,
+        "opcion_seleccionada": 57,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 53,
+    "fields": {
+        "entrega": 29,
+        "pregunta": 6,
+        "opcion_seleccionada": 17,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 54,
+    "fields": {
+        "entrega": 29,
+        "pregunta": 7,
+        "opcion_seleccionada": 22,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 55,
+    "fields": {
+        "entrega": 29,
+        "pregunta": 8,
+        "opcion_seleccionada": 25,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 56,
+    "fields": {
+        "entrega": 29,
+        "pregunta": 9,
+        "opcion_seleccionada": 28,
+        "texto_respuesta": ""
+    }
+},
+{
+    "model": "educacion.respuestausuario",
+    "pk": 57,
+    "fields": {
+        "entrega": 29,
+        "pregunta": 10,
+        "opcion_seleccionada": 33,
         "texto_respuesta": ""
     }
 }

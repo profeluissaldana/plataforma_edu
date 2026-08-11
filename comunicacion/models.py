@@ -50,3 +50,34 @@ class ArchivoCompartido(models.Model):
 
     def __str__(self):
         return f'De {self.remitente} - {self.descripcion or self.archivo.name}'
+
+
+class PermisoChat(models.Model):
+    sala = models.CharField(max_length=100, db_index=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='permisos_chat')
+    puede_hablar = models.BooleanField(default=True)
+    ultima_conexion = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Permiso de Chat'
+        verbose_name_plural = 'Permisos de Chat'
+        unique_together = ('sala', 'usuario')
+
+    def __str__(self):
+        estado = "Autorizado" if self.puede_hablar else "Silenciado"
+        return f'{self.usuario} en {self.sala}: {estado}'
+
+
+class RegistroPresencia(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='registros_presencia')
+    hora_ingreso = models.DateTimeField(auto_now_add=True)
+    ultima_actividad = models.DateTimeField(auto_now=True)
+    ip_origen = models.GenericIPAddressField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Registro de Presencia'
+        verbose_name_plural = 'Registros de Presencia'
+        ordering = ['-ultima_actividad']
+
+    def __str__(self):
+        return f'{self.usuario} - Conectado desde: {self.hora_ingreso.strftime("%H:%M:%S")}'

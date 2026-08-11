@@ -46,4 +46,5 @@ urlpatterns = [
         views.reiniciar_ciclo_lectivo,
         name='reiniciar_ciclo_lectivo',
     ),
+    path('seguimiento/avance/', views.panel_avance_alumnos, name='panel_avance_alumnos'),
 ]

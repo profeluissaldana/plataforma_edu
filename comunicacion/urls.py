@@ -24,18 +24,20 @@ urlpatterns = [
         views.obtener_mensajes_ajax,
         name='obtener_mensajes_ajax',
     ),
+    path(
+        'chat/<int:espacio_id>/permiso/<int:usuario_id>/',
+        views.alternar_permiso_usuario,
+        name='alternar_permiso_usuario',
+    ),
 
-    # Alias de compatibilidad por si JS consulta las rutas relativas directamente sin 'chat/'
-    path(
-        '<int:espacio_id>/chat/obtener/',
-        views.obtener_mensajes_ajax,
-    ),
-    path(
-        '<int:espacio_id>/chat/alternar/',
-        views.alternar_estado_chat,
-    ),
-    path(
-        '<int:espacio_id>/chat/enviar/',
-        views.enviar_mensaje_chat,
-    ),
+    # Panel e Informes de Usuarios Conectados (Independiente del Chat)
+    path('monitoreo/usuarios/', views.panel_usuarios_conectados, name='panel_usuarios_conectados'),
+    path('monitoreo/usuarios/api/', views.api_usuarios_conectados, name='api_usuarios_conectados'),
+    path('presencia/ping/', views.registrar_ping_presencia, name='registrar_ping_presencia'),
+
+    # Alias de compatibilidad
+    path('<int:espacio_id>/chat/obtener/', views.obtener_mensajes_ajax),
+    path('<int:espacio_id>/chat/alternar/', views.alternar_estado_chat),
+    path('<int:espacio_id>/chat/enviar/', views.enviar_mensaje_chat),
+    path('<int:espacio_id>/chat/permiso/<int:usuario_id>/', views.alternar_permiso_usuario),
 ]

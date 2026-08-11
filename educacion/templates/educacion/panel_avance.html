@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid py-3">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-graph-up-arrow me-2 text-primary"></i>Seguimiento de Avance Académico</h2>
+        <button class="btn btn-outline-success" onclick="window.print()">
+            <i class="bi bi-file-earmark-excel me-1"></i> Exportar Reporte
+        </button>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3 align-items-center">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Filtrar por Curso:</label>
+                    <select name="curso" class="form-select" onchange="this.form.submit()">
+                        <option value="">Todos los Cursos</option>
+                        {% for c in cursos_disponibles %}
+                            <option value="{{ c }}" {% if c == curso_seleccionado %}selected{% endif %}>{{ c }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla Estilo Dashboard -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Asistencia</th>
+                            <th>Promedio Notas</th>
+                            <th>Avance de Cuestionarios</th>
+                            <th class="text-center">Detalle Notas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in reporte %}
+                        <tr>
+                            <td>
+                                <strong>{{ item.alumno.get_full_name|default:item.alumno.username }}</strong>
+                                <br><small class="text-muted">{{ item.alumno.curso|default:"Sin Curso" }}</small>
+                            </td>
+                            <td>
+                                <span class="badge {% if item.porcentaje_asistencia >= 75 %}bg-success{% elif item.porcentaje_asistencia >= 60 %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                    {{ item.porcentaje_asistencia }}%
+                                </span>
+                            </td>
+                            <td>
+                                <strong class="fs-6">{{ item.promedio_notas }} / 10</strong>
+                            </td>
+                            <td style="width: 30%;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="height: 18px;">
+                                        <div class="progress-bar bg-success font-monospace fw-bold" 
+                                             role="progressbar" 
+                                             style="width: {{ item.porcentaje_avance }}%;" 
+                                             aria-valuenow="{{ item.porcentaje_avance }}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                             {{ item.porcentaje_avance }}%
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#detalle-{{ item.alumno.id }}">
+                                    <i class="bi bi-eye"></i> Ver Evaluaciones
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Desplegable con Notas de Multiple Choice -->
+                        <tr class="collapse" id="detalle-{{ item.alumno.id }}">
+                            <td colspan="5" class="bg-light px-4 py-3">
+                                <h6 class="fw-bold mb-2">Notas obtenidas en cuestionarios Multiple Choice:</h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    {% for res in item.resultados_detalle %}
+                                        <div class="border rounded bg-white p-2 text-center shadow-sm">
+                                            <small class="d-block text-muted">{{ res.cuestionario.titulo }}</small>
+                                            <span class="fw-bold text-primary">{{ res.nota }}</span>
+                                        </div>
+                                    {% empty %}
+                                        <span class="text-muted small">Sin evaluaciones completadas aún.</span>
+                                    {% endfor %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">No se encontraron alumnos registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

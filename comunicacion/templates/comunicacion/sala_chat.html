@@ -7,7 +7,8 @@ Sala de Consultas - {{ espacio.nombre }}
 {% block content %}
 <div class="container py-4">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
+        <!-- Columna Principal del Chat -->
+        <div class="col-12 col-lg-8 mb-3 mb-lg-0">
 
             <!-- Encabezado con Control Docente -->
             <div class="card border-0 shadow-sm mb-3">
@@ -44,6 +45,12 @@ Sala de Consultas - {{ espacio.nombre }}
                 <p class="text-muted mb-0 small">El profesor activará el chat cuando comience el espacio de consultas e intercambios.</p>
             </div>
 
+            <!-- Banner de Usuario Silenciado -->
+            <div id="bannerUsuarioSilenciado" class="alert alert-danger border-0 shadow-sm text-center p-3 d-none">
+                <i class="bi bi-mic-mute-fill text-danger me-2"></i>
+                <span class="small fw-bold">El docente ha desactivado tu permiso para participar temporalmente en este chat.</span>
+            </div>
+
             <!-- Contenedor Principal del Chat -->
             <div class="card border-0 shadow-sm">
                 <!-- Ventana de Mensajes -->
@@ -77,7 +84,7 @@ Sala de Consultas - {{ espacio.nombre }}
                                 autocomplete="off"
                                 required
                             >
-                            <button type="submit" class="btn btn-primary fw-bold px-4">
+                            <button type="submit" id="btnEnviarMensaje" class="btn btn-primary fw-bold px-4">
                                 <i class="bi bi-send-fill me-1"></i> Enviar
                             </button>
                         </div>
@@ -86,6 +93,24 @@ Sala de Consultas - {{ espacio.nombre }}
             </div>
 
         </div>
+
+        <!-- Panel Lateral de Usuarios Conectados -->
+        <div class="col-12 col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold mb-0">
+                        <i class="bi bi-people-fill text-success me-2"></i>Conectados
+                    </h6>
+                    <span class="badge bg-success rounded-pill" id="contadorConectados">0</span>
+                </div>
+                <div class="card-body p-2 overflow-auto" style="max-height: 480px;">
+                    <ul class="list-group list-group-flush" id="listaUsuariosConectados">
+                        <li class="list-group-item text-center text-muted small py-3">Cargando usuarios...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -108,11 +133,14 @@ Sala de Consultas - {{ espacio.nombre }}
       }
   }
 
-  function actualizarUI(chatHabilitado) {
+  function actualizarUI(chatHabilitado, puedeHablarMiUsuario) {
       const bannerCerrado = document.getElementById('bannerChatDesactivado');
+      const bannerSilenciado = document.getElementById('bannerUsuarioSilenciado');
       const contenedorForm = document.getElementById('contenedorFormulario');
       const labelSwitch = document.getElementById('labelSwitchChat');
       const switchInput = document.getElementById('switchHabilitarChat');
+      const inputMsg = document.getElementById('inputMensaje');
+      const btnEnviar = document.getElementById('btnEnviarMensaje');
 
       if (labelSwitch) {
           labelSwitch.innerText = chatHabilitado ? 'Chat Activado' : 'Chat Desactivado';
@@ -121,6 +149,7 @@ Sala de Consultas - {{ espacio.nombre }}
           switchInput.checked = chatHabilitado;
       }
 
+      // Control general del chat cerrado
       if (chatHabilitado) {
           if (bannerCerrado) bannerCerrado.classList.add('d-none');
           if (contenedorForm) contenedorForm.classList.remove('d-none');
@@ -132,6 +161,19 @@ Sala de Consultas - {{ espacio.nombre }}
               } else {
                   contenedorForm.classList.add('d-none');
               }
+          }
+      }
+
+      // Control individual de autorización (para estudiantes)
+      if (!esDocente && puedeHablarMiUsuario !== undefined) {
+          if (puedeHablarMiUsuario) {
+              if (bannerSilenciado) bannerSilenciado.classList.add('d-none');
+              if (inputMsg) inputMsg.disabled = false;
+              if (btnEnviar) btnEnviar.disabled = false;
+          } else {
+              if (bannerSilenciado) bannerSilenciado.classList.remove('d-none');
+              if (inputMsg) inputMsg.disabled = true;
+              if (btnEnviar) btnEnviar.disabled = true;
           }
       }
   }
@@ -171,14 +213,81 @@ Sala de Consultas - {{ espacio.nombre }}
       }
   }
 
+  function renderizarUsuariosConectados(usuarios) {
+      if (!usuarios) return;
+      const lista = document.getElementById('listaUsuariosConectados');
+      const contador = document.getElementById('contadorConectados');
+
+      if (contador) contador.innerText = usuarios.length;
+      if (!lista) return;
+
+      if (usuarios.length === 0) {
+          lista.innerHTML = '<li class="list-group-item text-center text-muted small py-3">Sin usuarios en línea</li>';
+          return;
+      }
+
+      let html = '';
+      usuarios.forEach(u => {
+          const rolBadge = u.es_docente ? '<span class="badge bg-primary ms-1" style="font-size: 0.65rem;">Docente</span>' : '';
+          const yoTag = u.es_yo ? ' <small class="text-muted">(Tú)</small>' : '';
+
+          let botonAccion = '';
+          if (esDocente && !u.es_docente) {
+              const btnColor = u.puede_hablar ? 'btn-outline-danger' : 'btn-success';
+              const btnIcono = u.puede_hablar ? 'bi-mic-mute-fill' : 'bi-mic-fill';
+              const btnTexto = u.puede_hablar ? 'Silenciar' : 'Autorizar';
+              botonAccion = `
+                  <button onclick="alternarPermisoUsuario(${u.id})" class="btn btn-sm ${btnColor} py-0 px-2 ms-auto" style="font-size: 0.75rem;">
+                      <i class="bi ${btnIcono} me-1"></i>${btnTexto}
+                  </button>
+              `;
+          }
+
+          html += `
+              <li class="list-group-item d-flex justify-content-between align-items-center p-2">
+                  <div class="d-flex align-items-center text-truncate me-2">
+                      <span class="p-1 bg-success border border-light rounded-circle me-2" style="width: 10px; height: 10px;"></span>
+                      <span class="small text-dark fw-semibold text-truncate">${u.nombre}</span>
+                      ${rolBadge}
+                      ${yoTag}
+                  </div>
+                  ${botonAccion}
+              </li>
+          `;
+      });
+
+      lista.innerHTML = html;
+  }
+
+  function alternarPermisoUsuario(usuarioId) {
+      const urlPermiso = `/comunicacion/chat/{{ espacio.id }}/permiso/${usuarioId}/`;
+      fetch(urlPermiso, {
+          method: "POST",
+          headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+              "Content-Type": "application/json"
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'ok') {
+              consultarEstadoChat();
+          }
+      })
+      .catch(err => console.error("Error al cambiar permiso del usuario:", err));
+  }
+
   function consultarEstadoChat() {
       fetch(urlObtener)
           .then(response => response.json())
           .then(data => {
               if (data.status === 'ok') {
-                  actualizarUI(data.chat_habilitado);
+                  actualizarUI(data.chat_habilitado, data.puede_hablar_mi_usuario);
                   if (data.mensajes) {
                       renderizarMensajes(data.mensajes);
+                  }
+                  if (data.usuarios_conectados) {
+                      renderizarUsuariosConectados(data.usuarios_conectados);
                   }
               }
           })
@@ -234,7 +343,7 @@ Sala de Consultas - {{ espacio.nombre }}
   // Hacer scroll automático al cargar la página
   document.addEventListener("DOMContentLoaded", () => {
       hacerScrollAbajo();
-      // Polling periódico para consultar el estado del chat cada 3 segundos
+      // Polling periódico para consultar el estado del chat y conectados cada 3 segundos
       setInterval(consultarEstadoChat, 3000);
   });
 </script>

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.db.models import Prefetch, Q
+from django.db.models import Prefetch, Q, Avg
 from django.shortcuts import get_object_or_404, redirect, render
 
 from usuarios.models import Asistencia
@@ -23,18 +23,29 @@ from .models import (
 Usuario = get_user_model()
 
 
+# MAPEO DE TURNOS (Paso de texto largo a código de base de datos)
+MAPA_TURNOS = {
+    'TARDE': 'T',
+    'Tarde': 'T',
+    'tarde': 'T',
+    'T': 'T',
+    'MAÑANA': 'M',
+    'Mañana': 'M',
+    'mañana': 'M',
+    'M': 'M',
+}
+
+
 # ==============================================================================
 # HELPER: CÁLCULO DE PROGRESO Y ACTIVIDADES COMPLETADAS
 # ==============================================================================
 def obtener_progreso_estudiante(estudiante, espacio):
     """Calcula el porcentaje global de avance del alumno en un Espacio Educativo
-    y devuelve la lista de IDs de actividades completadas. Soporta actividades
-    asociadas a Leccion o a Subleccion.
+    y devuelve la lista de IDs de actividades completadas.
     """
     if not estudiante.is_authenticated:
         return 0, set()
 
-    # Filtro para actividades asociadas al Espacio Educativo vía Lección o Sublección
     filtro_espacio_actividades = Q(
         leccion__modulo__espacio_educativo=espacio
     ) | Q(subleccion__leccion__modulo__espacio_educativo=espacio)
@@ -46,19 +57,16 @@ def obtener_progreso_estudiante(estudiante, espacio):
     if total_actividades == 0:
         return 0, set()
 
-    # Filtro atravesando la relación 'actividad' para los modelos de seguimiento
     filtro_espacio_entregas = Q(
         actividad__leccion__modulo__espacio_educativo=espacio
     ) | Q(actividad__subleccion__leccion__modulo__espacio_educativo=espacio)
 
-    # IDs de Cuestionarios / Prácticas entregadas o aprobadas
     entregas_completas = EntregaActividad.objects.filter(
         filtro_espacio_entregas,
         estudiante=estudiante,
         estado__in=['ENVIADO', 'CALIFICADO'],
     ).values_list('actividad_id', flat=True)
 
-    # IDs de lecturas / videos de Teoría completados
     teorias_completas = ProgresoTeoria.objects.filter(
         filtro_espacio_entregas,
         estudiante=estudiante,
@@ -85,16 +93,9 @@ def inicio(request):
 
 @login_required
 def detalle_espacio(request, espacio_id):
-    """Vista responsiva que muestra el detalle de un Espacio Educativo.
-
-    Si es el curso de Git y GitHub (ID 4), renderiza la plantilla especial
-    gitgithub.html.
-    """
+    """Vista responsiva que muestra el detalle de un Espacio Educativo."""
     espacio = get_object_or_404(EspacioEducativo, id=espacio_id, activo=True)
 
-    # -------------------------------------------------------------------------
-    # CASO ESPECIAL: CURSO DE GIT Y GITHUB (ID 4)
-    # -------------------------------------------------------------------------
     if espacio.id == 4:
         contexto = {
             'espacio': espacio,
@@ -106,7 +107,7 @@ def detalle_espacio(request, espacio_id):
 
         if request.method == 'POST':
             clave_ingresada = request.POST.get('clave_acceso', '').strip()
-            if clave_ingresada == 'GIT123':  # Clave para desbloquear examen
+            if clave_ingresada == 'GIT123':
                 contexto['examen_desbloqueado'] = True
                 messages.success(request, '¡Examen desbloqueado con éxito!')
             else:
@@ -117,9 +118,6 @@ def detalle_espacio(request, espacio_id):
 
         return render(request, 'educacion/gitgithub.html', contexto)
 
-    # -------------------------------------------------------------------------
-    # CASO ESTÁNDAR: RESTO DE CURSOS (PYTHON, OFIMÁTICA, ETC.)
-    # -------------------------------------------------------------------------
     modulos = (
         espacio.modulos.filter(activo=True)
         .order_by('orden')
@@ -162,16 +160,11 @@ def html_css_modulo1_view(request):
         p3 = request.POST.get('p3')
         p4 = request.POST.get('p4')
 
-        # Respuestas correctas: p1='b', p2='c', p3='a', p4='b'
         aciertos = 0
-        if p1 == 'b':
-            aciertos += 1
-        if p2 == 'c':
-            aciertos += 1
-        if p3 == 'a':
-            aciertos += 1
-        if p4 == 'b':
-            aciertos += 1
+        if p1 == 'b': aciertos += 1
+        if p2 == 'c': aciertos += 1
+        if p3 == 'a': aciertos += 1
+        if p4 == 'b': aciertos += 1
 
         porcentaje = round((aciertos / 4) * 100)
 
@@ -205,7 +198,7 @@ def git_github_view(request):
 
     if request.method == 'POST':
         clave_ingresada = request.POST.get('clave_acceso', '').strip()
-        if clave_ingresada == 'GIT123':  # Clave para desbloquear examen
+        if clave_ingresada == 'GIT123':
             contexto['examen_desbloqueado'] = True
             messages.success(request, '¡Examen desbloqueado con éxito!')
         else:
@@ -217,9 +210,7 @@ def git_github_view(request):
 
 @login_required
 def marcar_teoria_completada(request, actividad_id):
-    """Permite al alumno marcar una lectura o video como completado
-    para avanzar en la secuencia pedagógica.
-    """
+    """Permite al alumno marcar una lectura o video como completado."""
     actividad = get_object_or_404(Actividad, id=actividad_id, activo=True)
 
     ProgresoTeoria.objects.get_or_create(
@@ -232,7 +223,6 @@ def marcar_teoria_completada(request, actividad_id):
         request, f'¡Excelente! Has completado: {actividad.titulo}'
     )
 
-    # Obtener el ID del espacio educativo dinámicamente si pertenece a lección o sublección
     if actividad.leccion:
         espacio_id = actividad.leccion.modulo.espacio_educativo.id
     elif actividad.subleccion:
@@ -245,10 +235,7 @@ def marcar_teoria_completada(request, actividad_id):
 
 @login_required
 def realizar_actividad(request, actividad_id):
-    """Vista polimórfica para:
-    1) Entregar archivos de código / ejercicios prácticos.
-    2) Responder cuestionarios con clave de acceso.
-    """
+    """Vista polimórfica para entregas y cuestionarios."""
     actividad = get_object_or_404(
         Actividad.objects.prefetch_related(
             Prefetch(
@@ -262,14 +249,10 @@ def realizar_actividad(request, actividad_id):
         activo=True,
     )
 
-    # Crear o recuperar el registro de entrega del usuario
     entrega, _ = EntregaActividad.objects.get_or_create(
         actividad=actividad, estudiante=request.user
     )
 
-    # -------------------------------------------------------------
-    # CASO 1: YA FUE ENVIADO -> Mostrar resultado o confirmación
-    # -------------------------------------------------------------
     if entrega.estado in ['ENVIADO', 'CALIFICADO']:
         puntaje_obtenido = (
             entrega.calificacion or entrega.puntaje_obtenido or 0
@@ -297,9 +280,6 @@ def realizar_actividad(request, actividad_id):
             },
         )
 
-    # -------------------------------------------------------------
-    # CASO 2: PROCESAR PRÁCTICA DE PROGRAMACIÓN (SUBIDA DE ARCHIVO)
-    # -------------------------------------------------------------
     if actividad.tipo == 'PRACTICA':
         if request.method == 'POST' and 'btn_subir_practica' in request.POST:
             archivo = request.FILES.get('archivo_adjunto')
@@ -335,9 +315,6 @@ def realizar_actividad(request, actividad_id):
             },
         )
 
-    # -------------------------------------------------------------
-    # CASO 3: VALIDACIÓN DE CLAVE DE ACCESO (CUESTIONARIOS)
-    # -------------------------------------------------------------
     session_key = f'actividad_clave_validada_{actividad.id}'
     tiene_clave = bool(
         actividad.clave_acceso and actividad.clave_acceso.strip()
@@ -371,9 +348,6 @@ def realizar_actividad(request, actividad_id):
             },
         )
 
-    # -------------------------------------------------------------
-    # CASO 4: PROCESAR EL ENVÍO DEL CUESTIONARIO (POST)
-    # -------------------------------------------------------------
     if request.method == 'POST' and 'btn_enviar_respuestas' in request.POST:
         puntaje_total_obtenido = 0
 
@@ -381,7 +355,6 @@ def realizar_actividad(request, actividad_id):
             for pregunta in actividad.preguntas.all():
                 campo_name = f'pregunta_{pregunta.id}'
 
-                # Para OPCION_MULTIPLE o VERDADERO_FALSO
                 if pregunta.tipo in ['OPCION_MULTIPLE', 'VERDADERO_FALSO']:
                     opcion_id = request.POST.get(campo_name)
                     if opcion_id:
@@ -396,7 +369,6 @@ def realizar_actividad(request, actividad_id):
                         if opcion_obj and opcion_obj.es_correcta:
                             puntaje_total_obtenido += pregunta.puntaje
 
-                # Para RESPUESTA_CORTA o RESPUESTA_LARGA
                 elif pregunta.tipo in ['RESPUESTA_CORTA', 'RESPUESTA_LARGA']:
                     texto = request.POST.get(campo_name, '').strip()
                     if texto:
@@ -422,9 +394,6 @@ def realizar_actividad(request, actividad_id):
             'educacion:realizar_actividad', actividad_id=actividad.id
         )
 
-    # -------------------------------------------------------------
-    # CASO 5: MOSTRAR PREGUNTAS DEL CUESTIONARIO
-    # -------------------------------------------------------------
     respuestas_existentes = {
         resp.pregunta_id: resp
         for resp in RespuestaUsuario.objects.filter(entrega=entrega)
@@ -449,9 +418,7 @@ def realizar_actividad(request, actividad_id):
 # ==============================================================================
 @login_required
 def tomar_asistencia_jornada(request):
-    """Permite al docente registrar o actualizar la asistencia del día
-    filtrando opcionalmente por curso, turno o día de cursado.
-    """
+    """Permite al docente registrar o actualizar la asistencia del día."""
     if not (request.user.is_staff or request.user.is_superuser):
         messages.error(request, 'No tienes permisos para acceder a esta sección.')
         return redirect('educacion:inicio')
@@ -477,7 +444,9 @@ def tomar_asistencia_jornada(request):
     if curso_filtro:
         alumnos = alumnos.filter(curso=curso_filtro)
     if turno_filtro:
-        alumnos = alumnos.filter(turno=turno_filtro)
+        # Convertir 'Tarde' -> 'T', 'Mañana' -> 'M' según MAPA_TURNOS
+        turno_codigo = MAPA_TURNOS.get(turno_filtro, turno_filtro)
+        alumnos = alumnos.filter(turno=turno_codigo)
     if dia_filtro:
         alumnos = alumnos.filter(dia_cursado=dia_filtro)
 
@@ -555,36 +524,103 @@ def historial_asistencias(request):
         return redirect('educacion:inicio')
 
     asistencias = Asistencia.objects.select_related('alumno').order_by('-fecha', 'alumno__last_name')
-    return render(request, 'educacion/historial_asistencias.html', {'asistencias': asistencias})
+    return render(request, 'asistencias/historial_asistencias.html', {'asistencias': asistencias})
 
 
 @login_required
 def reiniciar_ciclo_lectivo(request):
-    """Elimina las cuentas de estudiantes (no administradores/staff) y
-    registra la acción en la auditoría del ciclo lectivo.
+    """Reinicia el ciclo lectivo registrando el evento y eliminando cuentas de alumnos."""
+    if not request.user.is_superuser:
+        messages.error(request, 'No tienes permisos para realizar esta acción.')
+        return redirect('educacion:inicio')
+
+    if request.method == 'POST':
+        with transaction.atomic():
+            alumnos_qs = Usuario.objects.filter(is_superuser=False, is_staff=False)
+            cantidad_eliminados = alumnos_qs.count()
+
+            RegistroCicloLectivo.objects.create(
+                anio=date.today().year,
+                alumnos_eliminados=cantidad_eliminados,
+                realizado_por=request.user,
+            )
+
+            alumnos_qs.delete()
+
+            messages.success(
+                request,
+                f'Ciclo lectivo reiniciado correctamente. Se procesaron {cantidad_eliminados} alumnos.',
+            )
+            return redirect('educacion:inicio')
+
+    return render(request, 'educacion/confirmar_reinicio_ciclo.html')
+
+
+@login_required
+def panel_avance_alumnos(request):
+    """Calcula el porcentaje de asistencia, porcentaje global de avance 
+    en actividades y desglosa las notas obtenidas por alumno.
     """
     if not (request.user.is_staff or request.user.is_superuser):
         messages.error(request, 'No tienes permisos para acceder a esta sección.')
         return redirect('educacion:inicio')
 
-    if request.method == 'POST':
-        anio_lectivo = request.POST.get('anio', date.today().year)
+    curso_filtro = request.GET.get('curso', '')
+    
+    alumnos_qs = Usuario.objects.filter(is_superuser=False, is_staff=False)
+    if curso_filtro:
+        alumnos_qs = alumnos_qs.filter(curso=curso_filtro)
 
-        with transaction.atomic():
-            estudiantes = Usuario.objects.filter(is_superuser=False, is_staff=False)
-            total_eliminados = estudiantes.count()
-            estudiantes.delete()
+    alumnos_qs = alumnos_qs.order_by('last_name', 'first_name')
 
-            RegistroCicloLectivo.objects.create(
-                anio=anio_lectivo,
-                alumnos_eliminados=total_eliminados,
-                realizado_por=request.user,
-            )
-
-        messages.success(
-            request,
-            f'Se ha reiniciado el ciclo lectivo {anio_lectivo}. Se eliminaron {total_eliminados} alumnos.',
+    total_actividades_sistema = Actividad.objects.filter(activo=True).count()
+    
+    reporte_alumnos = []
+    for alumno in alumnos_qs:
+        # Asistencia
+        total_clases = Asistencia.objects.filter(alumno=alumno).count()
+        asistencias_presentes = Asistencia.objects.filter(
+            alumno=alumno, 
+            estado__in=['PRESENTE', 'LLEGADA_TARDE']
+        ).count()
+        porcentaje_asistencia = (
+            round((asistencias_presentes / total_clases) * 100) if total_clases > 0 else 0
         )
-        return redirect('educacion:inicio')
 
-    return render(request, 'educacion/reiniciar_ciclo_lectivo.html')
+        # Entregas
+        entregas = EntregaActividad.objects.filter(
+            estudiante=alumno, 
+            estado__in=['ENVIADO', 'CALIFICADO']
+        ).select_related('actividad')
+
+        # Teorías completadas
+        teorias = ProgresoTeoria.objects.filter(estudiante=alumno, completado=True).count()
+
+        # Avance Global
+        actividades_completadas = entregas.count() + teorias
+        porcentaje_avance = (
+            round((actividades_completadas / total_actividades_sistema) * 100) 
+            if total_actividades_sistema > 0 else 0
+        )
+        if porcentaje_avance > 100:
+            porcentaje_avance = 100
+
+        # Promedio
+        promedio_notas = entregas.exclude(calificacion__isnull=True).aggregate(Avg('calificacion'))['calificacion__avg'] or 0
+
+        reporte_alumnos.append({
+            'alumno': alumno,
+            'porcentaje_asistencia': porcentaje_asistencia,
+            'porcentaje_avance': porcentaje_avance,
+            'promedio_notas': round(promedio_notas, 1),
+            'entregas_detalle': entregas,
+        })
+
+    cursos_disponibles = Usuario.objects.values_list('curso', flat=True).distinct()
+
+    contexto = {
+        'reporte': reporte_alumnos,
+        'cursos_disponibles': filter(None, cursos_disponibles),
+        'curso_seleccionado': curso_filtro,
+    }
+    return render(request, 'educacion/panel_avance.html', contexto)

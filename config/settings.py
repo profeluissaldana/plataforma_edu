@@ -159,3 +159,18 @@ LOGOUT_REDIRECT_URL = 'login'
 
 # Ocultar la advertencia de deprecación de django-ckeditor en la consola
 SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
+
+# ==============================================================================
+# CONFIGURACIÓN DE SESIONES
+# ==============================================================================
+
+# Duración de la sesión por inactividad en segundos (ejemplo: 600 segundos = 10 minutos)
+# En nuestro caso se cerrará en 5 minutos.
+SESSION_COOKIE_AGE = 300
+
+# Reinicia el contador de 10 minutos cada vez que el alumno navega o hace un clic/petición
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Cierra la sesión si el alumno cierra la pestaña o el navegador
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+

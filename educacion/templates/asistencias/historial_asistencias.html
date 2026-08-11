@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h3 fw-bold text-primary mb-0">
+            <i class="bi bi-clock-history me-2"></i>Historial de Asistencias
+        </h2>
+        <a href="{% url 'educacion:tomar_asistencia_jornada' %}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-calendar-check me-1"></i> Tomar Asistencia
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Fecha</th>
+                            <th>Estudiante</th>
+                            <th class="text-center">Estado</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for asistencia in asistencias %}
+                        <tr>
+                            <td class="ps-4 fw-bold text-secondary">
+                                {{ asistencia.fecha|date:"d/m/Y" }}
+                            </td>
+                            <td>
+                                {{ asistencia.alumno.last_name }}, {{ asistencia.alumno.first_name }}
+                            </td>
+                            <td class="text-center">
+                                {% if asistencia.estado == 'PRESENTE' %}
+                                    <span class="badge bg-success px-3 py-1">Presente</span>
+                                {% elif asistencia.estado == 'LLEGADA_TARDE' %}
+                                    <span class="badge bg-warning text-dark px-3 py-1">Llegada Tarde</span>
+                                {% else %}
+                                    <span class="badge bg-danger px-3 py-1">Ausente</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-muted small">
+                                {{ asistencia.observacion|default:"-" }}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center py-4 text-muted">
+                                No hay registros de asistencia en el sistema.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

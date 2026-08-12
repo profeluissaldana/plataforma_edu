@@ -14,7 +14,7 @@
         <form method="get" class="row g-3 align-items-end">
             <div class="col-md-3">
                 <label class="form-label fw-bold">Curso:</label>
-                <input type="text" name="curso" value="{{ curso_filtro }}" placeholder="Ej: 1° A" class="form-control" onchange="this.form.submit()">
+                <input type="text" name="curso" value="{{ curso_filtro }}" placeholder="Ej: 5A" class="form-control" onchange="this.form.submit()">
             </div>
             <div class="col-md-2">
                 <label class="form-label fw-bold">Turno:</label>
@@ -29,7 +29,8 @@
                 <label class="form-label fw-bold">Día:</label>
                 <select name="dia_cursado" class="form-select" onchange="this.form.submit()">
                     <option value="">Todos los días</option>
-                    <option value="Lunes" {% if dia_filtro == 'Lunes' %}selected{% endif %}>Lunes</option>
+                    <option value="Lunes-Miércoles" {% if dia_filtro == 'Lunes-Miércoles' %}selected{% endif %}>Lunes - Miércoles</option>
+                    <option value="Martes-Viernes" {% if dia_filtro == 'Martes-Viernes' %}selected{% endif %}>Martes - Viernes</option>
                     <option value="Martes" {% if dia_filtro == 'Martes' %}selected{% endif %}>Martes</option>
                     <option value="Miércoles" {% if dia_filtro == 'Miércoles' %}selected{% endif %}>Miércoles</option>
                     <option value="Jueves" {% if dia_filtro == 'Jueves' %}selected{% endif %}>Jueves</option>

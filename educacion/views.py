@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.db.models import Prefetch, Q, Avg
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
 from usuarios.models import Asistencia
 from .models import (
@@ -444,11 +445,10 @@ def tomar_asistencia_jornada(request):
     if curso_filtro:
         alumnos = alumnos.filter(curso=curso_filtro)
     if turno_filtro:
-        # Convertir 'Tarde' -> 'T', 'Mañana' -> 'M' según MAPA_TURNOS
         turno_codigo = MAPA_TURNOS.get(turno_filtro, turno_filtro)
         alumnos = alumnos.filter(turno=turno_codigo)
     if dia_filtro:
-        alumnos = alumnos.filter(dia_cursado=dia_filtro)
+        alumnos = alumnos.filter(dia_cursado__icontains=dia_filtro)
 
     alumnos = alumnos.order_by('last_name', 'first_name')
 
@@ -469,7 +469,8 @@ def tomar_asistencia_jornada(request):
                 )
 
         messages.success(request, f'Asistencia del {fecha_asistencia} registrada con éxito.')
-        return redirect('educacion:tomar_asistencia_jornada')
+        url = f"{reverse('educacion:tomar_asistencia_jornada')}?curso={curso_filtro}&turno={turno_filtro}&dia_cursado={dia_filtro}&fecha={fecha_asistencia}"
+        return redirect(url)
 
     asistencias_hoy = {
         a.alumno_id: a
@@ -577,7 +578,6 @@ def panel_avance_alumnos(request):
     
     reporte_alumnos = []
     for alumno in alumnos_qs:
-        # Asistencia
         total_clases = Asistencia.objects.filter(alumno=alumno).count()
         asistencias_presentes = Asistencia.objects.filter(
             alumno=alumno, 
@@ -587,16 +587,13 @@ def panel_avance_alumnos(request):
             round((asistencias_presentes / total_clases) * 100) if total_clases > 0 else 0
         )
 
-        # Entregas
         entregas = EntregaActividad.objects.filter(
             estudiante=alumno, 
             estado__in=['ENVIADO', 'CALIFICADO']
         ).select_related('actividad')
 
-        # Teorías completadas
         teorias = ProgresoTeoria.objects.filter(estudiante=alumno, completado=True).count()
 
-        # Avance Global
         actividades_completadas = entregas.count() + teorias
         porcentaje_avance = (
             round((actividades_completadas / total_actividades_sistema) * 100) 
@@ -605,7 +602,6 @@ def panel_avance_alumnos(request):
         if porcentaje_avance > 100:
             porcentaje_avance = 100
 
-        # Promedio
         promedio_notas = entregas.exclude(calificacion__isnull=True).aggregate(Avg('calificacion'))['calificacion__avg'] or 0
 
         reporte_alumnos.append({

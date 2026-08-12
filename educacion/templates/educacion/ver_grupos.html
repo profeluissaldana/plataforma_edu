@@ -24,6 +24,7 @@
                   <th>Apellido y Nombre</th>
                   <th>DNI / Usuario</th>
                   <th>Email</th>
+                  <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,6 +34,12 @@
                     <td><strong>{{ alumno.last_name }}, {{ alumno.first_name }}</strong></td>
                     <td>{{ alumno.username }}</td>
                     <td>{{ alumno.email|default:"--" }}</td>
+                    <td class="text-center">
+                      <!-- Se remueve target="_blank" para ver las alertas de error de Django adecuadamente -->
+                      <a href="{% url 'educacion:ver_pantalla_alumno' alumno.id %}" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-display"></i> Ver pantalla
+                      </a>
+                    </td>
                   </tr>
                 {% endfor %}
               </tbody>

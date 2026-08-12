@@ -37,7 +37,7 @@
                             <th>Asistencia</th>
                             <th>Promedio Notas</th>
                             <th>Avance de Cuestionarios</th>
-                            <th class="text-center">Detalle Notas</th>
+                            <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +55,7 @@
                             <td>
                                 <strong class="fs-6">{{ item.promedio_notas }} / 10</strong>
                             </td>
-                            <td style="width: 30%;">
+                            <td style="width: 25%;">
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="progress flex-grow-1" style="height: 18px;">
                                         <div class="progress-bar bg-success font-monospace fw-bold" 
@@ -70,9 +70,14 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#detalle-{{ item.alumno.id }}">
-                                    <i class="bi bi-eye"></i> Ver Evaluaciones
-                                </button>
+                                <div class="d-flex justify-content-center gap-1">
+                                    <a href="{% url 'educacion:ver_pantalla_alumno' item.alumno.id %}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="bi bi-display"></i> Ver pantalla
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#detalle-{{ item.alumno.id }}">
+                                        <i class="bi bi-eye"></i> Evaluaciones
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         <!-- Desplegable con Notas de Multiple Choice -->

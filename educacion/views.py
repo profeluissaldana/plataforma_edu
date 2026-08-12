@@ -1,11 +1,20 @@
+import os
+import socket
+import subprocess
+import sys
+import time
 from datetime import date, datetime
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.db.models import Prefetch, Q, Avg
+from django.db.models import Avg, Count, Prefetch, Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from usuarios.models import Asistencia
 from .models import (
@@ -23,8 +32,135 @@ from .models import (
 
 Usuario = get_user_model()
 
+# ==============================================================================
+# HELPER: GESTIÓN DINÁMICA DE WEBSOCKIFY / VNC
+# ==============================================================================
+# Mapeo: { '192.168.1.50': {'puerto': 6081, 'proceso': <Popen>} }
+VNC_PORT_MAPPING = {}
+STARTING_PORT = 6081
 
-# MAPEO DE TURNOS (Paso de texto largo a código de base de datos)
+
+def buscar_puerto_libre(puerto_inicial=STARTING_PORT):
+    """Encuentra un puerto TCP libre en el servidor para lanzar websockify."""
+    puerto = puerto_inicial
+    while puerto < 65000:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            if s.connect_ex(('127.0.0.1', puerto)) != 0:
+                return puerto
+            puerto += 1
+    raise RuntimeError("No hay puertos disponibles en el servidor")
+
+
+def obtener_o_crear_puerto_vnc(ip_cliente):
+    """Devuelve el puerto de Websockify asignado a la IP del alumno,
+    iniciando el subproceso si aún no existe o liberando recursos si expiró.
+    """
+    global VNC_PORT_MAPPING
+
+    # 1. Si la IP ya está registrada, verificar si el proceso y el socket siguen activos
+    if ip_cliente in VNC_PORT_MAPPING:
+        registro = VNC_PORT_MAPPING[ip_cliente]
+        puerto_actual = registro['puerto']
+        proceso_actual = registro.get('proceso')
+
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(1)
+            if s.connect_ex(('127.0.0.1', puerto_actual)) == 0:
+                return puerto_actual
+
+        # Si el socket no respondió, terminar limpiamente el subproceso anterior
+        if proceso_actual and proceso_actual.poll() is None:
+            proceso_actual.terminate()
+            try:
+                proceso_actual.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                proceso_actual.kill()
+
+        del VNC_PORT_MAPPING[ip_cliente]
+
+    # 2. Buscar un nuevo puerto disponible
+    nuevo_puerto = buscar_puerto_libre()
+
+    # 3. Resolver la ruta absoluta del directorio estático de noVNC
+    if hasattr(settings, 'STATICFILES_DIRS') and settings.STATICFILES_DIRS:
+        ruta_base_estat = settings.STATICFILES_DIRS[0]
+    elif hasattr(settings, 'STATIC_ROOT') and settings.STATIC_ROOT:
+        ruta_base_estat = settings.STATIC_ROOT
+    else:
+        ruta_base_estat = os.path.join(settings.BASE_DIR, 'static')
+
+    ruta_novnc = os.path.join(ruta_base_estat, 'novnc')
+
+    cmd = [
+        sys.executable, "-m", "websockify",
+        "--web", str(ruta_novnc),
+        str(nuevo_puerto),
+        f"{ip_cliente}:5900"
+    ]
+
+    try:
+        proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception as e:
+        raise RuntimeError(f"Error al iniciar subproceso websockify: {e}")
+
+    # 4. Espera activa para asegurar que websockify haya abierto el puerto
+    puerto_listo = False
+    for _ in range(10):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(0.5)
+            if s.connect_ex(('127.0.0.1', nuevo_puerto)) == 0:
+                puerto_listo = True
+                break
+        time.sleep(0.1)
+
+    if not puerto_listo:
+        proc.terminate()
+        raise RuntimeError(f"Websockify no logró abrir el puerto {nuevo_puerto} para la IP {ip_cliente}")
+
+    VNC_PORT_MAPPING[ip_cliente] = {
+        'puerto': nuevo_puerto,
+        'proceso': proc
+    }
+
+    return nuevo_puerto
+
+
+# ==============================================================================
+# ENDPOINTS Y MAPEOS DE ASISTENCIA / IP
+# ==============================================================================
+@csrf_exempt
+def reportar_ip_equipo(request):
+    """
+    Endpoint que reciben los clientes para registrar/actualizar su IP en la LAN.
+    Se pasa 'equipo' (username) vía POST.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+    equipo_username = request.POST.get('equipo')
+    
+    if not equipo_username:
+        return JsonResponse({'error': 'Falta el parámetro equipo'}, status=400)
+
+    ip_cliente = request.META.get('HTTP_X_FORWARDED_FOR')
+    if ip_cliente:
+        ip_cliente = ip_cliente.split(',')[0].strip()
+    else:
+        ip_cliente = request.META.get('REMOTE_ADDR')
+
+    try:
+        usuario_equipo = Usuario.objects.get(username=equipo_username)
+        usuario_equipo.ip_local = ip_cliente
+        usuario_equipo.save(update_fields=['ip_local'])
+        return JsonResponse({
+            'status': 'ok',
+            'equipo': equipo_username,
+            'ip_registrada': ip_cliente
+        })
+    except Usuario.DoesNotExist:
+        return JsonResponse({'error': 'Equipo/Usuario no encontrado'}, status=404)
+
+
 MAPA_TURNOS = {
     'TARDE': 'T',
     'Tarde': 'T',
@@ -58,21 +194,21 @@ def obtener_progreso_estudiante(estudiante, espacio):
     if total_actividades == 0:
         return 0, set()
 
-    filtro_espacio_entregas = Q(
+    filtro_espacio_relacionado = Q(
         actividad__leccion__modulo__espacio_educativo=espacio
     ) | Q(actividad__subleccion__leccion__modulo__espacio_educativo=espacio)
 
     entregas_completas = EntregaActividad.objects.filter(
-        filtro_espacio_entregas,
+        filtro_espacio_relacionado,
         estudiante=estudiante,
         estado__in=['ENVIADO', 'CALIFICADO'],
-    ).values_list('actividad_id', flat=True)
+    ).values_list('actividad_id', flat=True).distinct()
 
     teorias_completas = ProgresoTeoria.objects.filter(
-        filtro_espacio_entregas,
+        filtro_espacio_relacionado,
         estudiante=estudiante,
         completado=True,
-    ).values_list('actividad_id', flat=True)
+    ).values_list('actividad_id', flat=True).distinct()
 
     actividades_resueltas_ids = set(entregas_completas) | set(teorias_completas)
 
@@ -83,13 +219,42 @@ def obtener_progreso_estudiante(estudiante, espacio):
 
 
 # ==============================================================================
-# VISTAS PRINCIPALES
+# VISTAS PRINCIPALES Y CONTROL REMOTO
 # ==============================================================================
 @login_required
 def inicio(request):
     """Vista principal que lista los Espacios Educativos activos."""
     espacios = EspacioEducativo.objects.filter(activo=True)
     return render(request, 'educacion/inicio.html', {'espacios': espacios})
+
+
+@login_required
+def ver_pantalla_alumno(request, alumno_id):
+    """Vista para abrir la transmisión VNC/noVNC en tiempo real del alumno."""
+    if not (request.user.is_staff or request.user.is_superuser):
+        messages.error(request, 'No tienes permisos para realizar monitoreo remoto.')
+        return redirect('educacion:inicio')
+
+    alumno = get_object_or_404(Usuario, pk=alumno_id)
+
+    if not getattr(alumno, 'ip_local', None):
+        messages.error(request, f'El equipo {alumno.username} no ha reportado su IP local aún.')
+        return redirect('educacion:ver_grupos')
+
+    try:
+        puerto_vnc = obtener_o_crear_puerto_vnc(alumno.ip_local)
+    except Exception as e:
+        messages.error(request, f'Error al iniciar el túnel de monitoreo: {e}')
+        return redirect('educacion:ver_grupos')
+
+    host_servidor = request.get_host().split(':')[0]
+
+    contexto = {
+        'alumno': alumno,
+        'puerto_vnc': puerto_vnc,
+        'host_servidor': host_servidor,
+    }
+    return render(request, 'educacion/control_remoto.html', contexto)
 
 
 @login_required
@@ -453,7 +618,12 @@ def tomar_asistencia_jornada(request):
     alumnos = alumnos.order_by('last_name', 'first_name')
 
     if request.method == 'POST':
-        fecha_asistencia = request.POST.get('fecha', str(date.today()))
+        fecha_asistencia_input = request.POST.get('fecha', str(date.today()))
+        try:
+            fecha_asistencia = datetime.strptime(fecha_asistencia_input, '%Y-%m-%d').date()
+        except ValueError:
+            fecha_asistencia = date.today()
+
         with transaction.atomic():
             for alumno in alumnos:
                 estado = request.POST.get(f'asistencia_{alumno.id}', 'AUSENTE')
@@ -477,14 +647,14 @@ def tomar_asistencia_jornada(request):
         for a in Asistencia.objects.filter(fecha=fecha_str, alumno__in=alumnos)
     }
 
-    alumnos_con_asistencia = []
-    for alumno in alumnos:
-        asistencia = asistencias_hoy.get(alumno.id)
-        alumnos_con_asistencia.append({
+    alumnos_con_asistencia = [
+        {
             'alumno': alumno,
-            'estado': asistencia.estado if asistencia else 'PRESENTE',
-            'observaciones': asistencia.observacion if asistencia else '',
-        })
+            'estado': asistencias_hoy[alumno.id].estado if alumno.id in asistencias_hoy else 'PRESENTE',
+            'observaciones': asistencias_hoy[alumno.id].observacion if alumno.id in asistencias_hoy else '',
+        }
+        for alumno in alumnos
+    ]
 
     contexto = {
         'alumnos_con_asistencia': alumnos_con_asistencia,
@@ -560,7 +730,7 @@ def reiniciar_ciclo_lectivo(request):
 @login_required
 def panel_avance_alumnos(request):
     """Calcula el porcentaje de asistencia, porcentaje global de avance 
-    en actividades y desglosa las notas obtenidas por alumno.
+    en actividades y desglosa las notas obtenidas por alumno (optimizado contra N+1).
     """
     if not (request.user.is_staff or request.user.is_superuser):
         messages.error(request, 'No tienes permisos para acceder a esta sección.')
@@ -572,51 +742,79 @@ def panel_avance_alumnos(request):
     if curso_filtro:
         alumnos_qs = alumnos_qs.filter(curso=curso_filtro)
 
-    alumnos_qs = alumnos_qs.order_by('last_name', 'first_name')
+    alumnos = list(alumnos_qs.order_by('last_name', 'first_name'))
+    alumnos_ids = [a.id for a in alumnos]
 
     total_actividades_sistema = Actividad.objects.filter(activo=True).count()
-    
+
+    # Mapeo de asistencias agregadas
+    asistencias_stats = Asistencia.objects.filter(alumno_id__in=alumnos_ids).values('alumno_id').annotate(
+        total=Count('id'),
+        presentes=Count('id', filter=Q(estado__in=['PRESENTE', 'LLEGADA_TARDE']))
+    )
+    mapa_asistencia = {
+        a['alumno_id']: round((a['presentes'] / a['total']) * 100) if a['total'] > 0 else 0
+        for a in asistencias_stats
+    }
+
+    # Mapeo de actividades entregadas
+    entregas_qs = EntregaActividad.objects.filter(
+        estudiante_id__in=alumnos_ids,
+        estado__in=['ENVIADO', 'CALIFICADO']
+    ).select_related('actividad')
+
+    mapa_entregas_objetos = {}
+    mapa_entregas_ids = {}
+    for entrega in entregas_qs:
+        mapa_entregas_objetos.setdefault(entrega.estudiante_id, []).append(entrega)
+        mapa_entregas_ids.setdefault(entrega.estudiante_id, set()).add(entrega.actividad_id)
+
+    # Mapeo de teorías completadas
+    teorias_qs = ProgresoTeoria.objects.filter(
+        estudiante_id__in=alumnos_ids,
+        completado=True
+    ).values('estudiante_id', 'actividad_id')
+
+    mapa_teorias_ids = {}
+    for t in teorias_qs:
+        mapa_teorias_ids.setdefault(t['estudiante_id'], set()).add(t['actividad_id'])
+
     reporte_alumnos = []
-    for alumno in alumnos_qs:
-        total_clases = Asistencia.objects.filter(alumno=alumno).count()
-        asistencias_presentes = Asistencia.objects.filter(
-            alumno=alumno, 
-            estado__in=['PRESENTE', 'LLEGADA_TARDE']
-        ).count()
-        porcentaje_asistencia = (
-            round((asistencias_presentes / total_clases) * 100) if total_clases > 0 else 0
-        )
+    for alumno in alumnos:
+        porcentaje_asistencia = mapa_asistencia.get(alumno.id, 0)
+        entregas_alumno = mapa_entregas_objetos.get(alumno.id, [])
+        
+        # Unión de conjuntos de actividades completadas para evitar duplicaciones
+        actividades_resueltas = mapa_entregas_ids.get(alumno.id, set()) | mapa_teorias_ids.get(alumno.id, set())
 
-        entregas = EntregaActividad.objects.filter(
-            estudiante=alumno, 
-            estado__in=['ENVIADO', 'CALIFICADO']
-        ).select_related('actividad')
-
-        teorias = ProgresoTeoria.objects.filter(estudiante=alumno, completado=True).count()
-
-        actividades_completadas = entregas.count() + teorias
         porcentaje_avance = (
-            round((actividades_completadas / total_actividades_sistema) * 100) 
+            round((len(actividades_resueltas) / total_actividades_sistema) * 100)
             if total_actividades_sistema > 0 else 0
         )
         if porcentaje_avance > 100:
             porcentaje_avance = 100
 
-        promedio_notas = entregas.exclude(calificacion__isnull=True).aggregate(Avg('calificacion'))['calificacion__avg'] or 0
+        notas = [e.calificacion for e in entregas_alumno if e.calificacion is not None]
+        promedio_notas = round(sum(notas) / len(notas), 1) if notas else 0.0
 
         reporte_alumnos.append({
             'alumno': alumno,
             'porcentaje_asistencia': porcentaje_asistencia,
             'porcentaje_avance': porcentaje_avance,
-            'promedio_notas': round(promedio_notas, 1),
-            'entregas_detalle': entregas,
+            'promedio_notas': promedio_notas,
+            'entregas_detalle': entregas_alumno,
         })
 
-    cursos_disponibles = Usuario.objects.values_list('curso', flat=True).distinct()
+    cursos_disponibles = list(
+        Usuario.objects.exclude(curso__isnull=True)
+        .exclude(curso__exact='')
+        .values_list('curso', flat=True)
+        .distinct()
+    )
 
     contexto = {
         'reporte': reporte_alumnos,
-        'cursos_disponibles': filter(None, cursos_disponibles),
+        'cursos_disponibles': cursos_disponibles,
         'curso_seleccionado': curso_filtro,
     }
     return render(request, 'educacion/panel_avance.html', contexto)

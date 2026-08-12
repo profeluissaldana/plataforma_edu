@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import os
+import socket
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,12 +27,36 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-)kc_zwf(%f%1hlgq%yc#q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
+# ==============================================================================
+# DETECCIÓN DINÁMICA DE IP LOCAL
+# ==============================================================================
+def obtener_ip_local():
+    """Detecta la IP asignada a la interfaz de red local conectada a internet/LAN."""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return '127.0.0.1'
+
+IP_LOCAL = obtener_ip_local()
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '192.168.1.28',
+    IP_LOCAL,
     '*'
-    ]
+]
+
+# Configuración dinámica de orígenes de confianza para la protección CSRF
+CSRF_TRUSTED_ORIGINS = [
+    f'http://{IP_LOCAL}:8000',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+]
 
 
 # Application definition
@@ -173,4 +198,3 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # Cierra la sesión si el alumno cierra la pestaña o el navegador
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
